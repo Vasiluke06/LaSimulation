@@ -7,12 +7,10 @@ public class Frame_Simulation extends JFrame {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
 
-            // Rysowanie lasu (zielone tło)
-            g.setColor(new Color(34, 139, 34)); // forest green
+            g.setColor(new Color(34, 139, 34));
             g.fillRect(0, 0, getWidth(), getHeight());
 
-            // Rysowanie rzeki (niebieski pasek w środku)
-            g.setColor(new Color(30, 144, 255)); // dodger blue
+            g.setColor(new Color(30, 144, 255));
             int riverWidth = 80;
             int x = getWidth() / 2 - riverWidth / 2;
             g.fillRect(x, 0, riverWidth, getHeight());
@@ -20,7 +18,7 @@ public class Frame_Simulation extends JFrame {
     }
     Frame_Simulation(){
         this.setVisible(true); //creating a frame
-        this.setSize(550, 500);
+        this.setSize(1100, 1000);
         this.setTitle("LaSimulation (simulation)");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);

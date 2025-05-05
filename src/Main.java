@@ -5,6 +5,8 @@ public class Main {
         System.out.println("The World!");
 
         Frame_Settings frame_settings = new Frame_Settings();
+
+        Simulation simulation = new Simulation();
     }
 
     public static String n = "The World!";
