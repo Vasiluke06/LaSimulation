@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.2.14">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.0.2">
   <diagram name="Forest Simulation UML" id="Erti3PVaiMM5gCJnjbkC">
-    <mxGraphModel dx="1959" dy="935" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1665" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -73,6 +73,91 @@
         </mxCell>
         <mxCell id="uXKLc3-ld2x3CbspvXXd-15" value="End of simulation" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="560" y="380" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-1" value="Create herbivore" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1070" y="50" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-3" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-1" target="491iDbf5kNnZC-9jmeQo-4" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="970" y="290" as="sourcePoint" />
+            <mxPoint x="1050" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-4" value="Check for plants in hitbox" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1070" y="180" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-5" value="Move in random direction" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1070" y="280" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-6" value="Eat plant and earn points" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1241" y="180" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-7" value="Create new herbivore near" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1241" y="280" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-8" value="True" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-4" target="491iDbf5kNnZC-9jmeQo-6" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="970" y="290" as="sourcePoint" />
+            <mxPoint x="1050" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-9" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-6" target="491iDbf5kNnZC-9jmeQo-7" edge="1">
+          <mxGeometry x="-0.0004" width="80" relative="1" as="geometry">
+            <mxPoint x="970" y="290" as="sourcePoint" />
+            <mxPoint x="1050" y="290" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-10" value="False" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-4" target="491iDbf5kNnZC-9jmeQo-5" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="970" y="290" as="sourcePoint" />
+            <mxPoint x="1050" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-11" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-7" target="491iDbf5kNnZC-9jmeQo-5" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="970" y="290" as="sourcePoint" />
+            <mxPoint x="1050" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-15" value="Create predator" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1780" y="50" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-16" value="Check for herbivores in hitbox" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1775" y="180" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-17" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-15" target="491iDbf5kNnZC-9jmeQo-16" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="1760" y="130" as="sourcePoint" />
+            <mxPoint x="1490" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-21" value="Eat herbivore and earn points" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1958" y="180" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-22" value="Move in random direction" style="html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="1775" y="280" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-23" value="False" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-16" target="491iDbf5kNnZC-9jmeQo-22" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="1650" y="260" as="sourcePoint" />
+            <mxPoint x="1730" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-24" value="True" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-16" target="491iDbf5kNnZC-9jmeQo-21" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="1650" y="260" as="sourcePoint" />
+            <mxPoint x="1730" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="491iDbf5kNnZC-9jmeQo-25" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" parent="1" source="491iDbf5kNnZC-9jmeQo-21" target="491iDbf5kNnZC-9jmeQo-22" edge="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="1650" y="260" as="sourcePoint" />
+            <mxPoint x="1730" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2013" y="305" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
