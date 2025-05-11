@@ -1,0 +1,4 @@
+rootProject.name = 'ForestSim'
+
+include 'core', 'entities', 'ui', 'app'
+
