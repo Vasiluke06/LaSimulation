@@ -50,3 +50,8 @@ __*Programming language - Java*__
 * Number of remaining animals;
 * Number of killed entities;
 * Number of random events.  
+
+
+### License  
+
+This project is licensed under the MIT License — see the [LICENSE](License.txt) file for details.  
