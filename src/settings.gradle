@@ -1,4 +1,4 @@
-rootProject.name = 'ForestSim'
+rootProject.name = 'LaSimulation'
 
-include 'core', 'entities', 'ui', 'app'
+include 'classes', 'entities', 'ui', 'app'
 

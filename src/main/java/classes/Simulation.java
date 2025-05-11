@@ -1,5 +1,4 @@
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+package main.java.classes;
 
 public class Simulation {
     //speed_of_simulation
