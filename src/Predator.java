@@ -1,7 +1,16 @@
 public class Predator extends Animals{
-    //create_predator
+    public void next_move_predator(){
 
-    //delete_predator
+    }
 
-    //check_predator
+    public void delete_herbivore_predator(){
+
+    }
+
+    public void delete_predator(){
+
+    }
 }
+
+
+

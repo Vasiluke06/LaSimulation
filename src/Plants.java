@@ -1,7 +1,17 @@
+import java.util.Timer;
+
 public class Plants {
-    //plant_init
+    private Timer spawn_timer;
 
-    //spawn_plant
+    public void new_plant(){
 
-    //delete_plant
+    }
+
+    public void delete_plant(){
+
+    }
+
+    public void spawn_new_plant(Timer spawn_timer){
+
+    }
 }

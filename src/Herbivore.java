@@ -1,7 +1,14 @@
 public class Herbivore extends Animals{
-    //create_herbivore
 
-    //delete_herbivore
+    public void next_move_herbivore(){
 
-    //check_herbivore
+    }
+
+    public void new_herbivore(){
+
+    }
+
+    public void delete_herbivore(){
+
+    }
 }

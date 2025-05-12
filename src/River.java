@@ -1,5 +1,16 @@
-public class River {
-    //create_river
+import java.awt.*;
 
-    //drowing_chanse
+public class River {
+    public void create_river(Graphics g){
+
+    }
+
+    public void onRiver(){
+
+    }
+
+
 }
+
+
+

@@ -1,7 +1,17 @@
+import java.awt.*;
+
 public class Hunters {
-    //create_hunters
+    public int hunters_counter;
 
-    //hunters
+    public void create_hunter(Graphics g){
 
-    //delete_hunters
+    }
+
+    public void move_hunter(){
+
+    }
+
+    public void delete_hunter(){
+
+    }
 }
