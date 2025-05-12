@@ -10,10 +10,10 @@ public class Frame_Simulation extends JFrame {
             g.setColor(new Color(34, 139, 34));
             g.fillRect(0, 0, getWidth(), getHeight());
 
-            g.setColor(new Color(30, 144, 255));
+            /*g.setColor(new Color(30, 144, 255));
             int riverWidth = 80;
             int x = getWidth() / 2 - riverWidth / 2;
-            g.fillRect(x, 0, riverWidth, getHeight());
+            g.fillRect(x, 0, riverWidth, getHeight());*/
         }
     }
     Frame_Simulation(){
