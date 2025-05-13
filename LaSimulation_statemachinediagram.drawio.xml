@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.0.2">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.5">
   <diagram name="Forest Simulation UML" id="Erti3PVaiMM5gCJnjbkC">
-    <mxGraphModel dx="1665" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1660" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -156,6 +156,26 @@
             <mxPoint x="1730" y="260" as="targetPoint" />
             <Array as="points">
               <mxPoint x="2013" y="305" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bkv6IzVQTsIY8GprgKw0-1" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" edge="1" parent="1" source="491iDbf5kNnZC-9jmeQo-5" target="491iDbf5kNnZC-9jmeQo-4">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="870" y="370" as="sourcePoint" />
+            <mxPoint x="1000" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1000" y="305" />
+              <mxPoint x="1000" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Bkv6IzVQTsIY8GprgKw0-3" value="" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" edge="1" parent="1" source="491iDbf5kNnZC-9jmeQo-22" target="491iDbf5kNnZC-9jmeQo-16">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="1760" y="300" as="sourcePoint" />
+            <mxPoint x="1750" y="240" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1720" y="305" />
+              <mxPoint x="1720" y="205" />
             </Array>
           </mxGeometry>
         </mxCell>
