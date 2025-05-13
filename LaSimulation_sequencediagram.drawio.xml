@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.4">
   <diagram name="Страница — 1" id="lu6Iycab-AqJ4pXBdSd3">
-    <mxGraphModel dx="4990" dy="1988" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2786" dy="935" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -240,6 +240,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
+        <mxCell id="dox3VJo3U0D7T4FQuyPX-1" value="next_move()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="-fBEuWntHBdi3O6L35m9-16">
+          <mxGeometry x="-0.0774" relative="1" as="geometry">
+            <mxPoint x="27" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="-fBEuWntHBdi3O6L35m9-17" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="1235" y="790" width="10" height="30" as="geometry" />
         </mxCell>
@@ -263,6 +268,16 @@
             <Array as="points">
               <mxPoint x="1130" y="920" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dox3VJo3U0D7T4FQuyPX-4" value="new_plant(), delete_plant(),&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="-fBEuWntHBdi3O6L35m9-20">
+          <mxGeometry x="-0.293" y="-1" relative="1" as="geometry">
+            <mxPoint x="103" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dox3VJo3U0D7T4FQuyPX-5" value="spawn_new_plant(spawn_timer)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="-fBEuWntHBdi3O6L35m9-20">
+          <mxGeometry x="-0.6352" relative="1" as="geometry">
+            <mxPoint x="73" y="-10" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="-fBEuWntHBdi3O6L35m9-21" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
