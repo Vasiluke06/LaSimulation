@@ -1,9 +1,13 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
+//import java.util.Timer;
+import javax.swing.Timer;
 
-public class Simulation {
+public class Simulation implements ActionListener {
     public ArrayList<Herbivore> herbivore;
     public ArrayList<Predator> predator;
     public ArrayList<Plants> plants;
@@ -21,6 +25,15 @@ public class Simulation {
     public Image huntersimage;
 
     public Random random;
+
+    public Timer simulation_time;
+
+    Simulation(){
+        images();
+
+        simulation_time = new Timer(0, this);
+        simulation_time.start();
+    }
 
     private void init_start(){
 
@@ -44,5 +57,10 @@ public class Simulation {
 
     private boolean victory_check(int herbivore_points, int predator_points, int pointsforvictory){
         return true;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }
