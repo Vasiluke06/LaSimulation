@@ -41,9 +41,9 @@ __*Programming language - Java*__
 * Number of plants, herbivores, and predators;
 * Speed of the simulation;
 * Probabilities of random events:
-    * item Appearance of hunters;
-    * item Occurrence of wildfire;
-    * item Risk of drowning in a river.
+    * Appearance of hunters;
+    * Occurrence of wildfire;
+    * Risk of drowning in a river.
 
 **Output:**
 * Points earned by each team (predators, herbivores);
