@@ -31,13 +31,24 @@ public class Simulation extends JPanel implements ActionListener {
     Simulation(){
         images();
 
-        simulation_time = new Timer(0, this);
+        x_pos = 350;
+
+        y_pos = 110;
+
+        init_start();
+
+        simulation_time = new Timer(Frame_Settings.speedofsimulation, this);
         simulation_time.start();
 
-        repaint();
+
     }
 
     private void init_start(){
+        herbivore = new ArrayList<>();
+        predator = new ArrayList<>();
+        plants =  new ArrayList<>();
+
+        //River.create_river();
 
     }
 
@@ -58,7 +69,7 @@ public class Simulation extends JPanel implements ActionListener {
     }
 
     public void draw_herbivore(Graphics g){
-        g.drawImage(herbivore_img, 350, 110, 32, 32, this);
+        g.drawImage(herbivore_img, x_pos, y_pos, 32, 32, this);
     }
 
     public void draw_predator(Graphics g){
@@ -75,6 +86,27 @@ public class Simulation extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        x_pos += 1;
 
+        y_pos += 1; //just for test
+
+        if(herbivore != null){
+            for(int i = 0; i < herbivore.size(); i++){
+                herbivore.get(i).next_move_herbivore();
+            }
+        }
+
+        if(predator != null){
+            for(int i = 0; i < predator.size(); i++){
+                predator.get(i).next_move_predator();
+            }
+        }
+
+        for(int i = 0; i < plants.size(); i++){
+            plants.get(i).spawn_new_plant();
+        }
+
+        //
+        repaint();
     }
 }

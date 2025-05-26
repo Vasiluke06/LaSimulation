@@ -36,7 +36,9 @@ public class Frame_Simulation extends JFrame {
 
         MapPanel mappanel = new MapPanel();
 
-        Simulation simulation = Main.simulation;
+        Simulation simulation = new Simulation();
+
+        //Simulation simulation = Main.simulation;
 
         mappanel.setBounds(0, 0, 1100, 1000);
         simulation.setBounds(0, 0, 1100, 1000);

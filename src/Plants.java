@@ -1,7 +1,7 @@
 import java.util.Timer;
 
 public class Plants {
-    private Timer spawn_timer;
+    private int spawn_timer;
 
     public void new_plant(){
 
@@ -11,7 +11,13 @@ public class Plants {
 
     }
 
-    public void spawn_new_plant(Timer spawn_timer){
+    public void spawn_new_plant(){
+        if (spawn_timer >= 10){
+            new_plant();
 
+            spawn_timer = 0;
+        }
+
+        spawn_timer++;
     }
 }

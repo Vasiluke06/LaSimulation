@@ -8,7 +8,7 @@ public class Main {
 
         Frame_Settings frame_settings = new Frame_Settings();
 
-        simulation = new Simulation();
+        //simulation = new Simulation();
     }
 
     public static String n = "The World!";
