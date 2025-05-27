@@ -39,7 +39,7 @@ public class Simulation extends JPanel implements ActionListener {
 
         init_start();
 
-        simulation_time = new Timer(Frame_Settings.speedofsimulation, this);
+        simulation_time = new Timer(1000/Frame_Settings.speedofsimulation, this);
         simulation_time.start();
 
 

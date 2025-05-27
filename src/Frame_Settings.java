@@ -69,11 +69,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label_pointsforvictory.setBounds(25, 350, 200, 20);
 
         JLabel label_speedofsimulation = new JLabel(); //creating a label "Speed of simulation"
-        label_speedofsimulation.setText("Speed of simulation");
+        label_speedofsimulation.setText("Speed of simulation (ticks per second)");
         label_speedofsimulation.setBounds(25, 400, 200, 20);
 
         button_accept = new JButton(); //creating a button "Accept"
-        button_accept.setBounds(200,400,125,50);
+        button_accept.setBounds(405,400,125,50);
         this.add(button_accept);
         this.setLayout(null);
         button_accept.addActionListener(this);
