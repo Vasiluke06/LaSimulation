@@ -10,21 +10,21 @@ import javax.swing.*;
 public class Simulation extends JPanel implements ActionListener {
     public ArrayList<Herbivore> herbivore;
     public ArrayList<Predator> predator;
-    public ArrayList<Plants> plants;
+    public static ArrayList<Plants> plants;
     public int kill_count_herbivore;
     public int kill_count_predator;
     public int herbivore_remain;
     public int predator_remain;
 
-    public int x_pos;
-    public int y_pos;
+    public static int x_pos;
+    public static int y_pos;
 
-    public Image herbivore_img;
+    public static Image herbivore_img;
     public Image predator_img;
-    public Image plant_img;
+    public static Image plant_img;
     public Image hunters_img;
 
-    public Random random;
+    public static Random random;
 
     public Timer simulation_time;
 
@@ -34,6 +34,8 @@ public class Simulation extends JPanel implements ActionListener {
         x_pos = 350;
 
         y_pos = 110;
+
+        random = new Random();
 
         init_start();
 
@@ -47,6 +49,11 @@ public class Simulation extends JPanel implements ActionListener {
         herbivore = new ArrayList<>();
         predator = new ArrayList<>();
         plants =  new ArrayList<>();
+        for (int i = 0; i < Frame_Settings.numofplants; i++){
+            int x_pos = random.nextInt(1100);
+            int y_pos = random.nextInt(1000);
+            Plants.new_plant(x_pos, y_pos);
+        };
 
         //River.create_river();
 
@@ -56,7 +63,7 @@ public class Simulation extends JPanel implements ActionListener {
 
     public void paintComponent(Graphics g){                                                             // main graphic method
         super.paintComponent(g);
-        draw_herbivore(g);
+        drawing(g);
     }
 
 
@@ -64,19 +71,36 @@ public class Simulation extends JPanel implements ActionListener {
     public void images(){
         herbivore_img = new ImageIcon("images/deer female calciumtrice (1).png").getImage();
         predator_img = new ImageIcon("images/wolf (1).png").getImage();
-        hunters_img = new ImageIcon("images/pixel-grid-blueberries_2236497 (1)").getImage();
-        plant_img = new ImageIcon("").getImage();
+        hunters_img = new ImageIcon("").getImage();
+        plant_img = new ImageIcon("images/pixel-grid-blueberries_2236497 (1).png").getImage();
     }
 
-    public void draw_herbivore(Graphics g){
+    /*public void draw_herbivore(Graphics g){
         g.drawImage(herbivore_img, x_pos, y_pos, 32, 32, this);
-    }
+    }*/
 
     public void draw_predator(Graphics g){
 
     }
 
-    public void draw_plants(Graphics g){
+    /*public void draw_plants(Graphics g){
+        g.drawImage(plant_img, x_pos, y_pos, 32, 32, this);
+    }*/
+
+
+
+    public void drawing(Graphics g){
+        if (herbivore != null){
+            for (int i = 0; i < herbivore.size(); i++) {
+                herbivore.get(i).draw_herbivore(g);
+            }
+        }
+
+        if (plants != null){
+            for (int i = 0; i < plants.size(); i++) {
+                plants.get(i).draw_plants(g);
+            }
+        }
 
     }
 
@@ -102,9 +126,7 @@ public class Simulation extends JPanel implements ActionListener {
             }
         }
 
-        for(int i = 0; i < plants.size(); i++){
-            plants.get(i).spawn_new_plant();
-        }
+        Plants.spawn_new_plant();
 
         //
         repaint();
