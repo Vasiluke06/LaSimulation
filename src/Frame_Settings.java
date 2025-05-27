@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 public class Frame_Settings extends JFrame implements ActionListener {
     JButton button_accept;
 
+    JButton button_fast_insert_of_parameters;
+
     JTextField parameter_numofherbivore;
     JTextField parameter_numofpredator;
     JTextField parameter_numofplants;
@@ -80,6 +82,14 @@ public class Frame_Settings extends JFrame implements ActionListener {
         button_accept.setText("Accept");
         button_accept.setFocusable(false);
 
+        button_fast_insert_of_parameters = new JButton(); //creating a button "Recommended fast insert"
+        button_fast_insert_of_parameters.setBounds(405,325,125,50);
+        this.add(button_fast_insert_of_parameters);
+        this.setLayout(null);
+        button_fast_insert_of_parameters.addActionListener(this);
+        button_fast_insert_of_parameters.setText("Recommended");
+        button_fast_insert_of_parameters.setFocusable(false);
+
         this.add(label_numofherbivore);
         this.add(label_numofpredator);
         this.add(label_numofplants);
@@ -151,8 +161,34 @@ public class Frame_Settings extends JFrame implements ActionListener {
             pointsforvictory = Integer.parseInt(parameter_pointsforvictory.getText());
             System.out.println(pointsforvictory);
             button_accept.setEnabled(false);
+
+            button_fast_insert_of_parameters.setEnabled(false);
+
+
             Frame_Simulation frame_simulation = new Frame_Simulation();
         }
 
+        if (e.getSource() == button_fast_insert_of_parameters){
+            System.out.println("Clickn"); //actions after clicking the button
+
+            parameter_numofherbivore.setText("5");
+
+            parameter_numofpredator.setText("5");
+
+            parameter_numofplants.setText("10");;
+
+            parameter_chanceofwildfire.setText("0");
+
+            parameter_chanceofdrowing.setText("0");
+
+            parameter_chanceofhunters.setText("0");
+
+            parameter_speedofsimulation.setText("10");
+
+            parameter_pointsforvictory.setText("100");
+
+            //button_fast_insert_of_parameters.setEnabled(false);
+
+        }
     }
 }

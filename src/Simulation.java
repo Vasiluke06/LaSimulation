@@ -102,6 +102,8 @@ public class Simulation extends JPanel implements ActionListener {
             }
         }
 
+        River.create_river(g);
+
     }
 
     private boolean victory_check(int herbivore_points, int predator_points, int pointsforvictory){
