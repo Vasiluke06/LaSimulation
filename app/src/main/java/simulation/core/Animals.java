@@ -1,3 +1,5 @@
+package simulation.core;
+
 public class Animals {
     public int herbivore_points;
     public int predator_points;

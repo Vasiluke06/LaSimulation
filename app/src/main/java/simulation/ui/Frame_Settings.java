@@ -1,3 +1,5 @@
+package simulation.ui;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -25,7 +27,8 @@ public class Frame_Settings extends JFrame implements ActionListener {
     public static int chanceofhunters;
     public static int pointsforvictory;
     public static int speedofsimulation;
-    Frame_Settings(){
+    //Made constructor public
+    public Frame_Settings(){
 
         this.setVisible(true); //creating a frame
         this.setSize(550, 500);

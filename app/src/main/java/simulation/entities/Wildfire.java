@@ -1,3 +1,5 @@
+package simulation.entities;
+
 import java.awt.*;
 
 public class Wildfire {
@@ -11,8 +13,3 @@ public class Wildfire {
 
     }
 }
-
-
-
-
-
