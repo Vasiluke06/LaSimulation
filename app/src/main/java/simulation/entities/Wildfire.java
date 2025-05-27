@@ -1,9 +1,15 @@
 package simulation.entities;
 
+import java.awt.*;
+
 public class Wildfire {
-    //create_wildfire
+    public int wildfire_count;
 
-    //wildfire
+    public void create_wildfire(Graphics g){
 
-    //delete_wildfire
+    }
+
+    public void delete_wildfire(){
+
+    }
 }

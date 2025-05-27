@@ -1,7 +1,13 @@
 package simulation.entities;
 
-public class River {
-    //create_river
+import java.awt.*;
 
-    //drowing_chanse
+public class River {
+    public static void create_river(Graphics g){
+
+    }
+
+    public void onRiver(){
+
+    }
 }

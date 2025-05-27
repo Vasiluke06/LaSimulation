@@ -27,10 +27,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
     public static int chanceofhunters;
     public static int pointsforvictory;
     public static int speedofsimulation;
+    //Made constructor public
     public Frame_Settings(){
 
         this.setVisible(true); //creating a frame
-        this.setSize(550, 560);
+        this.setSize(550, 500);
         this.setTitle("LaSimulation (settings)");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -42,11 +43,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);*/
 
-        JLabel label_numofherbivore = new JLabel(); //creating a label "Number of herbivores"
+        JLabel label_numofherbivore = new JLabel(); //creating a label "Number of hebivore"
         label_numofherbivore.setText("Number of herbivore");
         label_numofherbivore.setBounds(25, 50, 200, 20);
 
-        JLabel label_numofpredator = new JLabel(); //creating a label "Number of predators"
+        JLabel label_numofpredator = new JLabel(); //creating a label "Number of predator"
         label_numofpredator.setText("Number of predator");
         label_numofpredator.setBounds(25, 100, 200, 20);
 
@@ -75,7 +76,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label_speedofsimulation.setBounds(25, 400, 200, 20);
 
         button_accept = new JButton(); //creating a button "Accept"
-        button_accept.setBounds(200,450,125,50);
+        button_accept.setBounds(200,400,125,50);
         this.add(button_accept);
         this.setLayout(null);
         button_accept.addActionListener(this);

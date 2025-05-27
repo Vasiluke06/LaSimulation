@@ -1,9 +1,14 @@
 package simulation.core;
 
 public class Animals {
-    //animals_init
+    public int herbivore_points;
+    public int predator_points;
 
-    //next_move
+    public void next_move(){
 
-    //
+    }
+
+    public void check_border(){
+
+    }
 }

@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predators.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +33,9 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app">
           <activation />
         </task>
         <projects_view>
@@ -52,6 +61,24 @@
                 <item name="LaSimulation" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="LaSimulation" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="LaSimulation" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="LaSimulation" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -84,25 +111,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.LaSimulation [build].executor": "Run",
-    "Gradle.LaSimulation [clean].executor": "Run",
-    "Gradle.LaSimulation [run].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "build-with-gradle",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;build-with-gradle&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Gradle.LaSimulation [run]">
     <configuration name="LaSimulation [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -170,11 +198,34 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="LaSimulation:app [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.LaSimulation [run]" />
-        <item itemvalue="Gradle.LaSimulation [build]" />
         <item itemvalue="Gradle.LaSimulation [clean]" />
+        <item itemvalue="Gradle.LaSimulation [build]" />
+        <item itemvalue="Gradle.LaSimulation:app [run]" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +247,9 @@
       <workItem from="1748263228830" duration="2612000" />
       <workItem from="1748270617902" duration="877000" />
       <workItem from="1748274835645" duration="1002000" />
+      <workItem from="1748276948557" duration="625000" />
+      <workItem from="1748340645771" duration="224000" />
+      <workItem from="1748344656563" duration="1859000" />
     </task>
     <servers />
   </component>
