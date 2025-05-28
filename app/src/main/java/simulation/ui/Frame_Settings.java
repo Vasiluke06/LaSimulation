@@ -31,7 +31,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
     public Frame_Settings(){
 
         this.setVisible(true); //creating a frame
-        this.setSize(550, 500);
+        this.setSize(450, 560);
         this.setTitle("LaSimulation (settings)");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -72,11 +72,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label_pointsforvictory.setBounds(25, 350, 200, 20);
 
         JLabel label_speedofsimulation = new JLabel(); //creating a label "Speed of simulation"
-        label_speedofsimulation.setText("Speed of simulation");
+        label_speedofsimulation.setText("Speed of simulation (tps)");
         label_speedofsimulation.setBounds(25, 400, 200, 20);
 
         button_accept = new JButton(); //creating a button "Accept"
-        button_accept.setBounds(200,400,125,50);
+        button_accept.setBounds(150,450,125,50);
         this.add(button_accept);
         this.setLayout(null);
         button_accept.addActionListener(this);

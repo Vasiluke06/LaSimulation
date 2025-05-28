@@ -1,27 +1,34 @@
 package simulation.core;
 
 import java.awt.*;
+import simulation.entities.River;
 import java.util.Timer;
 
 public class Plants {
-    private static int spawn_timer;
-    private int x_pos;
-    private int y_pos;
+    private static int spawnTimer;
+    private int xPos;
+    private int yPos;
 
-    public Plants(int x_pos, int y_pos){
-        this.x_pos = x_pos;
-
-        this.y_pos = y_pos;
+    public int getXPos() {
+        return xPos;
+    }
+    public int getYPos() {
+        return yPos;
     }
 
-    public static void new_plant(int x_pos, int y_pos){
-        Simulation.plants.add(new Plants(x_pos, y_pos));
+    public Plants(int xPos, int yPos){
+        this.xPos = xPos;
+        this.yPos = yPos;
     }
 
-    public static void delete_plant(int x_pos_delete_plant, int y_pos_delete_plant){
+    public static void new_plant(int xPos, int yPos){
+        Simulation.plants.add(new Plants(xPos, yPos));
+    }
+
+    public static void deletePlant(int x_pos_delete_plant, int y_pos_delete_plant){
         for (int i = 0; i < Simulation.plants.size(); i++){
             Plants plant = Simulation.plants.get(i);
-            if (plant.x_pos == x_pos_delete_plant && plant.y_pos == y_pos_delete_plant) {
+            if (plant.xPos == x_pos_delete_plant && plant.yPos == y_pos_delete_plant) {
                 Simulation.plants.remove(i);
                 break;
             }
@@ -29,20 +36,39 @@ public class Plants {
     }
 
     public static void spawn_new_plant(){
-        if (spawn_timer >= 100){
-            int x_pos_spawn_new_plant = Simulation.random.nextInt(1100);
+        if (spawnTimer >= 10){
+            int x_pos_spawn_new_plant = Simulation.random.nextInt(1068);
 
-            int y_pos_spawn_new_plant = Simulation.random.nextInt(1000);
+            int y_pos_spawn_new_plant = Simulation.random.nextInt(968);
+
+            while (x_pos_spawn_new_plant >= River.RIVER_X - 32 &&
+                    x_pos_spawn_new_plant <= River.RIVER_X + River.RIVER_WIDTH + 32) {
+                x_pos_spawn_new_plant = Simulation.random.nextInt(1068);
+            }
 
             new_plant(x_pos_spawn_new_plant, y_pos_spawn_new_plant);
 
-            spawn_timer = 0;
+            spawnTimer = 0;
         }
 
-        spawn_timer++;
+        spawnTimer++;
     }
 
-    public void draw_plants(Graphics g){
-        g.drawImage(Simulation.plant_img, x_pos, y_pos, 32, 32, null);
+    public static void initPlant(int numofplants){
+        for (int i = 0; i < numofplants; i++){
+            int x_pos_init_plant = Simulation.random.nextInt(1068);
+            int y_pos_init_plant = Simulation.random.nextInt(968);
+
+            for (; x_pos_init_plant >= (River.RIVER_X - 32) &&
+                    x_pos_init_plant <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
+                x_pos_init_plant = Simulation.random.nextInt(1068);
+            }
+
+            Plants.new_plant(x_pos_init_plant, y_pos_init_plant);
+        };
+    }
+
+    public void drawPlants(Graphics g){
+        g.drawImage(Simulation.plantImg, xPos, yPos, 32, 32, null);
     }
 }
