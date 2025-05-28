@@ -2,6 +2,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
 //import java.util.Timer;
@@ -15,6 +18,8 @@ public class Simulation extends JPanel implements ActionListener {
     public int kill_count_predator;
     public int herbivore_remain;
     public int predator_remain;
+    public int wildfire_count;
+    public int hunters_count;
 
     public static int x_pos;
     public static int y_pos;
@@ -135,5 +140,37 @@ public class Simulation extends JPanel implements ActionListener {
 
         //
         repaint();
+
+        if (Frame_Settings.speedofsimulation > 100){ //Just for test
+            new Result_Writer("Results.txt");
+
+            simulation_time.stop();
+
+            JOptionPane.showMessageDialog(this, "End of simulation");
+        }
+    }
+
+    public class Result_Writer{
+        Result_Writer(String filename){
+            try{
+                FileWriter fw = new FileWriter(filename, true);
+                LocalDateTime datetime = LocalDateTime.now();
+                fw.write("\nDate and time of simulation: " + datetime + "\n");
+                fw.write("Points for victory: " + Frame_Settings.pointsforvictory + "\n");
+                fw.write("Herbivore points: " + "\n");
+                fw.write("Predator points: " + "\n");
+                fw.write("Herbivores remain: " + herbivore_remain + "\n");
+                fw.write("Predators remain: " + predator_remain + "\n");
+                fw.write("Herbivores killed during simulation: " + kill_count_herbivore + "\n");
+                fw.write("Predators kills during simulation: " + kill_count_predator + "\n");
+                fw.write("Wildfires: " + wildfire_count + "\n");
+                fw.write("Hunters: " + hunters_count + "\n");
+                fw.close();
+            } catch (IOException e){
+                System.out.println("Error occured during writing results to the file");
+
+                e.printStackTrace();
+            }
+        }
     }
 }
