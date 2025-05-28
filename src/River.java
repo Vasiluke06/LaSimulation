@@ -1,14 +1,14 @@
 import java.awt.*;
 
 public class River {
-    private int x_river;
-    private int width_of_river;
+    public static int x_river = 481;
+    public static int width_of_river = 138;
     public static void create_river(Graphics g){
         g.setColor(new Color(30, 144, 255));
 
-        int x_river = 481;
+        //int x_river = 481;
 
-        int width_of_river = 138;
+        //int width_of_river = 138;
         g.fillRect(x_river, 0, width_of_river, 1000);
     }
 

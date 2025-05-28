@@ -26,7 +26,7 @@ public class Simulation extends JPanel implements ActionListener {
 
     public static Random random;
 
-    public Timer simulation_time;
+    public static Timer simulation_time;
 
     Simulation(){
         images();
@@ -49,11 +49,12 @@ public class Simulation extends JPanel implements ActionListener {
         herbivore = new ArrayList<>();
         predator = new ArrayList<>();
         plants =  new ArrayList<>();
-        for (int i = 0; i < Frame_Settings.numofplants; i++){
+        Plants.init_plant(Frame_Settings.numofplants);
+        /*for (int i = 0; i < Frame_Settings.numofplants; i++){
             int x_pos = random.nextInt(1100);
             int y_pos = random.nextInt(1000);
             Plants.new_plant(x_pos, y_pos);
-        };
+        };*/
 
         //River.create_river();
 
@@ -129,6 +130,8 @@ public class Simulation extends JPanel implements ActionListener {
         }
 
         Plants.spawn_new_plant();
+
+        simulation_time.setDelay(1000/Frame_Settings.speedofsimulation);
 
         //
         repaint();

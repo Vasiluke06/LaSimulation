@@ -27,19 +27,36 @@ public class Plants {
     }
 
     public static void spawn_new_plant(){
-        if (spawn_timer >= 100){
-            int x_pos_spawn_new_plant = Simulation.random.nextInt(1100);
+        if (spawn_timer >= 10){
+            int x_pos_spawn_new_plant = Simulation.random.nextInt(1068);
 
-            int y_pos_spawn_new_plant = Simulation.random.nextInt(1000);
+            int y_pos_spawn_new_plant = Simulation.random.nextInt(968);
+
+            for (;x_pos_spawn_new_plant >= (River.x_river - 32) && x_pos_spawn_new_plant <= (River.x_river + River.width_of_river + 32);){
+                x_pos_spawn_new_plant = Simulation.random.nextInt(1068);
+            }
 
             new_plant(x_pos_spawn_new_plant, y_pos_spawn_new_plant);
 
             spawn_timer = 0;
         }
 
+
         spawn_timer++;
     }
 
+    public static void init_plant(int numofplants){
+        for (int i = 0; i < numofplants; i++){
+            int x_pos_init_plant = Simulation.random.nextInt(1068);
+            int y_pos_init_plant = Simulation.random.nextInt(968);
+
+            for (;x_pos_init_plant >= (River.x_river - 32) && x_pos_init_plant <= (River.x_river + River.width_of_river + 32);){
+                x_pos_init_plant = Simulation.random.nextInt(1068);
+            }
+
+            Plants.new_plant(x_pos_init_plant, y_pos_init_plant);
+        };
+    }
     public void draw_plants(Graphics g){
         g.drawImage(Simulation.plant_img, x_pos, y_pos, 32, 32, null);
     }

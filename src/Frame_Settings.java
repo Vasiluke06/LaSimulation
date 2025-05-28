@@ -183,7 +183,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_chanceofhunters.setText("0");
 
-            parameter_speedofsimulation.setText("10");
+            parameter_speedofsimulation.setText("1");
 
             parameter_pointsforvictory.setText("100");
 
