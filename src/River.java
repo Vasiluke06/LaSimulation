@@ -12,7 +12,7 @@ public class River {
         g.fillRect(x_river, 0, width_of_river, 1000);
     }
 
-    public boolean onRiver(int x_pos, int y_pos){
+    public static boolean onRiver(int x_pos, int y_pos){
 
         if (x_pos >= x_river && x_pos <= x_river + width_of_river && y_pos >= 0 && y_pos <= 1000){
             return true;

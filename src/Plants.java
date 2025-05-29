@@ -6,6 +6,15 @@ public class Plants {
     private int x_pos;
     private int y_pos;
 
+
+
+    public int getXPos() {
+        return x_pos;
+    }
+    public int getYPos() {
+        return y_pos;
+    }
+
     public Plants(int x_pos, int y_pos){
         this.x_pos = x_pos;
 

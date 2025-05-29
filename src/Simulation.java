@@ -11,7 +11,7 @@ import java.util.Random;
 import javax.swing.*;
 
 public class Simulation extends JPanel implements ActionListener {
-    public ArrayList<Herbivore> herbivore;
+    public static ArrayList<Herbivore> herbivore;
     public ArrayList<Predator> predator;
     public static ArrayList<Plants> plants;
     public int kill_count_herbivore;
@@ -25,7 +25,7 @@ public class Simulation extends JPanel implements ActionListener {
     public static int y_pos;
 
     public static Image herbivore_img;
-    public Image predator_img;
+    public static Image predator_img;
     public static Image plant_img;
     public Image hunters_img;
 
@@ -55,6 +55,28 @@ public class Simulation extends JPanel implements ActionListener {
         predator = new ArrayList<>();
         plants =  new ArrayList<>();
         Plants.init_plant(Frame_Settings.numofplants);
+
+        for (int i = 0; i < Frame_Settings.numofherbivore; i++){
+            int x_pos = Simulation.random.nextInt(1068);
+            int y_pos = Simulation.random.nextInt(968);
+
+            for (; x_pos >= (River.x_river - 32) &&
+                    x_pos <= (River.x_river + River.width_of_river + 32); ) {
+                x_pos = Simulation.random.nextInt(1068);
+            }
+            herbivore.add(new Herbivore(x_pos, y_pos));
+        }
+
+        for (int i = 0; i < Frame_Settings.numofpredator; i++){
+            int x_pos = Simulation.random.nextInt(1068);
+            int y_pos = Simulation.random.nextInt(968);
+
+            for (; x_pos >= (River.x_river - 32) &&
+                    x_pos <= (River.x_river + River.width_of_river + 32); ) {
+                x_pos = Simulation.random.nextInt(1068);
+            }
+            predator.add(new Predator(x_pos, y_pos));
+        }
         /*for (int i = 0; i < Frame_Settings.numofplants; i++){
             int x_pos = random.nextInt(1100);
             int y_pos = random.nextInt(1000);
@@ -96,9 +118,17 @@ public class Simulation extends JPanel implements ActionListener {
 
 
     public void drawing(Graphics g){
+        River.create_river(g);
+
         if (herbivore != null){
             for (int i = 0; i < herbivore.size(); i++) {
                 herbivore.get(i).draw_herbivore(g);
+            }
+        }
+
+        if (predator != null){
+            for (int i = 0; i < predator.size(); i++) {
+                predator.get(i).drawPredator(g);
             }
         }
 
@@ -107,8 +137,6 @@ public class Simulation extends JPanel implements ActionListener {
                 plants.get(i).draw_plants(g);
             }
         }
-
-        River.create_river(g);
 
     }
 
@@ -123,14 +151,37 @@ public class Simulation extends JPanel implements ActionListener {
         y_pos += 1; //just for test
 
         if(herbivore != null){
-            for(int i = 0; i < herbivore.size(); i++){
-                herbivore.get(i).next_move_herbivore();
+            for(int i = 0; i < herbivore.size(); i++) {
+                herbivore.get(i).nextMove();
             }
         }
+        /* for (int i = 0; i < herbivore.size(); i++) {
+                Herbivore h1 = herbivore.get(i);
+                if (!h1.isFed()) continue;
+
+                for (int j = i + 1; j < herbivore.size(); j++) {
+                    Herbivore h2 = herbivore.get(j);
+                    if (h2.isFed() &&
+                            h1.getPosition().getX() == h2.getPosition().getX() &&
+                            h1.getPosition().getY() == h2.getPosition().getY()) {
+
+                        // Create new Herbivore at same location
+                        Herbivore baby = new Herbivore(
+                                h1.getPosition().getX(), h1.getPosition().getY()
+                        );
+                        herbivore.add(baby);
+
+                        h1.setFed(false);
+                        h2.setFed(false);
+                        break;
+                    }
+                }
+            }*/
+
 
         if(predator != null){
             for(int i = 0; i < predator.size(); i++){
-                predator.get(i).next_move_predator();
+                predator.get(i).nextMove();
             }
         }
 
@@ -141,7 +192,7 @@ public class Simulation extends JPanel implements ActionListener {
         //
         repaint();
 
-        if (Frame_Settings.speedofsimulation > 100){ //Just for test
+        if (Herbivore.herbivorePoints > Frame_Settings.pointsforvictory || Predator.predatorPoints > Frame_Settings.pointsforvictory || herbivore.size() == 0 || predator.size() == 0){ //Checking if result writer works
             new Result_Writer("Results.txt");
 
             simulation_time.stop();
@@ -157,8 +208,8 @@ public class Simulation extends JPanel implements ActionListener {
                 LocalDateTime datetime = LocalDateTime.now();
                 fw.write("\nDate and time of simulation: " + datetime + "\n");
                 fw.write("Points for victory: " + Frame_Settings.pointsforvictory + "\n");
-                fw.write("Herbivore points: " + "\n");
-                fw.write("Predator points: " + "\n");
+                fw.write("Herbivore points: " + Herbivore.herbivorePoints + "\n");
+                fw.write("Predator points: " + Predator.predatorPoints  + "\n");
                 fw.write("Herbivores remain: " + herbivore_remain + "\n");
                 fw.write("Predators remain: " + predator_remain + "\n");
                 fw.write("Herbivores killed during simulation: " + kill_count_herbivore + "\n");

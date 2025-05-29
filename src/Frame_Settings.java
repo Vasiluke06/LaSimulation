@@ -185,7 +185,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_speedofsimulation.setText("1");
 
-            parameter_pointsforvictory.setText("100");
+            parameter_pointsforvictory.setText("1000");
 
             //button_fast_insert_of_parameters.setEnabled(false);
 
