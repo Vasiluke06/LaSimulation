@@ -9,6 +9,11 @@ public class Frame_Simulation extends JFrame implements ActionListener {
     JButton button_resume;
     JButton button_fastup;
 
+    ImageIcon button_slowdown_icon;
+    ImageIcon button_pause_icon;
+    ImageIcon button_resume_icon;
+    ImageIcon button_fastup_icon;
+
     class MapPanel extends JPanel {
         public MapPanel() {
             setOpaque(true);
@@ -45,10 +50,16 @@ public class Frame_Simulation extends JFrame implements ActionListener {
 
         Simulation simulation = new Simulation();
 
-        button_slowdown = new JButton(); //creating a button "Slowdown
+        button_slowdown = new JButton(); //creating a button "Slowdown"
         button_pause = new JButton();
         button_resume = new JButton();
         button_fastup = new JButton();
+
+        button_slowdown_icon = new ImageIcon("images/slowdown_button.png");
+        button_pause_icon = new ImageIcon("images/pause_button.png");
+        button_resume_icon = new ImageIcon("images/resume_button.png");
+        button_fastup_icon = new ImageIcon("images/speedup_button.png");
+
 
 
 
@@ -65,19 +76,19 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         button_fastup.setBounds(1055,950,45,45);
 
         button_slowdown.addActionListener(this);
-        button_slowdown.setText("S");
+        button_slowdown.setIcon(button_slowdown_icon);
         button_slowdown.setFocusable(false);
 
         button_pause.addActionListener(this);
-        button_pause.setText("P");
+        button_pause.setIcon(button_pause_icon);
         button_pause.setFocusable(false);
 
         button_resume.addActionListener(this);
-        button_resume.setText("R");
+        button_resume.setIcon(button_resume_icon);
         button_resume.setFocusable(false);
 
         button_fastup.addActionListener(this);
-        button_fastup.setText("F");
+        button_fastup.setIcon(button_fastup_icon);
         button_fastup.setFocusable(false);
 
         JLayeredPane layers = new JLayeredPane();
@@ -109,7 +120,7 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         if (e.getSource() == button_slowdown){
             System.out.println("Click"); //actions after clicking the button
 
-            if(Frame_Settings.speedofsimulation > 10) {
+            if(Frame_Settings.speedofsimulation > 1) {
                 Frame_Settings.speedofsimulation -= 1;
             }
 

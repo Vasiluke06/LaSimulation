@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ public class Simulation extends JPanel implements ActionListener {
     public static ArrayList<Herbivore> herbivore;
     public ArrayList<Predator> predator;
     public static ArrayList<Plants> plants;
-    public int kill_count_herbivore;
+    public static int kill_count_herbivore;
     public int kill_count_predator;
     public int herbivore_remain;
     public int predator_remain;
@@ -99,7 +100,7 @@ public class Simulation extends JPanel implements ActionListener {
     public void images(){
         herbivore_img = new ImageIcon("images/deer female calciumtrice (1).png").getImage();
         predator_img = new ImageIcon("images/wolf (1).png").getImage();
-        hunters_img = new ImageIcon("").getImage();
+        hunters_img = new ImageIcon("images/Hunter_card_render (3) (1) (1).png").getImage();
         plant_img = new ImageIcon("images/pixel-grid-blueberries_2236497 (1).png").getImage();
     }
 
@@ -192,8 +193,11 @@ public class Simulation extends JPanel implements ActionListener {
         //
         repaint();
 
-        if (Herbivore.herbivorePoints > Frame_Settings.pointsforvictory || Predator.predatorPoints > Frame_Settings.pointsforvictory || herbivore.size() == 0 || predator.size() == 0){ //Checking if result writer works
-            new Result_Writer("Results.txt");
+        herbivore_remain = herbivore.size();
+
+        predator_remain = predator.size();
+        if (Herbivore.herbivorePoints > Frame_Settings.pointsforvictory || Predator.predatorPoints > Frame_Settings.pointsforvictory || herbivore_remain == 0 || predator_remain == 0){ //Checking if result writer works
+            new Result_Writer("Results.csv");
 
             simulation_time.stop();
 
@@ -204,18 +208,28 @@ public class Simulation extends JPanel implements ActionListener {
     public class Result_Writer{
         Result_Writer(String filename){
             try{
+                File filename_check_first_row = new File(filename);
+
+                boolean check_first_row_is_not_exist = false;
+
+                if(!filename_check_first_row.exists() || filename_check_first_row.length() == 0) {
+                    check_first_row_is_not_exist = true;
+                }
                 FileWriter fw = new FileWriter(filename, true);
                 LocalDateTime datetime = LocalDateTime.now();
-                fw.write("\nDate and time of simulation: " + datetime + "\n");
-                fw.write("Points for victory: " + Frame_Settings.pointsforvictory + "\n");
-                fw.write("Herbivore points: " + Herbivore.herbivorePoints + "\n");
-                fw.write("Predator points: " + Predator.predatorPoints  + "\n");
-                fw.write("Herbivores remain: " + herbivore_remain + "\n");
-                fw.write("Predators remain: " + predator_remain + "\n");
-                fw.write("Herbivores killed during simulation: " + kill_count_herbivore + "\n");
-                fw.write("Predators kills during simulation: " + kill_count_predator + "\n");
-                fw.write("Wildfires: " + wildfire_count + "\n");
-                fw.write("Hunters: " + hunters_count + "\n");
+                if (check_first_row_is_not_exist == true){
+                    fw.write("Date and time of simulation," + "Points for victory," + "Herbivore points," + "Predator points," + "Herbivores remain," + "Predators remain," + "Herbivores killed during simulation," + "Predators killed during simulation," + "Wildfires," + "Hunters\n");
+                }
+                fw.write(datetime + ",");
+                fw.write(Frame_Settings.pointsforvictory + ",");
+                fw.write(Herbivore.herbivorePoints + ",");
+                fw.write(Predator.predatorPoints  + ",");
+                fw.write(herbivore_remain + ",");
+                fw.write(predator_remain + ",");
+                fw.write(kill_count_herbivore + ",");
+                fw.write(kill_count_predator + ",");
+                fw.write(wildfire_count + ",");
+                fw.write(hunters_count + "\n");
                 fw.close();
             } catch (IOException e){
                 System.out.println("Error occured during writing results to the file");
