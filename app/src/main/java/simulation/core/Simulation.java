@@ -3,71 +3,111 @@ package simulation.core;
 import simulation.entities.Herbivore;
 import simulation.entities.Predator;
 import simulation.ui.Frame_Settings;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDateTime;
+import simulation.entities.River;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
 //import java.util.Timer;
 import javax.swing.*;
 
+
 public class Simulation extends JPanel implements ActionListener {
+
+
+    private Image loadImage(String path) {
+        URL resource = getClass().getClassLoader().getResource(path);
+        if (resource == null) {
+            throw new RuntimeException("Image not found: " + path);
+        }
+        return new ImageIcon(resource).getImage();
+    }
+
+
     public static ArrayList<Herbivore> herbivore;
     public ArrayList<Predator> predator;
     public static ArrayList<Plants> plants;
-    public int deathCountHerbivore;
-    public int deathCountPredator;
-    public int herbivoreRemain;
-    public int predatorRemain;
+    public int kill_count_herbivore;
+    public int kill_count_predator;
+    public int herbivore_remain;
+    public int predator_remain;
     public int wildfire_count;
     public int hunters_count;
 
-    public static int xPos;
-    public static int yPos;
+    public static int x_pos;
+    public static int y_pos;
 
     public static Image herbivoreImg;
-    public Image predatorImg;
+    public static Image predatorImg;
     public static Image plantImg;
     public Image huntersImg;
 
     public static Random random;
 
     public static Timer simulationTime;
-    //Changed constructor to public
+
     public Simulation(){
         images();
 
-        xPos = 350;
+        x_pos = 350;
 
-        yPos = 110;
+        y_pos = 110;
 
         random = new Random();
 
-        initStart();
+        init_start();
 
         simulationTime = new Timer(1000/Frame_Settings.speedofsimulation, this);
         simulationTime.start();
 
 
+
+
     }
 
-    private void initStart(){
+
+
+    private void init_start(){
         herbivore = new ArrayList<>();
         predator = new ArrayList<>();
         plants =  new ArrayList<>();
         Plants.initPlant(Frame_Settings.numofplants);
+
+        for (int i = 0; i < Frame_Settings.numofherbivore; i++){
+            int x_pos = Simulation.random.nextInt(1068);
+            int y_pos = Simulation.random.nextInt(832);
+
+            for (; x_pos >= (River.RIVER_X - 32) &&
+                    x_pos <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
+                x_pos = Simulation.random.nextInt(1068);
+            }
+            herbivore.add(new Herbivore(x_pos, y_pos));
+        }
+
+        for (int i = 0; i < Frame_Settings.numofpredator; i++){
+            int x_pos = Simulation.random.nextInt(1068);
+            int y_pos = Simulation.random.nextInt(832);
+
+            for (; x_pos >= (River.RIVER_X - 32) &&
+                    x_pos <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
+                x_pos = Simulation.random.nextInt(1068);
+            }
+            predator.add(new Predator(x_pos, y_pos));
+        }
         /*for (int i = 0; i < Frame_Settings.numofplants; i++){
             int x_pos = random.nextInt(1100);
             int y_pos = random.nextInt(1000);
             Plants.new_plant(x_pos, y_pos);
         };*/
 
-        //River.createRiver();
+        //River.create_river();
 
     }
 
@@ -80,31 +120,41 @@ public class Simulation extends JPanel implements ActionListener {
 
 
 
-    public void images(){
-        herbivoreImg = new ImageIcon("images/deer female calciumtrice (1).png").getImage();
-        predatorImg = new ImageIcon("images/wolf (1).png").getImage();
-        huntersImg = new ImageIcon("").getImage();
-        plantImg = new ImageIcon("images/pixel-grid-blueberries_2236497 (1).png").getImage();
+    public void images() {
+        herbivoreImg = loadImage("images/deer female calciumtrice (1).png");
+        predatorImg = loadImage("images/wolf (1).png");
+        //huntersImg = loadImage("images/hunters_icon.png"); // Replace with the actual file name
+        plantImg = loadImage("images/pixel-grid-blueberries_2236497 (1).png");
     }
 
-    /*public void drawHerbivore(Graphics g){
-        g.drawImage(herbivoreImg, xPos, yPos, 32, 32, this);
-    }*/
 
-    public void drawPredator(Graphics g){
+
+    /*public void draw_herbivore(Graphics g){
+        g.drawImage(herbivoreImg, x_pos, y_pos, 32, 32, this);
+    }
+
+    public void draw_predator(Graphics g){
 
     }
 
-    /*public void drawPlants(Graphics g){
-        g.drawImage(plantImg, xPos, yPos, 32, 32, this);
+    public void draw_plants(Graphics g){
+        g.drawImage(plantImg, x_pos, y_pos, 32, 32, this);
     }*/
 
 
 
     public void drawing(Graphics g){
+        River.createRiver(g);
+
         if (herbivore != null){
             for (int i = 0; i < herbivore.size(); i++) {
                 herbivore.get(i).drawHerbivore(g);
+            }
+        }
+
+        if (predator != null){
+            for (int i = 0; i < predator.size(); i++) {
+                predator.get(i).drawPredator(g);
             }
         }
 
@@ -114,23 +164,31 @@ public class Simulation extends JPanel implements ActionListener {
             }
         }
 
+
+
     }
 
-    private boolean victoryCheck(int herbivorePoints, int predatorPoints, int pointsForVictory){
-        return true;
+    private boolean victoryCheck(){
+        if (Herbivore.herbivorePoints >= Frame_Settings.pointsforvictory
+                || Predator.predatorPoints >= Frame_Settings.pointsforvictory
+                || herbivore.size() == 0 || predator.size() == 0) {
+            return true;
+        }
+        return false;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        xPos += 1;
+        x_pos += 1;
 
-        yPos += 1; //just for test
+        y_pos += 1; //just for test
 
         if(herbivore != null){
-            for(int i = 0; i < herbivore.size(); i++){
+            for(int i = 0; i < herbivore.size(); i++) {
                 herbivore.get(i).nextMove();
             }
-            for (int i = 0; i < herbivore.size(); i++) {
+        }
+        /* for (int i = 0; i < herbivore.size(); i++) {
                 Herbivore h1 = herbivore.get(i);
                 if (!h1.isFed()) continue;
 
@@ -151,8 +209,8 @@ public class Simulation extends JPanel implements ActionListener {
                         break;
                     }
                 }
-            }
-        }
+            }*/
+
 
         if(predator != null){
             for(int i = 0; i < predator.size(); i++){
@@ -162,10 +220,17 @@ public class Simulation extends JPanel implements ActionListener {
 
         Plants.spawn_new_plant();
 
+        simulationTime.setDelay(1000/ Frame_Settings.speedofsimulation);
+
         //
         repaint();
-        if (Frame_Settings.speedofsimulation > 100){ //Checking if result writer works
-            new ResultWriter("Results.txt");
+
+        /*new Result_Writer("Results.txt");
+        simulationTime.stop();
+        JOptionPane.showMessageDialog(this, "End of simulation");*/
+
+        if (victoryCheck()){
+            new Result_Writer("Results.txt");
 
             simulationTime.stop();
 
@@ -173,19 +238,19 @@ public class Simulation extends JPanel implements ActionListener {
         }
     }
 
-    public class ResultWriter{
-        ResultWriter(String filename){
+    public class Result_Writer{
+        Result_Writer(String filename){
             try{
                 FileWriter fw = new FileWriter(filename, true);
                 LocalDateTime datetime = LocalDateTime.now();
                 fw.write("\nDate and time of simulation: " + datetime + "\n");
                 fw.write("Points for victory: " + Frame_Settings.pointsforvictory + "\n");
-                fw.write("Herbivore points: " + "\n");
-                fw.write("Predator points: " + "\n");
-                fw.write("Herbivores remain: " + herbivoreRemain + "\n");
-                fw.write("Predators remain: " + predatorRemain + "\n");
-                fw.write("Herbivores killed during simulation: " + deathCountHerbivore + "\n");
-                fw.write("Predators kills during simulation: " + deathCountPredator + "\n");
+                fw.write("Herbivore points: " + Herbivore.herbivorePoints + "\n");
+                fw.write("Predator points: " + Predator.predatorPoints + "\n");
+                fw.write("Herbivores remain: " + herbivore_remain + "\n");
+                fw.write("Predators remain: " + predator_remain + "\n");
+                fw.write("Herbivores killed during simulation: " + kill_count_herbivore + "\n");
+                fw.write("Predators kills during simulation: " + kill_count_predator + "\n");
                 fw.write("Wildfires: " + wildfire_count + "\n");
                 fw.write("Hunters: " + hunters_count + "\n");
                 fw.close();

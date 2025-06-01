@@ -39,7 +39,7 @@ public class Plants {
         if (spawnTimer >= 10){
             int x_pos_spawn_new_plant = Simulation.random.nextInt(1068);
 
-            int y_pos_spawn_new_plant = Simulation.random.nextInt(968);
+            int y_pos_spawn_new_plant = Simulation.random.nextInt(832);
 
             while (x_pos_spawn_new_plant >= River.RIVER_X - 32 &&
                     x_pos_spawn_new_plant <= River.RIVER_X + River.RIVER_WIDTH + 32) {
@@ -57,7 +57,7 @@ public class Plants {
     public static void initPlant(int numofplants){
         for (int i = 0; i < numofplants; i++){
             int x_pos_init_plant = Simulation.random.nextInt(1068);
-            int y_pos_init_plant = Simulation.random.nextInt(968);
+            int y_pos_init_plant = Simulation.random.nextInt(832);
 
             for (; x_pos_init_plant >= (River.RIVER_X - 32) &&
                     x_pos_init_plant <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {

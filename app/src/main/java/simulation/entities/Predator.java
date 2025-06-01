@@ -2,6 +2,8 @@ package simulation.entities;
 
 import simulation.core.Animals;
 import simulation.core.Movable;
+import simulation.core.Simulation;
+import java.awt.*;
 
 public class Predator extends Animals implements Movable {
     private static final int STEP_SIZE = 14;
@@ -10,8 +12,9 @@ public class Predator extends Animals implements Movable {
     /* ************************************** */
 
     /*Constructors*/
-    public Predator(int x_pos, int y_pos) {
-        super(x_pos, y_pos);
+    public Predator(int x, int y) {
+        //setPosition(x, y);
+        super(x, y);
     }
 
     /*Implementation of Movable interface and movement logic*/
@@ -20,17 +23,18 @@ public class Predator extends Animals implements Movable {
         //Pathfinding to the closest herbivore
         Herbivore target = findClosestHerbivore();
         if (target != null) {
-            moveToward(target);
+            this.setPosition(moveToward(target, STEP_SIZE, this.getPosition()));
+            checkForBorder(STEP_SIZE);
             deleteHerbivorePredator(target);
         }
 
-        super.checkForBorder();
-
+        super.checkForBorder(STEP_SIZE);
         //River influence (downstream movement)
         if (isOnRiver()) {
             getPosition().setY(getPosition().getY() + 1);
         }
     }
+
     /*Methods used for defining interactions between predator and herbivore*/
 
     /**
@@ -41,33 +45,13 @@ public class Predator extends Animals implements Movable {
         double closestDistance = Double.MAX_VALUE;
 
         for (Herbivore h : simulation.core.Simulation.herbivore) {
-            double dist = distanceTo(h);
+            double dist = distanceTo(h, this.getPosition());
             if (dist < closestDistance) {
                 closestDistance = dist;
                 closest = h;
             }
         }
         return closest;
-    }
-
-    /**
-     * Method used for moving towards the target herbivore
-     */
-    private void moveToward(Herbivore target) {
-        //Moves towards the closest herbivore
-        Position myPos = getPosition();
-
-        int dx = Integer.compare(target.getPosition().getX(), getPosition().getX());
-        int dy = Integer.compare(target.getPosition().getY(), getPosition().getY());
-
-        if (River.isOnRiver(myPos.getX(), myPos.getY())) {
-            dy += 1;
-            dx /= 2;
-            dy /= 2;
-        }
-
-        getPosition().setX(getPosition().getX() + dx);
-        getPosition().setY(getPosition().getY() + dy);
     }
 
     /**
@@ -100,11 +84,9 @@ public class Predator extends Animals implements Movable {
      * Method used for determining the range to the target
      */
 
-    private double distanceTo(Herbivore h) {
-        //Calculates distance to the closest herbivore
-        int dx = h.getPosition().getX() - getPosition().getX();
-        int dy = h.getPosition().getY() - getPosition().getY();
-        return Math.sqrt(dx * dx + dy * dy);
+    public void drawPredator(Graphics g){
+        Position p = getPosition();
+        g.drawImage(Simulation.predatorImg, p.getX(), p.getY(), 32, 32, null);
     }
 
 }

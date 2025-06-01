@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 public class Frame_Settings extends JFrame implements ActionListener {
     JButton button_accept;
 
+    JButton button_fast_insert_of_parameters;
+
     JTextField parameter_numofherbivore;
     JTextField parameter_numofpredator;
     JTextField parameter_numofplants;
@@ -27,11 +29,10 @@ public class Frame_Settings extends JFrame implements ActionListener {
     public static int chanceofhunters;
     public static int pointsforvictory;
     public static int speedofsimulation;
-    //Made constructor public
     public Frame_Settings(){
 
         this.setVisible(true); //creating a frame
-        this.setSize(450, 560);
+        this.setSize(550, 500);
         this.setTitle("LaSimulation (settings)");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -72,16 +73,24 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label_pointsforvictory.setBounds(25, 350, 200, 20);
 
         JLabel label_speedofsimulation = new JLabel(); //creating a label "Speed of simulation"
-        label_speedofsimulation.setText("Speed of simulation (tps)");
+        label_speedofsimulation.setText("Speed of simulation (ticks per second)");
         label_speedofsimulation.setBounds(25, 400, 200, 20);
 
         button_accept = new JButton(); //creating a button "Accept"
-        button_accept.setBounds(150,450,125,50);
+        button_accept.setBounds(405,400,125,50);
         this.add(button_accept);
         this.setLayout(null);
         button_accept.addActionListener(this);
         button_accept.setText("Accept");
         button_accept.setFocusable(false);
+
+        button_fast_insert_of_parameters = new JButton(); //creating a button "Recommended fast insert"
+        button_fast_insert_of_parameters.setBounds(405,325,125,50);
+        this.add(button_fast_insert_of_parameters);
+        this.setLayout(null);
+        button_fast_insert_of_parameters.addActionListener(this);
+        button_fast_insert_of_parameters.setText("Recommended");
+        button_fast_insert_of_parameters.setFocusable(false);
 
         this.add(label_numofherbivore);
         this.add(label_numofpredator);
@@ -154,8 +163,34 @@ public class Frame_Settings extends JFrame implements ActionListener {
             pointsforvictory = Integer.parseInt(parameter_pointsforvictory.getText());
             System.out.println(pointsforvictory);
             button_accept.setEnabled(false);
+
+            button_fast_insert_of_parameters.setEnabled(false);
+
+
             Frame_Simulation frame_simulation = new Frame_Simulation();
         }
 
+        if (e.getSource() == button_fast_insert_of_parameters){
+            System.out.println("Clickn"); //actions after clicking the button
+
+            parameter_numofherbivore.setText("2");
+
+            parameter_numofpredator.setText("1");
+
+            parameter_numofplants.setText("10");;
+
+            parameter_chanceofwildfire.setText("0");
+
+            parameter_chanceofdrowing.setText("0");
+
+            parameter_chanceofhunters.setText("0");
+
+            parameter_speedofsimulation.setText("1");
+
+            parameter_pointsforvictory.setText("100");
+
+            //button_fast_insert_of_parameters.setEnabled(false);
+
+        }
     }
 }
