@@ -20,6 +20,9 @@ public class Frame_Simulation extends JFrame implements ActionListener {
     ImageIcon button_resume_icon;
     ImageIcon button_speedup_icon;
 
+    public static Frame_Simulation instance;
+
+
     class MapPanel extends JPanel {
         public MapPanel() {
             setOpaque(true);
@@ -38,6 +41,8 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         }
     }
     Frame_Simulation(){
+        Frame_Simulation.instance = this;
+
         //this.setVisible(true); //creating a frame
         this.setSize(1100, 1000);
         this.setTitle("LaSimulation (simulation)");

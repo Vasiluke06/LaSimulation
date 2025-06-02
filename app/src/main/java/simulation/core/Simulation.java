@@ -182,6 +182,9 @@ public class Simulation extends JPanel implements ActionListener {
             simulationTime.stop();
 
             JOptionPane.showMessageDialog(this, "End of simulation");
+            if (simulation.ui.Frame_Simulation.instance != null) {
+                simulation.ui.Frame_Simulation.instance.dispose();
+            }
         }
     }
 

@@ -168,6 +168,8 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
 
             Frame_Simulation frame_simulation = new Frame_Simulation();
+
+            dispose();
         }
 
         if (e.getSource() == button_fast_insert_of_parameters){
