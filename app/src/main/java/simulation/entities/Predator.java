@@ -2,11 +2,12 @@ package simulation.entities;
 
 import simulation.core.Animals;
 import simulation.core.Movable;
+import simulation.core.Position;
 import simulation.core.Simulation;
 import java.awt.*;
 
 public class Predator extends Animals implements Movable {
-    private static final int STEP_SIZE = 14;
+    private static final int STEP_SIZE = 12;
     private static final int POINTS_FOR_EATING = 15;
 
     /* ************************************** */
@@ -84,9 +85,29 @@ public class Predator extends Animals implements Movable {
      * Method used for determining the range to the target
      */
 
+    public static void newPredator(int x, int y){
+        Simulation.predator.add(new Predator(x, y));
+    }
+
     public void drawPredator(Graphics g){
         Position p = getPosition();
         g.drawImage(Simulation.predatorImg, p.getX(), p.getY(), 32, 32, null);
+    }
+
+    /**
+     * Method used for initializing the predators
+     */
+    public static void initPredator(int numofpredators){
+        for (int i = 0; i < numofpredators; i++){
+            Position pos = new Position(Simulation.random.nextInt(1068), Simulation.random.nextInt(968));
+
+            for (; pos.getX() >= (River.RIVER_X - 32) &&
+                    pos.getX() <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
+                pos.setX(Simulation.random.nextInt(1068));
+            }
+
+            Predator.newPredator(pos.getX(), pos.getY());
+        };
     }
 
 }

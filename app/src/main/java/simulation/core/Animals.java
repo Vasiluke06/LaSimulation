@@ -57,13 +57,13 @@ public abstract class Animals {
         }
     }
 
-    protected double distanceTo(Herbivore h, Position pos){
+    protected double distanceTo(Herbivore h, Position pos) {
         //Calculates distance to the closest herbivore
         int dx = h.getPosition().getX() - pos.getX();
         int dy = h.getPosition().getY() - pos.getY();
-        System.out.println(dx + " " + dy + " SQRT " + Math.sqrt(dx * dx + dy * dy));
         return Math.sqrt(dx * dx + dy * dy);
     }
+
     /**
      * Method used for moving towards the target herbivore
      */
@@ -79,44 +79,16 @@ public abstract class Animals {
             dx /= 2;
             dy /= 2;
         }
-        System.out.println("dx: " + (myPos.getX() - dx) + " dy: " + (myPos.getY() - dy));
         return new Position(myPos.getX() + dx, myPos.getY() + dy);
 
     }
 
-    protected Position Move(int stepSize)
-    {
-        return new Position(this.position.getX() + (int)(Math.random() * 10) * stepSize, this.position.getY() + (int)(Math.random() * 10) * stepSize);
+    protected Position Move(int stepSize) {
+        return new Position(this.position.getX() + (int) (Math.random() * 10) * stepSize, this.position.getY() + (int) (Math.random() * 10) * stepSize);
     }
 
     /**
      * Animal 2D position
      */
-    
-    public static class Position {
-        private int x;
-        private int y;
-
-        public Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public void setX(int x) {
-            this.x = x;
-        }
-
-        public void setY(int y) {
-            this.y = y;
-        }
-    }
-
 
 }

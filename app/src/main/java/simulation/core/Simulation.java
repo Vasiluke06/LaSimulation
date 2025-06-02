@@ -32,7 +32,7 @@ public class Simulation extends JPanel implements ActionListener {
 
 
     public static ArrayList<Herbivore> herbivore;
-    public ArrayList<Predator> predator;
+    public static ArrayList<Predator> predator;
     public static ArrayList<Plants> plants;
     public int kill_count_herbivore;
     public int kill_count_predator;
@@ -66,10 +66,6 @@ public class Simulation extends JPanel implements ActionListener {
 
         simulationTime = new Timer(1000/Frame_Settings.speedofsimulation, this);
         simulationTime.start();
-
-
-
-
     }
 
 
@@ -78,36 +74,10 @@ public class Simulation extends JPanel implements ActionListener {
         herbivore = new ArrayList<>();
         predator = new ArrayList<>();
         plants =  new ArrayList<>();
+
         Plants.initPlant(Frame_Settings.numofplants);
-
-        for (int i = 0; i < Frame_Settings.numofherbivore; i++){
-            int x_pos = Simulation.random.nextInt(1068);
-            int y_pos = Simulation.random.nextInt(832);
-
-            for (; x_pos >= (River.RIVER_X - 32) &&
-                    x_pos <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
-                x_pos = Simulation.random.nextInt(1068);
-            }
-            herbivore.add(new Herbivore(x_pos, y_pos));
-        }
-
-        for (int i = 0; i < Frame_Settings.numofpredator; i++){
-            int x_pos = Simulation.random.nextInt(1068);
-            int y_pos = Simulation.random.nextInt(832);
-
-            for (; x_pos >= (River.RIVER_X - 32) &&
-                    x_pos <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
-                x_pos = Simulation.random.nextInt(1068);
-            }
-            predator.add(new Predator(x_pos, y_pos));
-        }
-        /*for (int i = 0; i < Frame_Settings.numofplants; i++){
-            int x_pos = random.nextInt(1100);
-            int y_pos = random.nextInt(1000);
-            Plants.new_plant(x_pos, y_pos);
-        };*/
-
-        //River.create_river();
+        Herbivore.initHerbivore(Frame_Settings.numofherbivore);
+        Predator.initPredator(Frame_Settings.numofpredator);
 
     }
 
@@ -188,29 +158,6 @@ public class Simulation extends JPanel implements ActionListener {
                 herbivore.get(i).nextMove();
             }
         }
-        /* for (int i = 0; i < herbivore.size(); i++) {
-                Herbivore h1 = herbivore.get(i);
-                if (!h1.isFed()) continue;
-
-                for (int j = i + 1; j < herbivore.size(); j++) {
-                    Herbivore h2 = herbivore.get(j);
-                    if (h2.isFed() &&
-                            h1.getPosition().getX() == h2.getPosition().getX() &&
-                            h1.getPosition().getY() == h2.getPosition().getY()) {
-
-                        // Create new Herbivore at same location
-                        Herbivore baby = new Herbivore(
-                                h1.getPosition().getX(), h1.getPosition().getY()
-                        );
-                        herbivore.add(baby);
-
-                        h1.setFed(false);
-                        h2.setFed(false);
-                        break;
-                    }
-                }
-            }*/
-
 
         if(predator != null){
             for(int i = 0; i < predator.size(); i++){

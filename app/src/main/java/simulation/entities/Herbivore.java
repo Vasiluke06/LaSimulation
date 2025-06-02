@@ -1,9 +1,6 @@
 package simulation.entities;
 
-import simulation.core.Animals;
-import simulation.core.Movable;
-import simulation.core.Plants;
-import simulation.core.Simulation;
+import simulation.core.*;
 
 import java.awt.*;
 
@@ -28,7 +25,6 @@ public class Herbivore extends Animals implements Movable {
     }
 
     public Herbivore(int x, int y) {
-       // setPosition(x, y);
         super(x, y);
     }
     /**
@@ -87,8 +83,8 @@ public class Herbivore extends Animals implements Movable {
     }
 
  //   Kind of unsure if this is still needed
-    public static void newHerbivore(int xPos, int yPos){
-        Simulation.herbivore.add(new Herbivore(xPos, yPos));
+    public static void newHerbivore(int x, int y){
+        Simulation.herbivore.add(new Herbivore(x, y));
     }
 /*
     public void deleteHerbivore(){
@@ -106,7 +102,7 @@ public class Herbivore extends Animals implements Movable {
         double closestDistance = Double.MAX_VALUE;
 
         for (Plants other : Simulation.plants) {
-            double dist = distanceToPlant(other.getXPos(),other.getYPos());
+            double dist = distanceToPlant( other.getPosition().getX(), other.getPosition().getY());
             if (dist < closestDistance) {
                 closestDistance = dist;
                 closest = other;
@@ -123,8 +119,8 @@ public class Herbivore extends Animals implements Movable {
         if (target == null) return;
 
         Position myPos = getPosition();
-        int targetX = target.getXPos();
-        int targetY = target.getYPos();
+        int targetX = target.getPosition().getX();
+        int targetY = target.getPosition().getY();
 
         int dx = Integer.compare(targetX, myPos.getX())*STEP_SIZE;
         int dy = Integer.compare(targetY, myPos.getY())*STEP_SIZE;
@@ -169,18 +165,20 @@ public class Herbivore extends Animals implements Movable {
         Position p = getPosition();
         g.drawImage(Simulation.herbivoreImg, p.getX(), p.getY(), 32, 32, null);
     }
+    /**
+     * Method used for initializing the herbivores
+     */
 
     public static void initHerbivore(int numofherbivores){
         for (int i = 0; i < numofherbivores; i++){
-            int xPos = Simulation.random.nextInt(1068);
-            int yPos = Simulation.random.nextInt(968);
+            Position pos = new Position(Simulation.random.nextInt(1068), Simulation.random.nextInt(968));
 
-            for (; xPos >= (River.RIVER_X - 32) &&
-                    xPos <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
-                xPos = Simulation.random.nextInt(1068);
+            for (; pos.getX() >= (River.RIVER_X - 32) &&
+                    pos.getX() <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
+                pos.setX(Simulation.random.nextInt(1068));
             }
 
-            Herbivore.newHerbivore(xPos, yPos);
+            Herbivore.newHerbivore(pos.getX(), pos.getY());
         };
     }
 

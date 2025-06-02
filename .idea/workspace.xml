@@ -6,18 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/deer female calciumtrice (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pixel-grid-blueberries_2236497 (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/pixel-grid-blueberries_2236497.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/wolf (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/wolf.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,30 +106,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.LaSimulation [build].executor": "Run",
-    "Gradle.LaSimulation [clean].executor": "Run",
-    "Gradle.LaSimulation [run].executor": "Run",
-    "Gradle.LaSimulation:app [run].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "build-with-gradle",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;build-with-gradle&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\resources" />
@@ -192,7 +186,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="--stacktrace" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -270,6 +264,11 @@
       <workItem from="1748728269701" duration="2779000" />
       <workItem from="1748731575938" duration="3610000" />
       <workItem from="1748777586382" duration="19575000" />
+      <workItem from="1748808197425" duration="347000" />
+      <workItem from="1748884380758" duration="1079000" />
+      <workItem from="1748893867365" duration="1200000" />
+      <workItem from="1748895134395" duration="345000" />
+      <workItem from="1748895500080" duration="2857000" />
     </task>
     <servers />
   </component>
