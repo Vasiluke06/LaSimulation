@@ -194,10 +194,10 @@ public class Simulation extends JPanel implements ActionListener {
                 fw.write("Points for victory: " + Frame_Settings.pointsforvictory + "\n");
                 fw.write("Herbivore points: " + Herbivore.herbivorePoints + "\n");
                 fw.write("Predator points: " + Predator.predatorPoints + "\n");
-                fw.write("Herbivores remain: " + herbivore_remain + "\n");
-                fw.write("Predators remain: " + predator_remain + "\n");
-                fw.write("Herbivores killed during simulation: " + kill_count_herbivore + "\n");
-                fw.write("Predators kills during simulation: " + kill_count_predator + "\n");
+                fw.write("Herbivores remain: " + herbivore.size() + "\n");
+                fw.write("Predators remain: " + predator.size() + "\n");
+                fw.write("Herbivores killed during simulation: " + Animals.herbivoresKilled + "\n");
+                fw.write("Predators killed during simulation: " + kill_count_predator + "\n");
                 fw.write("Wildfires: " + wildfire_count + "\n");
                 fw.write("Hunters: " + hunters_count + "\n");
                 fw.close();

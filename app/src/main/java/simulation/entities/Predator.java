@@ -71,6 +71,7 @@ public class Predator extends Animals implements Movable {
             getPosition().setY(targetY);
 
             simulation.core.Simulation.herbivore.remove(target);
+            herbivoresKilled++;
             Animals.addPredatorPoint(POINTS_FOR_EATING);
         }
     }

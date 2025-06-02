@@ -6,6 +6,7 @@ import simulation.entities.River;
 public abstract class Animals {
     protected static int herbivorePoints;
     protected static int predatorPoints;
+    protected static int herbivoresKilled;
     private Position position;
     private boolean onRiver = false;
     private static final int MAX_X = 1100;
