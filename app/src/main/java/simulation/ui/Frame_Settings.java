@@ -194,7 +194,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
         if (e.getSource() == button_fast_insert_of_parameters){
             System.out.println("Clickn"); //actions after clicking the button
 
-            parameter_numofherbivore.setText("8");
+            parameter_numofherbivore.setText("10");
 
             parameter_numofpredator.setText("1");
 
@@ -204,9 +204,9 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_chanceofdrowing.setText("0");
 
-            parameter_chanceofhunters.setText("0");
+            parameter_chanceofhunters.setText("1");
 
-            parameter_speedofsimulation.setText("1");
+            parameter_speedofsimulation.setText("10");
 
             parameter_pointsforvictory.setText("1000");
 

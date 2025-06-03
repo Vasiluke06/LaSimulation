@@ -1,0 +1,354 @@
+Index: app/src/main/java/simulation/ui/Frame_Simulation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package simulation.ui;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\nimport java.net.URL;\r\n\r\nimport simulation.Main;\r\nimport simulation.core.Simulation;\r\n\r\npublic class Frame_Simulation extends JFrame implements ActionListener {\r\n    JButton button_slowdown;\r\n    JButton button_pause;\r\n    JButton button_resume;\r\n    JButton button_speedup;\r\n\r\n    ImageIcon button_slowdown_icon;\r\n    ImageIcon button_pause_icon;\r\n    ImageIcon button_resume_icon;\r\n    ImageIcon button_speedup_icon;\r\n\r\n    public static Frame_Simulation instance;\r\n\r\n\r\n    class MapPanel extends JPanel {\r\n        public MapPanel() {\r\n            setOpaque(true);\r\n        }\r\n        @Override\r\n        protected void paintComponent(Graphics g) {\r\n            super.paintComponent(g);\r\n\r\n            g.setColor(new Color(34, 139, 34));\r\n            g.fillRect(0, 0, getWidth(), getHeight());\r\n\r\n            /*g.setColor(new Color(30, 144, 255));\r\n            int riverWidth = 80;\r\n            int x = getWidth() / 2 - riverWidth / 2;\r\n            g.fillRect(x, 0, riverWidth, getHeight());*/\r\n        }\r\n    }\r\n    Frame_Simulation(){\r\n        Frame_Simulation.instance = this;\r\n\r\n        //this.setVisible(true); //creating a frame\r\n        this.setSize(1100, 1000);\r\n        this.setTitle(\"LaSimulation (simulation)\");\r\n        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        this.setResizable(false);\r\n\r\n        /*JLabel label = new JLabel(); //creating a label with text\r\n        label.setText(\"Simulation will be there\\n Parameter = \" + Frame_Settings.text1);\r\n\r\n        this.add(label);\r\n        label.setBounds(0, 0, 550, 100);\r\n        label.setVerticalAlignment(JLabel.TOP);\r\n        label.setHorizontalAlignment(JLabel.CENTER);*/\r\n\r\n        MapPanel mappanel = new MapPanel();\r\n\r\n        Simulation simulation = new Simulation();\r\n\r\n        button_slowdown = new JButton(); //creating a button \"Slowdown\"\r\n        button_pause = new JButton();\r\n        button_resume = new JButton();\r\n        button_speedup = new JButton();\r\n\r\n        button_slowdown_icon = new ImageIcon(getClass().getResource(\"/images/slowdown_button.png\"));\r\n        button_pause_icon = new ImageIcon(getClass().getResource(\"/images/pause_button.png\"));\r\n        button_resume_icon = new ImageIcon(getClass().getResource(\"/images/resume_button.png\"));\r\n        button_speedup_icon = new ImageIcon(getClass().getResource(\"/images/speedup_button.png\"));\r\n\r\n\r\n\r\n        //Simulation simulation = Main.simulation;\r\n\r\n        mappanel.setBounds(0, 0, 1100, 864);\r\n        simulation.setBounds(0, 0, 1100, 864);\r\n        simulation.setOpaque(false);\r\n        button_slowdown.setBounds(920,665,45,45);\r\n        button_pause.setBounds(965,665,45,45);\r\n        button_resume.setBounds(1010,665,45,45);\r\n        button_speedup.setBounds(1055,665,45,45);\r\n\r\n        button_slowdown.addActionListener(this);\r\n        button_slowdown.setIcon(button_slowdown_icon);\r\n        button_slowdown.setFocusable(false);\r\n\r\n        button_pause.addActionListener(this);\r\n        button_pause.setIcon(button_pause_icon);\r\n        button_pause.setFocusable(false);\r\n\r\n        button_resume.addActionListener(this);\r\n        button_resume.setIcon(button_resume_icon);\r\n        button_resume.setFocusable(false);\r\n\r\n        button_speedup.addActionListener(this);\r\n        button_speedup.setIcon(button_speedup_icon);\r\n        button_speedup.setFocusable(false);\r\n\r\n        JLayeredPane layers = new JLayeredPane();\r\n        layers.setLayout(null);\r\n        //layers.setPreferredSize(new Dimension(1100, 1000));\r\n        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();\r\n        this.setSize(screenSize); // set JFrame to screen size\r\n        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // optional: maximize the window\r\n        this.setUndecorated(true); // optional: remove window borders and title bar\r\n        layers.setPreferredSize(screenSize);\r\n\r\n        layers.add(mappanel, Integer.valueOf(0));\r\n        layers.add(simulation, Integer.valueOf(1));\r\n        layers.add(button_slowdown, Integer.valueOf(3));\r\n        layers.add(button_pause, Integer.valueOf(3));\r\n        layers.add(button_resume, Integer.valueOf(3));\r\n        layers.add(button_speedup, Integer.valueOf(3));\r\n\r\n        add(layers);\r\n        pack();\r\n        //this.add(Main.simulation);\r\n\r\n        //this.add(new MapPanel());\r\n\r\n        this.setVisible(true);\r\n\r\n/*        button_slowdown.setToolTipText(\"Slow Down\");\r\n        button_pause.setToolTipText(\"Pause\");\r\n        button_resume.setToolTipText(\"Resume\");\r\n        button_speedup.setToolTipText(\"Speed Up\");\r\n*/\r\n\r\n\r\n    }\r\n    @Override\r\n    public void actionPerformed(ActionEvent e) {\r\n        if (e.getSource() == button_slowdown){\r\n            System.out.println(\"Click\"); //actions after clicking the button\r\n\r\n            if(Frame_Settings.speedofsimulation > 1) {\r\n                Frame_Settings.speedofsimulation -= 1;\r\n            }\r\n\r\n            System.out.println(Frame_Settings.speedofsimulation);\r\n        }\r\n\r\n        if (e.getSource() == button_pause){\r\n            System.out.println(Main.n); //actions after clicking the button\r\n\r\n            Simulation.simulationTime.stop();\r\n        }\r\n\r\n        if (e.getSource() == button_resume){\r\n            System.out.println(\"-\" + Main.n); //actions after clicking the button\r\n\r\n            Simulation.simulationTime.start();\r\n        }\r\n\r\n        if (e.getSource() == button_speedup){\r\n            System.out.println(\"Click\"); //actions after clicking the button\r\n\r\n            Frame_Settings.speedofsimulation += 1;\r\n\r\n            System.out.println(Frame_Settings.speedofsimulation);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/simulation/ui/Frame_Simulation.java b/app/src/main/java/simulation/ui/Frame_Simulation.java
+--- a/app/src/main/java/simulation/ui/Frame_Simulation.java	(revision 96f28d796c9df58b8c5fc3851c0966ca31e2f1af)
++++ b/app/src/main/java/simulation/ui/Frame_Simulation.java	(date 1748965783189)
+@@ -105,7 +105,7 @@
+         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+         this.setSize(screenSize); // set JFrame to screen size
+         this.setExtendedState(JFrame.MAXIMIZED_BOTH); // optional: maximize the window
+-        this.setUndecorated(true); // optional: remove window borders and title bar
++        //this.setUndecorated(true); // optional: remove window borders and title bar
+         layers.setPreferredSize(screenSize);
+ 
+         layers.add(mappanel, Integer.valueOf(0));
+Index: app/src/main/java/simulation/core/Simulation.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package simulation.core;\r\n\r\nimport simulation.entities.Herbivore;\r\nimport simulation.entities.Predator;\r\nimport simulation.ui.Frame_Settings;\r\nimport simulation.entities.River;\r\n\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\nimport java.awt.image.BufferedImage;\r\nimport java.io.FileWriter;\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.time.LocalDateTime;\r\nimport java.util.ArrayList;\r\nimport java.util.Random;\r\n//import java.util.Timer;\r\nimport javax.swing.*;\r\n\r\n\r\npublic class Simulation extends JPanel implements ActionListener {\r\n\r\n\r\n    private Image loadImage(String path) {\r\n        URL resource = getClass().getClassLoader().getResource(path);\r\n        if (resource == null) {\r\n            throw new RuntimeException(\"Image not found: \" + path);\r\n        }\r\n        return new ImageIcon(resource).getImage();\r\n    }\r\n\r\n\r\n    public static ArrayList<Herbivore> herbivore;\r\n    public static ArrayList<Predator> predator;\r\n    public static ArrayList<Plants> plants;\r\n    public int kill_count_herbivore;\r\n    public int kill_count_predator;\r\n    public int herbivore_remain;\r\n    public int predator_remain;\r\n    public int wildfire_count;\r\n    public int hunters_count;\r\n\r\n    public static int x_pos;\r\n    public static int y_pos;\r\n\r\n    public static Image herbivoreImg;\r\n    public static Image predatorImg;\r\n    public static Image plantImg;\r\n    public Image huntersImg;\r\n\r\n    public static Random random;\r\n\r\n    public static Timer simulationTime;\r\n\r\n    public Simulation(){\r\n        images();\r\n\r\n        x_pos = 350;\r\n\r\n        y_pos = 110;\r\n\r\n        random = new Random();\r\n\r\n        init_start();\r\n\r\n        simulationTime = new Timer(1000/Frame_Settings.speedofsimulation, this);\r\n        simulationTime.start();\r\n    }\r\n\r\n\r\n\r\n    private void init_start(){\r\n        herbivore = new ArrayList<>();\r\n        predator = new ArrayList<>();\r\n        plants =  new ArrayList<>();\r\n\r\n        Plants.initPlant(Frame_Settings.numofplants);\r\n        Herbivore.initHerbivore(Frame_Settings.numofherbivore);\r\n        Predator.initPredator(Frame_Settings.numofpredator);\r\n\r\n    }\r\n\r\n\r\n\r\n    public void paintComponent(Graphics g){                                                             // main graphic method\r\n        super.paintComponent(g);\r\n        drawing(g);\r\n    }\r\n\r\n\r\n\r\n    public void images() {\r\n        herbivoreImg = loadImage(\"images/deer female calciumtrice (1).png\");\r\n        predatorImg = loadImage(\"images/wolf (1).png\");\r\n        //huntersImg = loadImage(\"images/hunters_icon.png\"); // Replace with the actual file name\r\n        plantImg = loadImage(\"images/pixel-grid-blueberries_2236497 (1).png\");\r\n    }\r\n\r\n\r\n\r\n    /*public void draw_herbivore(Graphics g){\r\n        g.drawImage(herbivoreImg, x_pos, y_pos, 32, 32, this);\r\n    }\r\n\r\n    public void draw_predator(Graphics g){\r\n\r\n    }\r\n\r\n    public void draw_plants(Graphics g){\r\n        g.drawImage(plantImg, x_pos, y_pos, 32, 32, this);\r\n    }*/\r\n\r\n\r\n\r\n    public void drawing(Graphics g){\r\n        River.createRiver(g);\r\n\r\n        if (herbivore != null){\r\n            for (int i = 0; i < herbivore.size(); i++) {\r\n                herbivore.get(i).drawHerbivore(g);\r\n            }\r\n        }\r\n\r\n        if (predator != null){\r\n            for (int i = 0; i < predator.size(); i++) {\r\n                predator.get(i).drawPredator(g);\r\n            }\r\n        }\r\n\r\n        if (plants != null){\r\n            for (int i = 0; i < plants.size(); i++) {\r\n                plants.get(i).drawPlants(g);\r\n            }\r\n        }\r\n\r\n\r\n\r\n    }\r\n\r\n    private boolean victoryCheck(){\r\n        if (Herbivore.herbivorePoints >= Frame_Settings.pointsforvictory\r\n                || Predator.predatorPoints >= Frame_Settings.pointsforvictory\r\n                || herbivore.size() == 0 || predator.size() == 0) {\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public void actionPerformed(ActionEvent e) {\r\n        x_pos += 1;\r\n\r\n        y_pos += 1; //just for test\r\n\r\n        if(herbivore != null){\r\n            for(int i = 0; i < herbivore.size(); i++) {\r\n                herbivore.get(i).nextMove();\r\n            }\r\n        }\r\n\r\n        if(predator != null){\r\n            for(int i = 0; i < predator.size(); i++){\r\n                predator.get(i).nextMove();\r\n            }\r\n        }\r\n\r\n        Plants.spawn_new_plant();\r\n\r\n        simulationTime.setDelay(1000/ Frame_Settings.speedofsimulation);\r\n\r\n        //\r\n        repaint();\r\n\r\n        /*new Result_Writer(\"Results.txt\");\r\n        simulationTime.stop();\r\n        JOptionPane.showMessageDialog(this, \"End of simulation\");*/\r\n\r\n        if (victoryCheck()){\r\n            new Result_Writer(\"Results.txt\");\r\n\r\n            simulationTime.stop();\r\n\r\n            JOptionPane.showMessageDialog(this, \"End of simulation\");\r\n            if (simulation.ui.Frame_Simulation.instance != null) {\r\n                simulation.ui.Frame_Simulation.instance.dispose();\r\n            }\r\n        }\r\n    }\r\n\r\n    public class Result_Writer{\r\n        Result_Writer(String filename){\r\n            try{\r\n                FileWriter fw = new FileWriter(filename, true);\r\n                LocalDateTime datetime = LocalDateTime.now();\r\n                fw.write(\"\\nDate and time of simulation: \" + datetime + \"\\n\");\r\n                fw.write(\"Points for victory: \" + Frame_Settings.pointsforvictory + \"\\n\");\r\n                fw.write(\"Herbivore points: \" + Herbivore.herbivorePoints + \"\\n\");\r\n                fw.write(\"Predator points: \" + Predator.predatorPoints + \"\\n\");\r\n                fw.write(\"Herbivores remain: \" + herbivore.size() + \"\\n\");\r\n                fw.write(\"Predators remain: \" + predator.size() + \"\\n\");\r\n                fw.write(\"Herbivores killed during simulation: \" + Animals.herbivoresKilled + \"\\n\");\r\n                fw.write(\"Predators killed during simulation: \" + kill_count_predator + \"\\n\");\r\n                fw.write(\"Wildfires: \" + wildfire_count + \"\\n\");\r\n                fw.write(\"Hunters: \" + hunters_count + \"\\n\");\r\n                fw.close();\r\n            } catch (IOException e){\r\n                System.out.println(\"Error occured during writing results to the file\");\r\n\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/simulation/core/Simulation.java b/app/src/main/java/simulation/core/Simulation.java
+--- a/app/src/main/java/simulation/core/Simulation.java	(revision 96f28d796c9df58b8c5fc3851c0966ca31e2f1af)
++++ b/app/src/main/java/simulation/core/Simulation.java	(date 1748965360094)
+@@ -182,9 +182,9 @@
+             simulationTime.stop();
+ 
+             JOptionPane.showMessageDialog(this, "End of simulation");
+-            if (simulation.ui.Frame_Simulation.instance != null) {
+-                simulation.ui.Frame_Simulation.instance.dispose();
+-            }
++            //if (simulation.ui.Frame_Simulation.instance != null) {
++            //    simulation.ui.Frame_Simulation.instance.dispose();
++            //}
+         }
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/Results.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/Results.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <task path=\"$PROJECT_DIR$/app\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"LaSimulation\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"LaSimulation\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"LaSimulation\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"LaSimulation\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"app\" type=\"2d1252cf:ModuleNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"LaSimulation\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"app\" type=\"2d1252cf:ModuleNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"LaSimulation\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"app\" type=\"2d1252cf:ModuleNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;AntKrai&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/Vasiluke06/LaSimulation.git&quot;,\r\n    &quot;accountId&quot;: &quot;57a3c6fa-b28b-43dc-b01d-4a31334ed8eb&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2xdLuMjyWgVlxxL2IdnfhXYdMUF\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,\r\n    &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,\r\n    &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,\r\n    &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;build-with-gradle&quot;,\r\n    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\kraev\\Documents\\Polit_Wroclawska\\Java\\gitgut\\LaSimulation\\app\\src\\main\\resources\" />\r\n      <recent name=\"C:\\Users\\kraev\\Documents\\Polit_Wroclawska\\Java\\gitgut\\LaSimulation\\app\\src\\main\\java\\simulation\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Gradle.LaSimulation [run]\">\r\n    <configuration name=\"LaSimulation [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"build\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>false</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"LaSimulation [clean]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"clean\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>false</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"LaSimulation [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"--stacktrace\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"run\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>false</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"LaSimulation:app [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$/app\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"--stacktrace\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"run\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <RunAsTest>false</RunAsTest>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.LaSimulation [run]\" />\r\n        <item itemvalue=\"Gradle.LaSimulation:app [run]\" />\r\n        <item itemvalue=\"Gradle.LaSimulation [clean]\" />\r\n        <item itemvalue=\"Gradle.LaSimulation [build]\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc\" name=\"Changes\" comment=\"\" />\r\n      <created>1748263226983</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1748263226983</updated>\r\n      <workItem from=\"1748263228830\" duration=\"2612000\" />\r\n      <workItem from=\"1748270617902\" duration=\"877000\" />\r\n      <workItem from=\"1748274835645\" duration=\"1002000\" />\r\n      <workItem from=\"1748276948557\" duration=\"625000\" />\r\n      <workItem from=\"1748340645771\" duration=\"224000\" />\r\n      <workItem from=\"1748344656563\" duration=\"1859000\" />\r\n      <workItem from=\"1748373570563\" duration=\"11225000\" />\r\n      <workItem from=\"1748413670131\" duration=\"823000\" />\r\n      <workItem from=\"1748424269917\" duration=\"10978000\" />\r\n      <workItem from=\"1748440560914\" duration=\"7912000\" />\r\n      <workItem from=\"1748451591649\" duration=\"4280000\" />\r\n      <workItem from=\"1748641244981\" duration=\"2690000\" />\r\n      <workItem from=\"1748728269701\" duration=\"2779000\" />\r\n      <workItem from=\"1748731575938\" duration=\"3610000\" />\r\n      <workItem from=\"1748777586382\" duration=\"19575000\" />\r\n      <workItem from=\"1748808197425\" duration=\"347000\" />\r\n      <workItem from=\"1748884380758\" duration=\"1079000\" />\r\n      <workItem from=\"1748893867365\" duration=\"1200000\" />\r\n      <workItem from=\"1748895134395\" duration=\"345000\" />\r\n      <workItem from=\"1748895500080\" duration=\"2857000\" />\r\n      <workItem from=\"1748902534644\" duration=\"412000\" />\r\n      <workItem from=\"1748903232928\" duration=\"370000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <watches-manager>\r\n      <configuration name=\"GradleRunConfiguration\">\r\n        <watch expression=\"mate\" />\r\n        <watch expression=\"((Position)this.position).x\" custom=\"simulation.entities.Herbivore,simulation.core.Animals.Position\" />\r\n      </configuration>\r\n    </watches-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 96f28d796c9df58b8c5fc3851c0966ca31e2f1af)
++++ b/.idea/workspace.xml	(date 1748976618992)
+@@ -8,6 +8,7 @@
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/Results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.txt" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" afterDir="false" />
+     </list>
+@@ -81,6 +82,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="build-with-gradle" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+@@ -89,12 +95,12 @@
+     &quot;assignee&quot;: &quot;AntKrai&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/Vasiluke06/LaSimulation.git&quot;,
+-    &quot;accountId&quot;: &quot;57a3c6fa-b28b-43dc-b01d-4a31334ed8eb&quot;
+-  }
+-}</component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/Vasiluke06/LaSimulation/",
++    "accountId": "65f7a5ae-6f45-49b6-ac4d-2be63bbb70ae"
++  }
++}]]></component>
+   <component name="ProjectColorInfo">{
+   &quot;customColor&quot;: &quot;&quot;,
+   &quot;associatedIndex&quot;: 0
+@@ -104,30 +110,31 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,
+-    &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,
+-    &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,
+-    &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;build-with-gradle&quot;,
+-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Gradle.LaSimulation [build].executor": "Run",
++    "Gradle.LaSimulation [clean].executor": "Run",
++    "Gradle.LaSimulation [run].executor": "Run",
++    "Gradle.LaSimulation:app [run].executor": "Run",
++    "ModuleVcsDetector.initialDetectionPerformed": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "build-with-gradle",
++    "junie.onboarding.icon.badge.shown": "true",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Modules",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\resources" />
+@@ -235,11 +242,12 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
++        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
++        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+       </set>
+     </attachedChunks>
+   </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+       <changelist id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="" />
+@@ -269,11 +277,35 @@
+       <workItem from="1748895500080" duration="2857000" />
+       <workItem from="1748902534644" duration="412000" />
+       <workItem from="1748903232928" duration="370000" />
++      <workItem from="1748973698767" duration="716000" />
+     </task>
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="origin/build-with-gradle" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: app/Results.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nDate and time of simulation: 2025-06-01T01:36:06.025099500\r\nPoints for victory: 1000\r\nHerbivore points: 0\r\nPredator points: 0\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T01:43:33.281669900\r\nPoints for victory: 10\r\nHerbivore points: 18\r\nPredator points: 0\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T13:41:39.634885800\r\nPoints for victory: 100\r\nHerbivore points: 102\r\nPredator points: 0\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T15:49:55.795096800\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 0\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:04:03.765765100\r\nPoints for victory: 100\r\nHerbivore points: 34\r\nPredator points: 75\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:28:29.524768600\r\nPoints for victory: 100\r\nHerbivore points: 104\r\nPredator points: 75\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:32:17.531707100\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:38:37.593288\r\nPoints for victory: 1000\r\nHerbivore points: 96\r\nPredator points: 195\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:44:07.615140300\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:52:58.324156500\r\nPoints for victory: 10000\r\nHerbivore points: 600\r\nPredator points: 1200\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:53:49.743119400\r\nPoints for victory: 1000\r\nHerbivore points: 390\r\nPredator points: 915\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:54:38.416412400\r\nPoints for victory: 1000\r\nHerbivore points: 492\r\nPredator points: 1005\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:55:25.068632200\r\nPoints for victory: 1000\r\nHerbivore points: 578\r\nPredator points: 1005\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T18:57:45.401652500\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T19:05:26.984880700\r\nPoints for victory: 1000\r\nHerbivore points: 806\r\nPredator points: 1005\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T22:06:54.301730500\r\nPoints for victory: 1000\r\nHerbivore points: 204\r\nPredator points: 630\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T22:07:25.073918600\r\nPoints for victory: 1000\r\nHerbivore points: 1012\r\nPredator points: 270\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-01T22:08:08.076576600\r\nPoints for victory: 10000\r\nHerbivore points: 436\r\nPredator points: 1080\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-02T22:40:31.095516500\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-02T22:42:12.230837800\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-02T22:43:07.138373100\r\nPoints for victory: 100\r\nHerbivore points: 6\r\nPredator points: 45\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-02T22:46:44.640279700\r\nPoints for victory: 100\r\nHerbivore points: 34\r\nPredator points: 75\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-02T22:48:23.480421800\r\nPoints for victory: 100\r\nHerbivore points: 98\r\nPredator points: 105\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-02T22:53:20.525513900\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-02T22:57:18.164424300\r\nPoints for victory: 100\r\nHerbivore points: 102\r\nPredator points: 75\r\nHerbivores remain: 0\r\nPredators remain: 0\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-03T00:17:36.729715900\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 1\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-03T00:19:28.045058\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 1\r\nHerbivores killed during simulation: 0\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-03T00:20:24.725042300\r\nPoints for victory: 100\r\nHerbivore points: 0\r\nPredator points: 30\r\nHerbivores remain: 0\r\nPredators remain: 1\r\nHerbivores killed during simulation: 2\r\nPredators kills during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-03T00:21:06.240934800\r\nPoints for victory: 100\r\nHerbivore points: 50\r\nPredator points: 105\r\nHerbivores remain: 10\r\nPredators remain: 5\r\nHerbivores killed during simulation: 7\r\nPredators killed during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n\r\nDate and time of simulation: 2025-06-03T00:33:16.341129900\r\nPoints for victory: 100\r\nHerbivore points: 26\r\nPredator points: 75\r\nHerbivores remain: 0\r\nPredators remain: 1\r\nHerbivores killed during simulation: 5\r\nPredators killed during simulation: 0\r\nWildfires: 0\r\nHunters: 0\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Results.txt b/app/Results.txt
+--- a/app/Results.txt	(revision 96f28d796c9df58b8c5fc3851c0966ca31e2f1af)
++++ b/app/Results.txt	(date 1748965830103)
+@@ -328,3 +328,146 @@
+ Predators killed during simulation: 0
+ Wildfires: 0
+ Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:31:12.967448200
++Points for victory: 100
++Herbivore points: 6
++Predator points: 45
++Herbivores remain: 0
++Predators remain: 1
++Herbivores killed during simulation: 3
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:31:35.488862700
++Points for victory: 100
++Herbivore points: 76
++Predator points: 105
++Herbivores remain: 1
++Predators remain: 1
++Herbivores killed during simulation: 7
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:32:20.673592800
++Points for victory: 100
++Herbivore points: 102
++Predator points: 75
++Herbivores remain: 6
++Predators remain: 1
++Herbivores killed during simulation: 5
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:39:56.491770700
++Points for victory: 100
++Herbivore points: 6
++Predator points: 45
++Herbivores remain: 0
++Predators remain: 1
++Herbivores killed during simulation: 3
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:42:52.886354800
++Points for victory: 100
++Herbivore points: 6
++Predator points: 45
++Herbivores remain: 0
++Predators remain: 1
++Herbivores killed during simulation: 3
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:43:17.055704700
++Points for victory: 100
++Herbivore points: 66
++Predator points: 105
++Herbivores remain: 2
++Predators remain: 1
++Herbivores killed during simulation: 7
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:43:43.294455700
++Points for victory: 100
++Herbivore points: 84
++Predator points: 105
++Herbivores remain: 13
++Predators remain: 5
++Herbivores killed during simulation: 7
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:44:17.433057200
++Points for victory: 1000
++Herbivore points: 80
++Predator points: 270
++Herbivores remain: 0
++Predators remain: 5
++Herbivores killed during simulation: 18
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:44:39.754656800
++Points for victory: 1000
++Herbivore points: 0
++Predator points: 30
++Herbivores remain: 0
++Predators remain: 1
++Herbivores killed during simulation: 2
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:45:04.119347400
++Points for victory: 1000
++Herbivore points: 0
++Predator points: 30
++Herbivores remain: 0
++Predators remain: 1
++Herbivores killed during simulation: 2
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:45:50.667721
++Points for victory: 1000
++Herbivore points: 126
++Predator points: 345
++Herbivores remain: 0
++Predators remain: 5
++Herbivores killed during simulation: 23
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:47:23.426110800
++Points for victory: 1000
++Herbivore points: 1004
++Predator points: 720
++Herbivores remain: 52
++Predators remain: 5
++Herbivores killed during simulation: 48
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0
++
++Date and time of simulation: 2025-06-03T18:50:30.080724700
++Points for victory: 1000
++Herbivore points: 1000
++Predator points: 990
++Herbivores remain: 28
++Predators remain: 5
++Herbivores killed during simulation: 66
++Predators killed during simulation: 0
++Wildfires: 0
++Hunters: 0

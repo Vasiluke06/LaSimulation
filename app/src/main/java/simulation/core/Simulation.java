@@ -1,6 +1,7 @@
 package simulation.core;
 
 import simulation.entities.Herbivore;
+import simulation.entities.Hunters;
 import simulation.entities.Predator;
 import simulation.ui.Frame_Settings;
 import simulation.entities.River;
@@ -9,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -49,7 +51,7 @@ public class Simulation extends JPanel implements ActionListener {
     public static Image herbivoreImg;
     public static Image predatorImg;
     public static Image plantImg;
-    public Image huntersImg;
+    public static Image huntersImg;
 
     public static Random random;
 
@@ -111,7 +113,7 @@ public class Simulation extends JPanel implements ActionListener {
     public void images() {
         herbivoreImg = loadImage("images/deer female calciumtrice (1).png");
         predatorImg = loadImage("images/wolf (1).png");
-        //huntersImg = loadImage("images/hunters_icon.png");
+        huntersImg = loadImage("images/hunters_icon.png");
         plantImg = loadImage("images/pixel-grid-blueberries_2236497 (1).png");
     }
 
@@ -152,6 +154,10 @@ public class Simulation extends JPanel implements ActionListener {
             }
         }
 
+        if (Hunters.hunter != null){
+            Hunters.hunter.draw_hunter(g);
+        }
+
 
 
     }
@@ -185,17 +191,32 @@ public class Simulation extends JPanel implements ActionListener {
 
         Plants.spawn_new_plant();
 
+        if(Hunters.hunter == null){
+            if (random.nextInt(100) < Frame_Settings.chanceofhunters){
+                Hunters.create_hunter();
+            }
+        } else if (Hunters.hunter != null){
+            Hunters.move_hunter();
+        }
+
         simulationTime.setDelay(1000/ Frame_Settings.speedofsimulation);
 
         //
         repaint();
+
+        herbivore_remain = herbivore.size();
+
+        predator_remain = predator.size();
+
+
+
 
         /*new Result_Writer("Results.txt");
         simulationTime.stop();
         JOptionPane.showMessageDialog(this, "End of simulation");*/
 
         if (victoryCheck()){
-            new Result_Writer("Results.txt");
+            new Result_Writer("Results.csv");
 
             simulationTime.stop();
 
@@ -209,18 +230,28 @@ public class Simulation extends JPanel implements ActionListener {
     public class Result_Writer{
         Result_Writer(String filename){
             try{
+                File filename_check_first_row = new File(filename);
+
+                boolean check_first_row_is_not_exist = false;
+
+                if(!filename_check_first_row.exists() || filename_check_first_row.length() == 0) {
+                    check_first_row_is_not_exist = true;
+                }
                 FileWriter fw = new FileWriter(filename, true);
                 LocalDateTime datetime = LocalDateTime.now();
-                fw.write("\nDate and time of simulation: " + datetime + "\n");
-                fw.write("Points for victory: " + Frame_Settings.pointsforvictory + "\n");
-                fw.write("Herbivore points: " + Herbivore.herbivorePoints + "\n");
-                fw.write("Predator points: " + Predator.predatorPoints + "\n");
-                fw.write("Herbivores remain: " + herbivore.size() + "\n");
-                fw.write("Predators remain: " + predator.size() + "\n");
-                fw.write("Herbivores killed during simulation: " + Animals.herbivoresKilled + "\n");
-                fw.write("Predators killed during simulation: " + kill_count_predator + "\n");
-                fw.write("Wildfires: " + wildfire_count + "\n");
-                fw.write("Hunters: " + hunters_count + "\n");
+                if (check_first_row_is_not_exist == true){
+                    fw.write("Date and time of simulation," + "Points for victory," + "Herbivore points," + "Predator points," + "Herbivores remain," + "Predators remain," + "Herbivores killed during simulation," + "Predators killed during simulation," + "Wildfires," + "Hunters\n");
+                }
+                fw.write(datetime + ",");
+                fw.write(Frame_Settings.pointsforvictory + ",");
+                fw.write(Herbivore.herbivorePoints + ",");
+                fw.write(Predator.predatorPoints  + ",");
+                fw.write(herbivore_remain + ",");
+                fw.write(predator_remain + ",");
+                fw.write(kill_count_herbivore + ",");
+                fw.write(kill_count_predator + ",");
+                fw.write(wildfire_count + ",");
+                fw.write(Hunters.hunters_counter + "\n");
                 fw.close();
             } catch (IOException e){
                 System.out.println("Error occured during writing results to the file");
