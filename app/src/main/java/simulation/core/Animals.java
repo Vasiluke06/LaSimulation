@@ -9,9 +9,10 @@ public abstract class Animals {
     protected static int predatorPoints;
     protected static int herbivoresKilled;
     private Position position;
+    private static final int MAX_X = Simulation.SCREEN_WIDTH - 32;
+    private static final int MAX_Y = Simulation.SCREEN_HEIGHT - 32;
     private boolean onRiver = false;
-    private static final int MAX_X = 1100;
-    private static final int MAX_Y = 832;
+    public static final int SPRITE_SIZE = 48;
 
     public static void addHerbivorePoint(int pointsToAdd) {
         herbivorePoints += pointsToAdd;
@@ -77,7 +78,7 @@ public abstract class Animals {
         int dy = Integer.compare(targetPos.getY(), myPos.getY()) * stepSize;
 
         if (River.isOnRiver(myPos.getX(), myPos.getY())) {
-            dy += stepSize / 3;
+            dy += stepSize;
             dx /= 2;
             dy /= 2;
         }
@@ -88,9 +89,4 @@ public abstract class Animals {
     protected Position Move(int stepSize) {
         return new Position(this.position.getX() + (int) (Math.random() * 10) * stepSize, this.position.getY() + (int) (Math.random() * 10) * stepSize);
     }
-
-    /**
-     * Animal 2D position
-     */
-
 }

@@ -13,6 +13,8 @@ public class Herbivore extends Animals implements Movable {
     private final int STEP_SIZE = 10;
     private final int POINTS_FOR_REPRODUCTION = 6;
     private final int POINTS_FOR_EATING = 8;
+    private static int eatingCooldown = Simulation.random.nextInt(31);
+    private static int cooldown = 30;
 
     private boolean isFed = Math.random() < 0.5;  /* **********Only for testing, should be changed to FALSE or Randomized********/
     private Herbivore mate;
@@ -35,6 +37,7 @@ public class Herbivore extends Animals implements Movable {
      */
     @Override
     public void nextMove() {
+
         if (isFed) {
             if (mate == null) {
                 findMate();
@@ -47,8 +50,12 @@ public class Herbivore extends Animals implements Movable {
             } else {
                 Move(STEP_SIZE);
             }
-        } else {
+        } else if (eatingCooldown >= cooldown) {
             getToThePlant();
+        }
+        if(eatingCooldown < cooldown && !isFed) {
+            eatingCooldown++;
+            Move(STEP_SIZE);
         }
     }
     /*Herbivore-Herbivore interactions*/
@@ -129,7 +136,7 @@ public class Herbivore extends Animals implements Movable {
         int dy = Integer.compare(targetY, myPos.getY())*STEP_SIZE;
 
         if (River.isOnRiver(myPos.getX(), myPos.getY())) {
-            dy += 1;
+            dy += STEP_SIZE;
             dx /= 2;
             dy /= 2;
         }
@@ -166,7 +173,7 @@ public class Herbivore extends Animals implements Movable {
     /*Method for drawing a herbivore*/
     public void drawHerbivore(Graphics g){
         Position p = getPosition();
-        g.drawImage(Simulation.herbivoreImg, p.getX(), p.getY(), 32, 32, null);
+        g.drawImage(Simulation.herbivoreImg, p.getX(), p.getY(), SPRITE_SIZE, SPRITE_SIZE, null);
     }
     /**
      * Method used for initializing the herbivores
@@ -174,10 +181,10 @@ public class Herbivore extends Animals implements Movable {
 
     public static void initHerbivore(int numofherbivores){
         for (int i = 0; i < numofherbivores; i++){
-            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));
 
             for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
-                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32));
+                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE));
             }
 
             Herbivore.newHerbivore(pos.getX(), pos.getY());

@@ -1,15 +1,13 @@
 package simulation.entities;
 
+import simulation.core.Animals;
 import simulation.core.Simulation;
 
 
 import java.awt.*;
 
 public class River {
-   /* public static final int RIVER_X = Frame_Simulation.WIDTH / 2;
-    public static final int RIVER_WIDTH = Frame_Simulation.WIDTH / 5;
-    public static final int RIVER_Y_START = 0;
-    public static final int RIVER_Y_END = Frame_Simulation.HEIGHT;*/
+    private static int SPRITE_SIZE = Animals.SPRITE_SIZE;
 
     /**
      * Method used for determining if the position is on the river
@@ -20,8 +18,7 @@ public class River {
         int riverYStart = 0;
         int riverYEnd = Simulation.SCREEN_HEIGHT;
 
-        return x >= riverX && x <= (riverX + riverWidth) &&
-                y >= riverYStart && y <= riverYEnd;
+        return x >= riverX - SPRITE_SIZE && x <= (riverX + riverWidth + SPRITE_SIZE);
     }
 
     /**

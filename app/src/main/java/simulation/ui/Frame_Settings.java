@@ -19,6 +19,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
     public static int speedofsimulation;
     private final int settingsHeight = 700;
     private final int settingsWidth = 600;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 
     JButton button_accept;
@@ -35,7 +36,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
     public Frame_Settings(){
 
-        this.setLocation(450, 50);
+        this.setLocation((screenSize.width - settingsWidth) / 2, (screenSize.height - settingsHeight) / 2);
 
         this.setSize(settingsWidth, settingsHeight);
         this.setTitle("Settings");
@@ -193,11 +194,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
         if (e.getSource() == button_fast_insert_of_parameters){
             System.out.println("Clickn"); //actions after clicking the button
 
-            parameter_numofherbivore.setText("2");
+            parameter_numofherbivore.setText("8");
 
             parameter_numofpredator.setText("1");
 
-            parameter_numofplants.setText("10");;
+            parameter_numofplants.setText("15");;
 
             parameter_chanceofwildfire.setText("0");
 
@@ -207,7 +208,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_speedofsimulation.setText("1");
 
-            parameter_pointsforvictory.setText("100");
+            parameter_pointsforvictory.setText("1000");
 
             //button_fast_insert_of_parameters.setEnabled(false);
 

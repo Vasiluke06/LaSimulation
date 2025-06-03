@@ -11,6 +11,9 @@ import java.awt.*;
 public class Predator extends Animals implements Movable {
     private static final int STEP_SIZE = 12;
     private static final int POINTS_FOR_EATING = 15;
+    private static int attackCooldown = 10;
+
+
 
     /* ************************************** */
 
@@ -23,18 +26,25 @@ public class Predator extends Animals implements Movable {
     /*Implementation of Movable interface and movement logic*/
     @Override
     public void nextMove() {
+        if (attackCooldown < 10) {
+            attackCooldown++;
+            Move(STEP_SIZE);
+        }
         //Pathfinding to the closest herbivore
         Herbivore target = findClosestHerbivore();
         if (target != null) {
             this.setPosition(moveToward(target, STEP_SIZE, this.getPosition()));
             checkForBorder(STEP_SIZE);
-            deleteHerbivorePredator(target);
+            if(attackCooldown >= 10) {
+                deleteHerbivorePredator(target);
+                attackCooldown = 0;
+            }
         }
 
         super.checkForBorder(STEP_SIZE);
         //River influence (downstream movement)
         if (isOnRiver()) {
-            getPosition().setY(getPosition().getY() + 1);
+            getPosition().setY(getPosition().getY() + STEP_SIZE);
         }
     }
 
@@ -66,6 +76,7 @@ public class Predator extends Animals implements Movable {
         int targetX = target.getPosition().getX();
         int targetY = target.getPosition().getY();
 
+
         if (Math.abs(x - targetX) < STEP_SIZE &&
                 Math.abs(y - targetY) < STEP_SIZE) {
 
@@ -94,7 +105,7 @@ public class Predator extends Animals implements Movable {
 
     public void drawPredator(Graphics g){
         Position p = getPosition();
-        g.drawImage(Simulation.predatorImg, p.getX(), p.getY(), 32, 32, null);
+        g.drawImage(Simulation.predatorImg, p.getX(), p.getY(), SPRITE_SIZE, SPRITE_SIZE, null);
     }
 
     /**
@@ -102,10 +113,10 @@ public class Predator extends Animals implements Movable {
      */
     public static void initPredator(int numofpredators){
         for (int i = 0; i < numofpredators; i++){
-            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));
 
             for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
-                pos.setX(Simulation.random.nextInt(Frame_Simulation.WIDTH - 32));
+                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE));
             }
 
             Predator.newPredator(pos.getX(), pos.getY());

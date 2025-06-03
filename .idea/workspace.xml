@@ -14,8 +14,6 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/images/pixel-grid-blueberries_2236497.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,6 +275,7 @@
       <workItem from="1748903232928" duration="370000" />
       <workItem from="1748945254452" duration="1045000" />
       <workItem from="1748960316603" duration="9510000" />
+      <workItem from="1748980460963" duration="4396000" />
     </task>
     <servers />
   </component>

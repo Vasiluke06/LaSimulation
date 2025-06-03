@@ -40,12 +40,12 @@ public class Plants {
 */
     public static void spawn_new_plant(){
         if (spawnTimer >= 10){
-            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT));
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
 
             // Regenerate position while it's on or too close to the river
             while (River.isOnRiver(pos.getX(), pos.getY())) {
-                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH));
-                pos.setY(Simulation.random.nextInt(Simulation.SCREEN_HEIGHT));
+                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32));
+                pos.setY(Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
             }
 
             new_plant(pos.getX(), pos.getY());

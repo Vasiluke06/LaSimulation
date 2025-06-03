@@ -24,7 +24,6 @@ public class Simulation extends JPanel implements ActionListener {
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
 
-
     private Image loadImage(String path) {
         URL resource = getClass().getClassLoader().getResource(path);
         if (resource == null) {
