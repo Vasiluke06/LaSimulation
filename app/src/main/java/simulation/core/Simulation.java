@@ -4,6 +4,7 @@ import simulation.entities.Herbivore;
 import simulation.entities.Predator;
 import simulation.ui.Frame_Settings;
 import simulation.entities.River;
+import simulation.ui.Frame_Simulation;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -80,7 +81,6 @@ public class Simulation extends JPanel implements ActionListener {
         Plants.initPlant(Frame_Settings.numofplants);
         Herbivore.initHerbivore(Frame_Settings.numofherbivore);
         Predator.initPredator(Frame_Settings.numofpredator);
-
     }
 
     @Override
@@ -167,10 +167,10 @@ public class Simulation extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        x_pos += 1;
+   /*     x_pos += 1;
 
         y_pos += 1; //just for test
-
+*/
         if(herbivore != null){
             for(int i = 0; i < herbivore.size(); i++) {
                 herbivore.get(i).nextMove();
@@ -184,6 +184,7 @@ public class Simulation extends JPanel implements ActionListener {
         }
 
         Plants.spawn_new_plant();
+        Frame_Simulation.instance.updatePointsDisplay();
 
         simulationTime.setDelay(1000/ Frame_Settings.speedofsimulation);
 

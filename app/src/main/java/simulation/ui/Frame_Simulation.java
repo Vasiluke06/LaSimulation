@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import simulation.Main;
 import simulation.core.Simulation;
+import simulation.core.Animals;
 
 public class Frame_Simulation extends JFrame implements ActionListener {
     JButton button_slowdown;
@@ -22,6 +23,14 @@ public class Frame_Simulation extends JFrame implements ActionListener {
     ImageIcon button_resume_icon;
     ImageIcon button_speedup_icon;
     ImageIcon button_off_icon;
+
+    public void updatePointsDisplay() {
+        herbivorePointsLabel.setText("Herbivore Points: " + Animals.herbivorePoints);
+        predatorPointsLabel.setText("Predator Points: " + Animals.predatorPoints);
+    }
+
+    private JLabel herbivorePointsLabel;
+    private JLabel predatorPointsLabel;
 
     private int control_buttons_size = 45;
 
@@ -38,11 +47,6 @@ public class Frame_Simulation extends JFrame implements ActionListener {
 
             g.setColor(new Color(34, 139, 34));
             g.fillRect(0, 0, getWidth(), getHeight());
-
-            /*g.setColor(new Color(30, 144, 255));
-            int riverWidth = 80;
-            int x = getWidth() / 2 - riverWidth / 2;
-            g.fillRect(x, 0, riverWidth, getHeight());*/
         }
     }
 
@@ -85,6 +89,16 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         mappanel.setBounds(0, 0, screenSize.width, screenSize.height);
         simulation.setBounds(0, 0, screenSize.width, screenSize.height);
         simulation.setOpaque(false);
+
+        herbivorePointsLabel = new JLabel("Herbivore Points: 0");
+        herbivorePointsLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        herbivorePointsLabel.setForeground(Color.WHITE);
+        herbivorePointsLabel.setBounds(20, 20, 250, 30);
+
+        predatorPointsLabel = new JLabel("Predator Points: 0");
+        predatorPointsLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        predatorPointsLabel.setForeground(Color.WHITE);
+        predatorPointsLabel.setBounds(20, 60, 250, 30);
 
         /**
          * Simulation control buttons
@@ -130,6 +144,8 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         layers.add(button_resume, Integer.valueOf(3));
         layers.add(button_speedup, Integer.valueOf(3));
         layers.add(button_off, Integer.valueOf(3));
+        layers.add(herbivorePointsLabel, Integer.valueOf(4));
+        layers.add(predatorPointsLabel, Integer.valueOf(4));
 
         add(layers);
         pack();

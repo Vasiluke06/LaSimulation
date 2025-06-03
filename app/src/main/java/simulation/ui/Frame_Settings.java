@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.Objects;
+import java.io.IOException;
 
 public class Frame_Settings extends JFrame implements ActionListener {
     public static int numofherbivore;
@@ -164,44 +165,59 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == button_accept){
-            System.out.println("Click"); //actions after clicking the button
+        if (e.getSource() == button_accept) {
 
-            numofherbivore = Integer.parseInt(parameter_numofherbivore.getText());
-            System.out.println(numofherbivore);
+            try {
+                numofherbivore = Integer.parseInt(parameter_numofherbivore.getText());
+                if (numofherbivore < 1 || numofherbivore > 300) {
+                    throw new IllegalArgumentException("Number of herbivores must be between 0 and 300.");
+                }
 
-            numofpredator = Integer.parseInt(parameter_numofpredator.getText());
-            System.out.println(numofpredator);
+                numofpredator = Integer.parseInt(parameter_numofpredator.getText());
+                numofplants = Integer.parseInt(parameter_numofplants.getText());
+                if (numofplants < 1 || numofplants > 300) {
+                    throw new IllegalArgumentException("Number of plants must be between 0 and 300.");
+                }
 
-            numofplants = Integer.parseInt(parameter_numofplants.getText());
-            System.out.println(numofplants);
+                chanceofwildfire = Integer.parseInt(parameter_chanceofwildfire.getText());
+                if (chanceofwildfire < 0 || chanceofwildfire > 100) {
+                    throw new IllegalArgumentException("Chance of wildfire must be between 0 and 100.");
+                }
 
-            chanceofwildfire = Integer.parseInt(parameter_chanceofwildfire.getText());
-            System.out.println(chanceofwildfire);
+                chanceofdrowning = Integer.parseInt(parameter_chanceofdrowning.getText());
+                if (chanceofdrowning < 0 || chanceofdrowning > 100) {
+                    throw new IllegalArgumentException("Chance of drowning must be between 0 and 100.");
+                }
 
-            chanceofdrowning = Integer.parseInt(parameter_chanceofdrowning.getText());
-            System.out.println(chanceofdrowning);
+                chanceofhunters = Integer.parseInt(parameter_chanceofhunters.getText());
+                if (chanceofhunters < 0 || chanceofhunters > 100) {
+                    throw new IllegalArgumentException("Chance of hunters must be between 0 and 100.");
+                }
 
-            chanceofhunters = Integer.parseInt(parameter_chanceofhunters.getText());
-            System.out.println(chanceofhunters);
+                speedofsimulation = Integer.parseInt(parameter_speedofsimulation.getText());
+                if (speedofsimulation < 1 || speedofsimulation > 300) {
+                    throw new IllegalArgumentException("Speed of simulation must be between 0 and 300.");
+                }
+                pointsforvictory = Integer.parseInt(parameter_pointsforvictory.getText());
+                if (pointsforvictory < 0 || pointsforvictory > 10000) {
+                    throw new IllegalArgumentException("Points forvictory must be between 0 and 10000.");
+                }
 
-            speedofsimulation = Integer.parseInt(parameter_speedofsimulation.getText());
-            System.out.println(speedofsimulation);
+                button_accept.setEnabled(false);
+                button_fast_insert_of_parameters.setEnabled(false);
 
-            pointsforvictory = Integer.parseInt(parameter_pointsforvictory.getText());
-            System.out.println(pointsforvictory);
-            button_accept.setEnabled(false);
+                Frame_Simulation frame_simulation = new Frame_Simulation();
+                dispose();
 
-            button_fast_insert_of_parameters.setEnabled(false);
-
-
-            Frame_Simulation frame_simulation = new Frame_Simulation();
-
-            dispose();
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Please enter only numbers in all fields.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            } catch (IllegalArgumentException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Invalid Value", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
+
         if (e.getSource() == button_fast_insert_of_parameters){
-            System.out.println("Clickn");
 
             parameter_numofherbivore.setText("8");
 

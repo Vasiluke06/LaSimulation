@@ -5,8 +5,8 @@ import simulation.entities.River;
 import simulation.ui.Frame_Settings;
 
 public abstract class Animals {
-    protected static int herbivorePoints;
-    protected static int predatorPoints;
+    public static int herbivorePoints;
+    public static int predatorPoints;
     protected static int herbivoresKilled;
     protected static int predatorsKilled;
     private Position position;
