@@ -878,3 +878,69 @@ Herbivores killed during simulation: 16
 Predators killed during simulation: 0
 Wildfires: 0
 Hunters: 0
+
+Date and time of simulation: 2025-06-03T23:45:31.228565900
+Points for victory: 100
+Herbivore points: 106
+Predator points: 15
+Herbivores remain: 14
+Predators remain: 1
+Herbivores killed during simulation: 1
+Predators killed during simulation: 0
+Wildfires: 0
+Hunters: 0
+
+Date and time of simulation: 2025-06-03T23:47:06.267737600
+Points for victory: 100
+Herbivore points: 102
+Predator points: 0
+Herbivores remain: 17
+Predators remain: 1
+Herbivores killed during simulation: 0
+Predators killed during simulation: 0
+Wildfires: 0
+Hunters: 0
+
+Date and time of simulation: 2025-06-03T23:52:18.561650400
+Points for victory: 1000
+Herbivore points: 1006
+Predator points: 660
+Herbivores remain: 37
+Predators remain: 1
+Herbivores killed during simulation: 44
+Predators killed during simulation: 0
+Wildfires: 0
+Hunters: 0
+
+Date and time of simulation: 2025-06-03T23:55:20.851554300
+Points for victory: 1000
+Herbivore points: 226
+Predator points: 345
+Herbivores remain: 0
+Predators remain: 1
+Herbivores killed during simulation: 23
+Predators killed during simulation: 0
+Wildfires: 0
+Hunters: 0
+
+Date and time of simulation: 2025-06-04T00:10:00.983590400
+Points for victory: 1000
+Herbivore points: 170
+Predator points: 90
+Herbivores remain: 11
+Predators remain: 0
+Herbivores killed during simulation: 8
+Predators killed during simulation: 0
+Wildfires: 0
+Hunters: 0
+
+Date and time of simulation: 2025-06-04T00:11:00.864718400
+Points for victory: 1000
+Herbivore points: 168
+Predator points: 75
+Herbivores remain: 12
+Predators remain: 0
+Herbivores killed during simulation: 8
+Predators killed during simulation: 1
+Wildfires: 0
+Hunters: 0

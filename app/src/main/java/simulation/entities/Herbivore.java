@@ -190,5 +190,10 @@ public class Herbivore extends Animals implements Movable {
             Herbivore.newHerbivore(pos.getX(), pos.getY());
         };
     }
+    @Override
+    public void drown(){
+        Simulation.herbivore.remove(this);
+        herbivoresKilled++;
+    }
 
 }

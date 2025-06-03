@@ -8,6 +8,7 @@ public abstract class Animals {
     protected static int herbivorePoints;
     protected static int predatorPoints;
     protected static int herbivoresKilled;
+    protected static int predatorsKilled;
     private Position position;
     private static final int MAX_X = Simulation.SCREEN_WIDTH - 32;
     private static final int MAX_Y = Simulation.SCREEN_HEIGHT - 32;
@@ -81,10 +82,18 @@ public abstract class Animals {
             dy += stepSize;
             dx /= 2;
             dy /= 2;
+
+            int roll = Simulation.random.nextInt(100);
+            if(roll < Frame_Settings.chanceofdrowning){
+                drown();
+            }
         }
         return new Position(myPos.getX() + dx, myPos.getY() + dy);
 
     }
+
+    public void drown(){};
+
 
     protected Position Move(int stepSize) {
         return new Position(this.position.getX() + (int) (Math.random() * 10) * stepSize, this.position.getY() + (int) (Math.random() * 10) * stepSize);

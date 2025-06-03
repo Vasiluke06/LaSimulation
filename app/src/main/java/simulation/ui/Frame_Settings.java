@@ -29,7 +29,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
     JTextField parameter_numofpredator;
     JTextField parameter_numofplants;
     JTextField parameter_chanceofwildfire;
-    JTextField parameter_chanceofdrowing;
+    JTextField parameter_chanceofdrowning;
     JTextField parameter_chanceofhunters;
     JTextField parameter_pointsforvictory;
     JTextField parameter_speedofsimulation;
@@ -52,52 +52,57 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
         this.setLayout(null);
 
-        JLabel label_numofherbivore = new JLabel(); //creating a label "Number of hebivore"
-        label_numofherbivore.setText("Number of herbivore");
-        label_numofherbivore.setBounds(25, 160, 200, 20);
+        /*
+            Labels for input fields
+         */
 
-        JLabel label_numofpredator = new JLabel(); //creating a label "Number of predator"
-        label_numofpredator.setText("Number of predator");
-        label_numofpredator.setBounds(25, 210, 200, 20);
-
-        JLabel label_numofplants = new JLabel(); //creating a label "Number of plants"
+        //creating a label "Number of herbivores"
+        JLabel label_numofherbivore = new JLabel();
+        label_numofherbivore.setText("Number of herbivores");
+        label_numofherbivore.setBounds(60, 160, 200, 20);
+        //creating a label "Number of predators"
+        JLabel label_numofpredator = new JLabel();
+        label_numofpredator.setText("Number of predators");
+        label_numofpredator.setBounds(60, 210, 200, 20);
+        //creating a label "Number of plants"
+        JLabel label_numofplants = new JLabel();
         label_numofplants.setText("Number of plants");
-        label_numofplants.setBounds(25, 260, 200, 20);
-
-        JLabel label_chanceofwildfire = new JLabel(); //creating a label "Chance of wildfire"
+        label_numofplants.setBounds(60, 260, 200, 20);
+        //creating a label "Chance of wildfire"
+        JLabel label_chanceofwildfire = new JLabel();
         label_chanceofwildfire.setText("Chance of wildfire");
-        label_chanceofwildfire.setBounds(25, 310, 200, 20);
-
-        JLabel label_chanceofdrowning = new JLabel(); //creating a label "Chance of drowning in river"
+        label_chanceofwildfire.setBounds(60, 310, 200, 20);
+        //creating a label "Chance of drowning in river"
+        JLabel label_chanceofdrowning = new JLabel();
         label_chanceofdrowning.setText("Chance of drowning in the river");
-        label_chanceofdrowning.setBounds(25, 360, 200, 20);
-
-        JLabel label_chanceofhunters = new JLabel(); //creating a label "Chance of hunters to appear"
+        label_chanceofdrowning.setBounds(60, 360, 200, 20);
+        //creating a label "Chance of hunters to appear"
+        JLabel label_chanceofhunters = new JLabel();
         label_chanceofhunters.setText("Chance of hunters appearing");
-        label_chanceofhunters.setBounds(25, 410, 200, 20);
-
-        JLabel label_pointsforvictory = new JLabel(); //creating a label "Points for victory"
+        label_chanceofhunters.setBounds(60, 410, 200, 20);
+        //creating a label "Points for victory"
+        JLabel label_pointsforvictory = new JLabel();
         label_pointsforvictory.setText("Points for victory");
-        label_pointsforvictory.setBounds(25, 460, 200, 20);
-
-        JLabel label_speedofsimulation = new JLabel(); //creating a label "Speed of simulation"
-        label_speedofsimulation.setText("Speed of simulation (ticks per second)");
-        label_speedofsimulation.setBounds(25, 510, 200, 20);
-
+        label_pointsforvictory.setBounds(60, 460, 200, 20);
+        //creating a label "Speed of simulation"
+        JLabel label_speedofsimulation = new JLabel();
+        label_speedofsimulation.setText("Simulation speed (tps)");
+        label_speedofsimulation.setBounds(60, 510, 200, 20);
+        //creating the title banner
         ImageIcon titleIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/title.png")));
         JLabel titleLabel = new JLabel(titleIcon);
         titleLabel.setBounds(((settingsWidth - 558) / 2), 20, 558, 128);
 
-        button_accept = new JButton(); //creating a button "Accept"
-        button_accept.setBounds(settingsWidth / 5,600,125,50);
+        //creating a button "Accept"
+        button_accept = new JButton();
+        button_accept.setBounds(140,575,125,50);
         this.add(button_accept);
-
         button_accept.addActionListener(this);
         button_accept.setText("Accept");
         button_accept.setFocusable(false);
-
-        button_fast_insert_of_parameters = new JButton(); //creating a button "Recommended fast insert"
-        button_fast_insert_of_parameters.setBounds(settingsWidth /2,600,125,50);
+        //creating a button "Preset"
+        button_fast_insert_of_parameters = new JButton();
+        button_fast_insert_of_parameters.setBounds(settingsWidth - 265,575,125,50);
         this.add(button_fast_insert_of_parameters);
         button_fast_insert_of_parameters.addActionListener(this);
         button_fast_insert_of_parameters.setText("Preset");
@@ -112,39 +117,43 @@ public class Frame_Settings extends JFrame implements ActionListener {
         this.add(label_pointsforvictory);
         this.add(label_speedofsimulation);
         this.add(titleLabel);
-
-        parameter_numofherbivore = new JTextField(); //creating a text field
+        /*
+            Creating input fields
+         */
+        //Number of herbivores field
+        parameter_numofherbivore = new JTextField();
         this.add(parameter_numofherbivore);
-        parameter_numofherbivore.setBounds(350, 160, 100, 25);
-
+        parameter_numofherbivore.setBounds(400, 160, 100, 25);
+        //Number of predators field
         parameter_numofpredator = new JTextField(); //creating a text field
         this.add(parameter_numofpredator);
-        parameter_numofpredator.setBounds(350, 210, 100, 25);
-
+        parameter_numofpredator.setBounds(400, 210, 100, 25);
+        //Number of plants field
         parameter_numofplants = new JTextField(); //creating a text field
         this.add(parameter_numofplants);
-        parameter_numofplants.setBounds(350, 260, 100, 25);
-
+        parameter_numofplants.setBounds(400, 260, 100, 25);
+        //Chance of a wildfire field
         parameter_chanceofwildfire = new JTextField(); //creating a text field
         this.add(parameter_chanceofwildfire);
-        parameter_chanceofwildfire.setBounds(350, 310, 100, 25);
-
-        parameter_chanceofdrowing = new JTextField(); //creating a text field
-        this.add(parameter_chanceofdrowing);
-        parameter_chanceofdrowing.setBounds(350, 360, 100, 25);
-
+        parameter_chanceofwildfire.setBounds(400, 310, 100, 25);
+        //Chance of drowning field
+        parameter_chanceofdrowning = new JTextField(); //creating a text field
+        this.add(parameter_chanceofdrowning);
+        parameter_chanceofdrowning.setBounds(400, 360, 100, 25);
+        //Chance of hunters field
         parameter_chanceofhunters = new JTextField(); //creating a text field
         this.add(parameter_chanceofhunters);
-        parameter_chanceofhunters.setBounds(350, 410, 100, 25);
-
+        parameter_chanceofhunters.setBounds(400, 410, 100, 25);
+        //Points for victory field
         parameter_pointsforvictory = new JTextField(); //creating a text field
         this.add(parameter_pointsforvictory);
-        parameter_pointsforvictory.setBounds(350, 460, 100, 25);
-
+        parameter_pointsforvictory.setBounds(400, 460, 100, 25);
+        //Simulation speed field
         parameter_speedofsimulation = new JTextField(); //creating a text field
         this.add(parameter_speedofsimulation);
-        parameter_speedofsimulation.setBounds(350, 510, 100, 25);
+        parameter_speedofsimulation.setBounds(400, 510, 100, 25);
 
+        //Changing the icon of the settings window
         URL iconURL = getClass().getResource("/images/icon.png");
         ImageIcon icon = new ImageIcon(iconURL);
         this.setIconImage(icon.getImage());
@@ -170,7 +179,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
             chanceofwildfire = Integer.parseInt(parameter_chanceofwildfire.getText());
             System.out.println(chanceofwildfire);
 
-            chanceofdrowning = Integer.parseInt(parameter_chanceofdrowing.getText());
+            chanceofdrowning = Integer.parseInt(parameter_chanceofdrowning.getText());
             System.out.println(chanceofdrowning);
 
             chanceofhunters = Integer.parseInt(parameter_chanceofhunters.getText());
@@ -192,7 +201,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == button_fast_insert_of_parameters){
-            System.out.println("Clickn"); //actions after clicking the button
+            System.out.println("Clickn");
 
             parameter_numofherbivore.setText("8");
 
@@ -202,13 +211,15 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_chanceofwildfire.setText("0");
 
-            parameter_chanceofdrowing.setText("0");
+            parameter_chanceofdrowning.setText("0");
 
             parameter_chanceofhunters.setText("0");
 
+            parameter_pointsforvictory.setText("1000");
+
             parameter_speedofsimulation.setText("1");
 
-            parameter_pointsforvictory.setText("1000");
+
 
             //button_fast_insert_of_parameters.setEnabled(false);
 

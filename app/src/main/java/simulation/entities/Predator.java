@@ -11,7 +11,7 @@ import java.awt.*;
 public class Predator extends Animals implements Movable {
     private static final int STEP_SIZE = 12;
     private static final int POINTS_FOR_EATING = 15;
-    private static int attackCooldown = 10;
+    private static int attackCooldown = 15;
 
 
 
@@ -26,7 +26,7 @@ public class Predator extends Animals implements Movable {
     /*Implementation of Movable interface and movement logic*/
     @Override
     public void nextMove() {
-        if (attackCooldown < 10) {
+        if (attackCooldown < 15) {
             attackCooldown++;
             Move(STEP_SIZE);
         }
@@ -35,7 +35,7 @@ public class Predator extends Animals implements Movable {
         if (target != null) {
             this.setPosition(moveToward(target, STEP_SIZE, this.getPosition()));
             checkForBorder(STEP_SIZE);
-            if(attackCooldown >= 10) {
+            if(attackCooldown >= 15) {
                 deleteHerbivorePredator(target);
                 attackCooldown = 0;
             }
@@ -122,6 +122,10 @@ public class Predator extends Animals implements Movable {
             Predator.newPredator(pos.getX(), pos.getY());
         };
     }
-
+    @Override
+    public void drown(){
+        Simulation.predator.remove(this);
+        predatorsKilled++;
+    }
 }
 

@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.Objects;
 
 import simulation.Main;
 import simulation.core.Simulation;
@@ -14,11 +15,14 @@ public class Frame_Simulation extends JFrame implements ActionListener {
     JButton button_pause;
     JButton button_resume;
     JButton button_speedup;
+    JButton button_off;
 
     ImageIcon button_slowdown_icon;
     ImageIcon button_pause_icon;
     ImageIcon button_resume_icon;
     ImageIcon button_speedup_icon;
+    ImageIcon button_off_icon;
+
     private int control_buttons_size = 45;
 
     public static Frame_Simulation instance;
@@ -69,11 +73,13 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         button_pause = new JButton();
         button_resume = new JButton();
         button_speedup = new JButton();
+        button_off = new JButton();
 
-        button_slowdown_icon = new ImageIcon(getClass().getResource("/images/slowdown_button.png"));
-        button_pause_icon = new ImageIcon(getClass().getResource("/images/pause_button.png"));
-        button_resume_icon = new ImageIcon(getClass().getResource("/images/resume_button.png"));
-        button_speedup_icon = new ImageIcon(getClass().getResource("/images/speedup_button.png"));
+        button_slowdown_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/slowdown_button.png")));
+        button_pause_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/pause_button.png")));
+        button_resume_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/resume_button.png")));
+        button_speedup_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/speedup_button.png")));
+        button_off_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/power_button.png")));
 
 
         mappanel.setBounds(0, 0, screenSize.width, screenSize.height);
@@ -83,10 +89,11 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         /**
          * Simulation control buttons
          */
-        button_slowdown.setBounds(screenSize.width - 185, screenSize.height - 100, control_buttons_size,control_buttons_size);
-        button_pause.setBounds(screenSize.width - 140,screenSize.height - 100,control_buttons_size,control_buttons_size);
-        button_resume.setBounds(screenSize.width - 95,screenSize.height - 100,control_buttons_size,control_buttons_size);
-        button_speedup.setBounds(screenSize.width - 50,screenSize.height - 100,control_buttons_size,control_buttons_size);
+        button_off.setBounds(screenSize.width - 230, screenSize.height - 100, control_buttons_size, control_buttons_size);
+        button_pause.setBounds(screenSize.width - 185,screenSize.height - 100, control_buttons_size, control_buttons_size);
+        button_resume.setBounds(screenSize.width - 140,screenSize.height - 100, control_buttons_size, control_buttons_size);
+        button_slowdown.setBounds(screenSize.width - 95, screenSize.height - 100, control_buttons_size, control_buttons_size);
+        button_speedup.setBounds(screenSize.width - 50,screenSize.height - 100, control_buttons_size, control_buttons_size);
 
         button_slowdown.addActionListener(this);
         button_slowdown.setIcon(button_slowdown_icon);
@@ -104,12 +111,16 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         button_speedup.setIcon(button_speedup_icon);
         button_speedup.setFocusable(false);
 
+        button_off.addActionListener(this);
+        button_off.setIcon(button_off_icon);
+        button_off.setFocusable(false);
+
         JLayeredPane layers = new JLayeredPane();
         layers.setLayout(null);
         //layers.setPreferredSize(new Dimension(1100, 1000));
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setUndecorated(false); // removes window borders and title bar
+        this.setUndecorated(true); // removes window borders and title bar
         layers.setPreferredSize(screenSize);
 
         layers.add(mappanel, Integer.valueOf(0));
@@ -118,6 +129,7 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         layers.add(button_pause, Integer.valueOf(3));
         layers.add(button_resume, Integer.valueOf(3));
         layers.add(button_speedup, Integer.valueOf(3));
+        layers.add(button_off, Integer.valueOf(3));
 
         add(layers);
         pack();
@@ -170,5 +182,15 @@ public class Frame_Simulation extends JFrame implements ActionListener {
 
             System.out.println(Frame_Settings.speedofsimulation);
         }
+
+        if (e.getSource() == button_off){
+            System.out.println("Off"); //actions after clicking the button
+
+            this.dispose();
+
+            Simulation.simulationTime.stop();
+
+            System.exit(0);
     }
+}
 }
