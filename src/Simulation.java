@@ -13,7 +13,7 @@ import javax.swing.*;
 
 public class Simulation extends JPanel implements ActionListener {
     public static ArrayList<Herbivore> herbivore;
-    public ArrayList<Predator> predator;
+    public static ArrayList<Predator> predator;
     public static ArrayList<Plants> plants;
     public static int kill_count_herbivore;
     public int kill_count_predator;
@@ -28,7 +28,7 @@ public class Simulation extends JPanel implements ActionListener {
     public static Image herbivore_img;
     public static Image predator_img;
     public static Image plant_img;
-    public Image hunters_img;
+    public static Image hunters_img;
 
     public static Random random;
 
@@ -108,9 +108,9 @@ public class Simulation extends JPanel implements ActionListener {
         g.drawImage(herbivore_img, x_pos, y_pos, 32, 32, this);
     }*/
 
-    public void draw_predator(Graphics g){
-
-    }
+//    public void draw_predator(Graphics g){
+///
+//    }
 
     /*public void draw_plants(Graphics g){
         g.drawImage(plant_img, x_pos, y_pos, 32, 32, this);
@@ -137,6 +137,10 @@ public class Simulation extends JPanel implements ActionListener {
             for (int i = 0; i < plants.size(); i++) {
                 plants.get(i).draw_plants(g);
             }
+        }
+
+        if (Hunters.hunter != null){
+            Hunters.hunter.draw_hunter(g);
         }
 
     }
@@ -188,6 +192,14 @@ public class Simulation extends JPanel implements ActionListener {
 
         Plants.spawn_new_plant();
 
+        if(Hunters.hunter == null){
+            if (random.nextInt(100) < Frame_Settings.chanceofhunters){
+                Hunters.create_hunter();
+            }
+        } else if (Hunters.hunter != null){
+            Hunters.move_hunter();
+        }
+
         simulation_time.setDelay(1000/Frame_Settings.speedofsimulation);
 
         //
@@ -229,7 +241,7 @@ public class Simulation extends JPanel implements ActionListener {
                 fw.write(kill_count_herbivore + ",");
                 fw.write(kill_count_predator + ",");
                 fw.write(wildfire_count + ",");
-                fw.write(hunters_count + "\n");
+                fw.write(Hunters.hunters_counter + "\n");
                 fw.close();
             } catch (IOException e){
                 System.out.println("Error occured during writing results to the file");
