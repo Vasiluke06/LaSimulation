@@ -3,6 +3,8 @@ package simulation.core;
 import java.awt.*;
 import simulation.entities.River;
 import simulation.core.Simulation;
+import simulation.ui.Frame_Simulation;
+
 import java.util.Timer;
 
 public class Plants {
@@ -38,11 +40,14 @@ public class Plants {
 */
     public static void spawn_new_plant(){
         if (spawnTimer >= 10){
-            Position pos = new Position(Simulation.random.nextInt(1068), Simulation.random.nextInt(832));
-            while (pos.getX() >= River.RIVER_X - 32 &&
-                    pos.getX() <= River.RIVER_X + River.RIVER_WIDTH + 32) {
-                pos.setX(Simulation.random.nextInt(1068));
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT));
+
+            // Regenerate position while it's on or too close to the river
+            while (River.isOnRiver(pos.getX(), pos.getY())) {
+                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH));
+                pos.setY(Simulation.random.nextInt(Simulation.SCREEN_HEIGHT));
             }
+
             new_plant(pos.getX(), pos.getY());
 
             spawnTimer = 0;
@@ -60,17 +65,17 @@ public class Plants {
      * Method used for initializing the herbivores
      */
 
-    public static void initPlant(int numofplants){
-        for (int i = 0; i < numofplants; i++){
-            int xPos = Simulation.random.nextInt(1068);
-            int yPos = Simulation.random.nextInt(968);
+    public static void initPlant(int numofplants) {
+        for (int i = 0; i < numofplants; i++) {
+            int xPos = Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32);
+            int yPos = Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32);
 
-            for (; xPos >= (River.RIVER_X - 32) &&
-                    xPos <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
-                xPos = Simulation.random.nextInt(1068);
+            while (River.isOnRiver(xPos, yPos)) {
+                xPos = Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32);
+                yPos = Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32);
             }
 
             Plants.new_plant(xPos, yPos);
-        };
+        }
     }
 }

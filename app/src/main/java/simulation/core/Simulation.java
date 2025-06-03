@@ -21,6 +21,9 @@ import javax.swing.*;
 
 public class Simulation extends JPanel implements ActionListener {
 
+    public static int SCREEN_WIDTH;
+    public static int SCREEN_HEIGHT;
+
 
     private Image loadImage(String path) {
         URL resource = getClass().getClassLoader().getResource(path);
@@ -62,7 +65,7 @@ public class Simulation extends JPanel implements ActionListener {
 
         random = new Random();
 
-        init_start();
+        addNotify();
 
         simulationTime = new Timer(1000/Frame_Settings.speedofsimulation, this);
         simulationTime.start();
@@ -81,10 +84,26 @@ public class Simulation extends JPanel implements ActionListener {
 
     }
 
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        Simulation.SCREEN_WIDTH = getWidth();
+        Simulation.SCREEN_HEIGHT = getHeight();
 
+        SwingUtilities.invokeLater(() -> {
+            init_start();
+        });
+    }
 
-    public void paintComponent(Graphics g){                                                             // main graphic method
+    @Override
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        // Store correct screen size at runtime
+        Rectangle bounds = g.getClipBounds();
+        Simulation.SCREEN_WIDTH = bounds.width;
+        Simulation.SCREEN_HEIGHT = bounds.height;
+
         drawing(g);
     }
 
@@ -93,7 +112,7 @@ public class Simulation extends JPanel implements ActionListener {
     public void images() {
         herbivoreImg = loadImage("images/deer female calciumtrice (1).png");
         predatorImg = loadImage("images/wolf (1).png");
-        //huntersImg = loadImage("images/hunters_icon.png"); // Replace with the actual file name
+        //huntersImg = loadImage("images/hunters_icon.png");
         plantImg = loadImage("images/pixel-grid-blueberries_2236497 (1).png");
     }
 

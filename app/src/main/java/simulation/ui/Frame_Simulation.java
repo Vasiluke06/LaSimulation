@@ -19,6 +19,7 @@ public class Frame_Simulation extends JFrame implements ActionListener {
     ImageIcon button_pause_icon;
     ImageIcon button_resume_icon;
     ImageIcon button_speedup_icon;
+    private int control_buttons_size = 45;
 
     public static Frame_Simulation instance;
 
@@ -40,12 +41,15 @@ public class Frame_Simulation extends JFrame implements ActionListener {
             g.fillRect(x, 0, riverWidth, getHeight());*/
         }
     }
+
     Frame_Simulation(){
         Frame_Simulation.instance = this;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(screenSize);// sets JFrame to screen size
 
         //this.setVisible(true); //creating a frame
-        this.setSize(1100, 1000);
-        this.setTitle("LaSimulation (simulation)");
+        this.setSize(screenSize.width, screenSize.height);
+        this.setTitle("Forest Simulation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
@@ -72,16 +76,17 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         button_speedup_icon = new ImageIcon(getClass().getResource("/images/speedup_button.png"));
 
 
-
-        //Simulation simulation = Main.simulation;
-
-        mappanel.setBounds(0, 0, 1100, 864);
-        simulation.setBounds(0, 0, 1100, 864);
+        mappanel.setBounds(0, 0, screenSize.width, screenSize.height);
+        simulation.setBounds(0, 0, screenSize.width, screenSize.height);
         simulation.setOpaque(false);
-        button_slowdown.setBounds(920,665,45,45);
-        button_pause.setBounds(965,665,45,45);
-        button_resume.setBounds(1010,665,45,45);
-        button_speedup.setBounds(1055,665,45,45);
+
+        /**
+         * Simulation control buttons
+         */
+        button_slowdown.setBounds(screenSize.width - 185, screenSize.height - 100, control_buttons_size,control_buttons_size);
+        button_pause.setBounds(screenSize.width - 140,screenSize.height - 100,control_buttons_size,control_buttons_size);
+        button_resume.setBounds(screenSize.width - 95,screenSize.height - 100,control_buttons_size,control_buttons_size);
+        button_speedup.setBounds(screenSize.width - 50,screenSize.height - 100,control_buttons_size,control_buttons_size);
 
         button_slowdown.addActionListener(this);
         button_slowdown.setIcon(button_slowdown_icon);
@@ -102,10 +107,9 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         JLayeredPane layers = new JLayeredPane();
         layers.setLayout(null);
         //layers.setPreferredSize(new Dimension(1100, 1000));
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setSize(screenSize); // set JFrame to screen size
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // optional: maximize the window
-        this.setUndecorated(true); // optional: remove window borders and title bar
+
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setUndecorated(false); // removes window borders and title bar
         layers.setPreferredSize(screenSize);
 
         layers.add(mappanel, Integer.valueOf(0));
@@ -123,6 +127,10 @@ public class Frame_Simulation extends JFrame implements ActionListener {
 
         this.setVisible(true);
 
+        URL iconURL = getClass().getResource("/images/icon.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
+
 /*        button_slowdown.setToolTipText("Slow Down");
         button_pause.setToolTipText("Pause");
         button_resume.setToolTipText("Resume");
@@ -137,7 +145,7 @@ public class Frame_Simulation extends JFrame implements ActionListener {
             System.out.println("Click"); //actions after clicking the button
 
             if(Frame_Settings.speedofsimulation > 1) {
-                Frame_Settings.speedofsimulation -= 1;
+                Frame_Settings.speedofsimulation -= 5;
             }
 
             System.out.println(Frame_Settings.speedofsimulation);
@@ -158,7 +166,7 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         if (e.getSource() == button_speedup){
             System.out.println("Click"); //actions after clicking the button
 
-            Frame_Settings.speedofsimulation += 1;
+            Frame_Settings.speedofsimulation += 5;
 
             System.out.println(Frame_Settings.speedofsimulation);
         }

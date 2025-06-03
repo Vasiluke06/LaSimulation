@@ -5,22 +5,10 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+import java.util.Objects;
 
 public class Frame_Settings extends JFrame implements ActionListener {
-    JButton button_accept;
-
-    JButton button_fast_insert_of_parameters;
-
-    JTextField parameter_numofherbivore;
-    JTextField parameter_numofpredator;
-    JTextField parameter_numofplants;
-    JTextField parameter_chanceofwildfire;
-
-    JTextField parameter_chanceofdrowing;
-    JTextField parameter_chanceofhunters;
-    JTextField parameter_pointsforvictory;
-    JTextField parameter_speedofsimulation;
-
     public static int numofherbivore;
     public static int numofpredator;
     public static int numofplants;
@@ -29,11 +17,28 @@ public class Frame_Settings extends JFrame implements ActionListener {
     public static int chanceofhunters;
     public static int pointsforvictory;
     public static int speedofsimulation;
+    private final int settingsHeight = 700;
+    private final int settingsWidth = 600;
+
+
+    JButton button_accept;
+    JButton button_fast_insert_of_parameters;
+
+    JTextField parameter_numofherbivore;
+    JTextField parameter_numofpredator;
+    JTextField parameter_numofplants;
+    JTextField parameter_chanceofwildfire;
+    JTextField parameter_chanceofdrowing;
+    JTextField parameter_chanceofhunters;
+    JTextField parameter_pointsforvictory;
+    JTextField parameter_speedofsimulation;
+
     public Frame_Settings(){
 
-        this.setVisible(true); //creating a frame
-        this.setSize(550, 500);
-        this.setTitle("LaSimulation (settings)");
+        this.setLocation(450, 50);
+
+        this.setSize(settingsWidth, settingsHeight);
+        this.setTitle("Settings");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
@@ -44,52 +49,57 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);*/
 
+        this.setLayout(null);
+
         JLabel label_numofherbivore = new JLabel(); //creating a label "Number of hebivore"
         label_numofherbivore.setText("Number of herbivore");
-        label_numofherbivore.setBounds(25, 50, 200, 20);
+        label_numofherbivore.setBounds(25, 160, 200, 20);
 
         JLabel label_numofpredator = new JLabel(); //creating a label "Number of predator"
         label_numofpredator.setText("Number of predator");
-        label_numofpredator.setBounds(25, 100, 200, 20);
+        label_numofpredator.setBounds(25, 210, 200, 20);
 
         JLabel label_numofplants = new JLabel(); //creating a label "Number of plants"
         label_numofplants.setText("Number of plants");
-        label_numofplants.setBounds(25, 150, 200, 20);
+        label_numofplants.setBounds(25, 260, 200, 20);
 
         JLabel label_chanceofwildfire = new JLabel(); //creating a label "Chance of wildfire"
         label_chanceofwildfire.setText("Chance of wildfire");
-        label_chanceofwildfire.setBounds(25, 200, 200, 20);
+        label_chanceofwildfire.setBounds(25, 310, 200, 20);
 
         JLabel label_chanceofdrowning = new JLabel(); //creating a label "Chance of drowning in river"
         label_chanceofdrowning.setText("Chance of drowning in the river");
-        label_chanceofdrowning.setBounds(25, 250, 200, 20);
+        label_chanceofdrowning.setBounds(25, 360, 200, 20);
 
         JLabel label_chanceofhunters = new JLabel(); //creating a label "Chance of hunters to appear"
         label_chanceofhunters.setText("Chance of hunters appearing");
-        label_chanceofhunters.setBounds(25, 300, 200, 20);
+        label_chanceofhunters.setBounds(25, 410, 200, 20);
 
         JLabel label_pointsforvictory = new JLabel(); //creating a label "Points for victory"
         label_pointsforvictory.setText("Points for victory");
-        label_pointsforvictory.setBounds(25, 350, 200, 20);
+        label_pointsforvictory.setBounds(25, 460, 200, 20);
 
         JLabel label_speedofsimulation = new JLabel(); //creating a label "Speed of simulation"
         label_speedofsimulation.setText("Speed of simulation (ticks per second)");
-        label_speedofsimulation.setBounds(25, 400, 200, 20);
+        label_speedofsimulation.setBounds(25, 510, 200, 20);
+
+        ImageIcon titleIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/title.png")));
+        JLabel titleLabel = new JLabel(titleIcon);
+        titleLabel.setBounds(((settingsWidth - 558) / 2), 20, 558, 128);
 
         button_accept = new JButton(); //creating a button "Accept"
-        button_accept.setBounds(405,400,125,50);
+        button_accept.setBounds(settingsWidth / 5,600,125,50);
         this.add(button_accept);
-        this.setLayout(null);
+
         button_accept.addActionListener(this);
         button_accept.setText("Accept");
         button_accept.setFocusable(false);
 
         button_fast_insert_of_parameters = new JButton(); //creating a button "Recommended fast insert"
-        button_fast_insert_of_parameters.setBounds(405,325,125,50);
+        button_fast_insert_of_parameters.setBounds(settingsWidth /2,600,125,50);
         this.add(button_fast_insert_of_parameters);
-        this.setLayout(null);
         button_fast_insert_of_parameters.addActionListener(this);
-        button_fast_insert_of_parameters.setText("Recommended");
+        button_fast_insert_of_parameters.setText("Preset");
         button_fast_insert_of_parameters.setFocusable(false);
 
         this.add(label_numofherbivore);
@@ -100,38 +110,46 @@ public class Frame_Settings extends JFrame implements ActionListener {
         this.add(label_chanceofhunters);
         this.add(label_pointsforvictory);
         this.add(label_speedofsimulation);
+        this.add(titleLabel);
 
         parameter_numofherbivore = new JTextField(); //creating a text field
         this.add(parameter_numofherbivore);
-        parameter_numofherbivore.setBounds(300, 50, 100, 25);
+        parameter_numofherbivore.setBounds(350, 160, 100, 25);
 
         parameter_numofpredator = new JTextField(); //creating a text field
         this.add(parameter_numofpredator);
-        parameter_numofpredator.setBounds(300, 100, 100, 25);
+        parameter_numofpredator.setBounds(350, 210, 100, 25);
 
         parameter_numofplants = new JTextField(); //creating a text field
         this.add(parameter_numofplants);
-        parameter_numofplants.setBounds(300, 150, 100, 25);
+        parameter_numofplants.setBounds(350, 260, 100, 25);
 
         parameter_chanceofwildfire = new JTextField(); //creating a text field
         this.add(parameter_chanceofwildfire);
-        parameter_chanceofwildfire.setBounds(300, 200, 100, 25);
+        parameter_chanceofwildfire.setBounds(350, 310, 100, 25);
 
         parameter_chanceofdrowing = new JTextField(); //creating a text field
         this.add(parameter_chanceofdrowing);
-        parameter_chanceofdrowing.setBounds(300, 250, 100, 25);
+        parameter_chanceofdrowing.setBounds(350, 360, 100, 25);
 
         parameter_chanceofhunters = new JTextField(); //creating a text field
         this.add(parameter_chanceofhunters);
-        parameter_chanceofhunters.setBounds(300, 300, 100, 25);
+        parameter_chanceofhunters.setBounds(350, 410, 100, 25);
 
         parameter_pointsforvictory = new JTextField(); //creating a text field
         this.add(parameter_pointsforvictory);
-        parameter_pointsforvictory.setBounds(300, 350, 100, 25);
+        parameter_pointsforvictory.setBounds(350, 460, 100, 25);
 
         parameter_speedofsimulation = new JTextField(); //creating a text field
         this.add(parameter_speedofsimulation);
-        parameter_speedofsimulation.setBounds(300, 400, 100, 25);
+        parameter_speedofsimulation.setBounds(350, 510, 100, 25);
+
+        URL iconURL = getClass().getResource("/images/icon.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
+
+        this.setVisible(true); //creating a frame
+
     }
 
     @Override

@@ -2,6 +2,7 @@ package simulation.core;
 
 import simulation.entities.Herbivore;
 import simulation.entities.River;
+import simulation.ui.Frame_Settings;
 
 public abstract class Animals {
     protected static int herbivorePoints;
@@ -76,7 +77,7 @@ public abstract class Animals {
         int dy = Integer.compare(targetPos.getY(), myPos.getY()) * stepSize;
 
         if (River.isOnRiver(myPos.getX(), myPos.getY())) {
-            dy += 1;
+            dy += stepSize / 3;
             dx /= 2;
             dy /= 2;
         }

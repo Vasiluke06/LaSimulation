@@ -1,6 +1,9 @@
 package simulation.entities;
 
 import simulation.core.*;
+import java.util.Random;
+import simulation.ui.Frame_Settings;
+import simulation.ui.Frame_Simulation;
 
 import java.awt.*;
 
@@ -11,10 +14,10 @@ public class Herbivore extends Animals implements Movable {
     private final int POINTS_FOR_REPRODUCTION = 6;
     private final int POINTS_FOR_EATING = 8;
 
-    private boolean isFed = true;  /* **********Only for testing, should be changed to FALSE or Randomized********/
+    private boolean isFed = Math.random() < 0.5;  /* **********Only for testing, should be changed to FALSE or Randomized********/
     private Herbivore mate;
     /**
-     * Getters, setters and constructors
+     * Getters, setters, and constructors
      */
     public boolean isFed() {
         return isFed;
@@ -171,11 +174,10 @@ public class Herbivore extends Animals implements Movable {
 
     public static void initHerbivore(int numofherbivores){
         for (int i = 0; i < numofherbivores; i++){
-            Position pos = new Position(Simulation.random.nextInt(1068), Simulation.random.nextInt(968));
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
 
-            for (; pos.getX() >= (River.RIVER_X - 32) &&
-                    pos.getX() <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
-                pos.setX(Simulation.random.nextInt(1068));
+            for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
+                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32));
             }
 
             Herbivore.newHerbivore(pos.getX(), pos.getY());

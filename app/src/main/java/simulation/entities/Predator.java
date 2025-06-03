@@ -4,6 +4,8 @@ import simulation.core.Animals;
 import simulation.core.Movable;
 import simulation.core.Position;
 import simulation.core.Simulation;
+import simulation.ui.Frame_Simulation;
+
 import java.awt.*;
 
 public class Predator extends Animals implements Movable {
@@ -100,11 +102,10 @@ public class Predator extends Animals implements Movable {
      */
     public static void initPredator(int numofpredators){
         for (int i = 0; i < numofpredators; i++){
-            Position pos = new Position(Simulation.random.nextInt(1068), Simulation.random.nextInt(968));
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
 
-            for (; pos.getX() >= (River.RIVER_X - 32) &&
-                    pos.getX() <= (River.RIVER_X + River.RIVER_WIDTH + 32); ) {
-                pos.setX(Simulation.random.nextInt(1068));
+            for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
+                pos.setX(Simulation.random.nextInt(Frame_Simulation.WIDTH - 32));
             }
 
             Predator.newPredator(pos.getX(), pos.getY());
