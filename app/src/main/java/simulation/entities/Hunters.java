@@ -33,7 +33,7 @@ public class Hunters {
         if (hunter == null) {
             in_which_direction = Simulation.random.nextInt(0, 2);
             if (in_which_direction == 0) {
-                x_pos = Simulation.random.nextInt(1100);
+                x_pos = Simulation.random.nextInt(SCREEN_WIDTH - 64);
 
                 //Position pos = new Position(Simulation.random.nextInt(SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(SCREEN_HEIGHT - SPRITE_SIZE));
 

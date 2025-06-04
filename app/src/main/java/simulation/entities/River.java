@@ -9,6 +9,9 @@ import java.awt.*;
 public class River {
     private static int SPRITE_SIZE = Animals.SPRITE_SIZE;
 
+    public static int riverXPos = Simulation.SCREEN_WIDTH / 2 - Simulation.SCREEN_WIDTH / 10;
+    public static int riverXWidth = Simulation.SCREEN_WIDTH / 6;
+
     /**
      * Method used for determining if the position is on the river
      */

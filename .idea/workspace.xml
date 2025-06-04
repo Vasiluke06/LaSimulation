@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,6 +84,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="build-with-gradle" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -93,12 +97,12 @@
     &quot;assignee&quot;: &quot;AntKrai&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Vasiluke06/LaSimulation.git&quot;,
-    &quot;accountId&quot;: &quot;57a3c6fa-b28b-43dc-b01d-4a31334ed8eb&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Vasiluke06/LaSimulation/",
+    "accountId": "65f7a5ae-6f45-49b6-ac4d-2be63bbb70ae"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -108,32 +112,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;build-with-gradle&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.LaSimulation [build].executor": "Run",
+    "Gradle.LaSimulation [clean].executor": "Run",
+    "Gradle.LaSimulation [run].executor": "Run",
+    "Gradle.LaSimulation:app [run].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "build-with-gradle-1",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/algo/Java/LaSimulation-build-with-gradle/app/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\algo\Java\LaSimulation-build-with-gradle\app\src\main\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\algo\Java\LaSimulation-build-with-gradle\app\src\main\resources\images" />
       <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\resources" />
       <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\java\simulation" />
     </key>
@@ -239,11 +248,12 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="" />
@@ -276,11 +286,35 @@
       <workItem from="1748945254452" duration="1045000" />
       <workItem from="1748960316603" duration="9510000" />
       <workItem from="1748980460963" duration="4396000" />
+      <workItem from="1749000206351" duration="4813000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/build-with-gradle-1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

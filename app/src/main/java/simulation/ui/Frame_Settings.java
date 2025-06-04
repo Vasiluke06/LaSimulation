@@ -65,7 +65,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label_numofplants.setBounds(25, 260, 200, 20);
 
         JLabel label_chanceofwildfire = new JLabel(); //creating a label "Chance of wildfire"
-        label_chanceofwildfire.setText("Chance of wildfire");
+        label_chanceofwildfire.setText("Chance of wildfire (% per 100 ticks)");
         label_chanceofwildfire.setBounds(25, 310, 200, 20);
 
         JLabel label_chanceofdrowning = new JLabel(); //creating a label "Chance of drowning in river"
@@ -73,8 +73,8 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label_chanceofdrowning.setBounds(25, 360, 200, 20);
 
         JLabel label_chanceofhunters = new JLabel(); //creating a label "Chance of hunters to appear"
-        label_chanceofhunters.setText("Chance of hunters appearing");
-        label_chanceofhunters.setBounds(25, 410, 200, 20);
+        label_chanceofhunters.setText("Chance of hunters appearing (% per 100 ticks)");
+        label_chanceofhunters.setBounds(25, 410, 300, 20);
 
         JLabel label_pointsforvictory = new JLabel(); //creating a label "Points for victory"
         label_pointsforvictory.setText("Points for victory");
@@ -82,7 +82,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
         JLabel label_speedofsimulation = new JLabel(); //creating a label "Speed of simulation"
         label_speedofsimulation.setText("Speed of simulation (ticks per second)");
-        label_speedofsimulation.setBounds(25, 510, 200, 20);
+        label_speedofsimulation.setBounds(25, 510, 250, 20);
 
         ImageIcon titleIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/title.png")));
         JLabel titleLabel = new JLabel(titleIcon);
@@ -200,11 +200,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_numofplants.setText("15");;
 
-            parameter_chanceofwildfire.setText("0");
+            parameter_chanceofwildfire.setText("5");
 
             parameter_chanceofdrowing.setText("0");
 
-            parameter_chanceofhunters.setText("1");
+            parameter_chanceofhunters.setText("10");
 
             parameter_speedofsimulation.setText("10");
 
