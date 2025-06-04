@@ -21,6 +21,8 @@ public class Simulation extends JPanel implements ActionListener {
     public int predator_remain;
     public int wildfire_count;
     public int hunters_count;
+    public int wildfire_timer;
+    public int hunters_timer;
 
     public static int x_pos;
     public static int y_pos;
@@ -29,6 +31,8 @@ public class Simulation extends JPanel implements ActionListener {
     public static Image predator_img;
     public static Image plant_img;
     public static Image hunters_img;
+
+    public static Image wildfire_img;
 
     public static Random random;
 
@@ -102,6 +106,7 @@ public class Simulation extends JPanel implements ActionListener {
         predator_img = new ImageIcon("images/wolf (1).png").getImage();
         hunters_img = new ImageIcon("images/Hunter_card_render (3) (1) (1).png").getImage();
         plant_img = new ImageIcon("images/pixel-grid-blueberries_2236497 (1).png").getImage();
+        wildfire_img = new ImageIcon("images/wildfire.png").getImage();
     }
 
     /*public void draw_herbivore(Graphics g){
@@ -141,6 +146,10 @@ public class Simulation extends JPanel implements ActionListener {
 
         if (Hunters.hunter != null){
             Hunters.hunter.draw_hunter(g);
+        }
+
+        if (Wildfire.wildfire != null){
+            Wildfire.wildfire.draw_wildfire(g);
         }
 
     }
@@ -193,11 +202,28 @@ public class Simulation extends JPanel implements ActionListener {
         Plants.spawn_new_plant();
 
         if(Hunters.hunter == null){
-            if (random.nextInt(100) < Frame_Settings.chanceofhunters){
-                Hunters.create_hunter();
+            if (hunters_timer >= 100) {
+                if (random.nextInt(100) < Frame_Settings.chanceofhunters) {
+                    Hunters.create_hunter();
+                }
+
+                hunters_timer = 0;
             }
+            hunters_timer++;
         } else if (Hunters.hunter != null){
             Hunters.move_hunter();
+        }
+
+        if(Wildfire.wildfire == null){
+            if (wildfire_timer >= 100) {
+                if (random.nextInt(100) < Frame_Settings.chanceofwildfire) {
+                    Wildfire.create_wildfire();
+                }
+                wildfire_timer = 0;
+            }
+            wildfire_timer++;
+        } else if (Wildfire.wildfire != null){
+            Wildfire.move_wildfire();
         }
 
         simulation_time.setDelay(1000/Frame_Settings.speedofsimulation);
@@ -240,7 +266,7 @@ public class Simulation extends JPanel implements ActionListener {
                 fw.write(predator_remain + ",");
                 fw.write(kill_count_herbivore + ",");
                 fw.write(kill_count_predator + ",");
-                fw.write(wildfire_count + ",");
+                fw.write(Wildfire.wildfire_count + ",");
                 fw.write(Hunters.hunters_counter + "\n");
                 fw.close();
             } catch (IOException e){

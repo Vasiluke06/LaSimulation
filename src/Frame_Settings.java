@@ -177,11 +177,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_numofplants.setText("10");;
 
-            parameter_chanceofwildfire.setText("0");
+            parameter_chanceofwildfire.setText("5");
 
             parameter_chanceofdrowing.setText("0");
 
-            parameter_chanceofhunters.setText("0");
+            parameter_chanceofhunters.setText("10");
 
             parameter_speedofsimulation.setText("1");
 
