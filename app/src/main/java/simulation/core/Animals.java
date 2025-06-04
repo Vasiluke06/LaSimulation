@@ -9,11 +9,13 @@ public abstract class Animals {
     protected static int predatorPoints;
     protected static int herbivoresKilled;
     protected static int predatorsKilled;
-    private Position position;
     private static final int MAX_X = Simulation.SCREEN_WIDTH - 32;
     private static final int MAX_Y = Simulation.SCREEN_HEIGHT - 32;
+    private Position position;
     private boolean onRiver = false;
     public static final int SPRITE_SIZE = 48;
+    protected static final int drownCheckCooldown = 250;
+    protected static int drownCooldown;
 
     public static void addHerbivorePoint(int pointsToAdd) {
         herbivorePoints += pointsToAdd;
@@ -43,15 +45,12 @@ public abstract class Animals {
         return onRiver;
     }
 
+
     public Animals(int x, int y) {
         this.position = new Position(x, y);
     }
 
-    /*Not needed
-    public void updateRiverStatus() {
-        this.onRiver = River.isOnRiver(getPosition().getX(), getPosition().getY());
-    }*/
-
+    public Animals(){}
 
     public void checkForBorder(int stepSize) {
         Position pos = getPosition();
@@ -69,7 +68,7 @@ public abstract class Animals {
     }
 
     protected double distanceTo(Herbivore h, Position pos) {
-        //Calculates distance to the closest herbivore
+        //Calculates distance to the target
         int dx = h.getPosition().getX() - pos.getX();
         int dy = h.getPosition().getY() - pos.getY();
         return Math.sqrt(dx * dx + dy * dy);
@@ -91,7 +90,8 @@ public abstract class Animals {
             dy /= 2;
 
             int roll = Simulation.random.nextInt(100);
-            if(roll < Frame_Settings.chanceofdrowning){
+            drownCooldown++;
+            if(roll < Frame_Settings.chanceofdrowning && drownCooldown > drownCheckCooldown  ) {
                 drown();
             }
         }

@@ -4,7 +4,6 @@ import simulation.core.Animals;
 import simulation.core.Movable;
 import simulation.core.Position;
 import simulation.core.Simulation;
-import simulation.ui.Frame_Simulation;
 
 import java.awt.*;
 
@@ -19,7 +18,6 @@ public class Predator extends Animals implements Movable {
 
     /*Constructors*/
     public Predator(int x, int y) {
-        //setPosition(x, y);
         super(x, y);
     }
 
@@ -86,10 +84,6 @@ public class Predator extends Animals implements Movable {
             Animals.addPredatorPoint(POINTS_FOR_EATING);
         }
     }
-    /* Also not sure if this is needed
-    public void deletePredator(){
-        //usual delete of predator
-    } */
 
     /* ************************************** */
 
@@ -109,8 +103,8 @@ public class Predator extends Animals implements Movable {
     /**
      * Method used for initializing the predators
      */
-    public static void initPredator(int numofpredators){
-        for (int i = 0; i < numofpredators; i++){
+    public static void initPredator(int numOfPredators){
+        for (int i = 0; i < numOfPredators; i++){
             Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));
 
             for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
@@ -120,6 +114,7 @@ public class Predator extends Animals implements Movable {
             Predator.newPredator(pos.getX(), pos.getY());
         };
     }
+
     @Override
     public void drown(){
         Simulation.predator.remove(this);

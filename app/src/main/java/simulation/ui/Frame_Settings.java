@@ -1,7 +1,6 @@
 package simulation.ui;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +25,9 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
 
     JButton button_accept;
+    ImageIcon button_accept_icon;
     JButton button_fast_insert_of_parameters;
+    ImageIcon button_preset_icon;
 
     JTextField parameter_numofherbivore;
     JTextField parameter_numofpredator;
@@ -45,7 +46,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
         loadSettingsFromCSV(csvPath);
     }
 
-    private void loadSettingsFromCSV(String path) {
+    protected void loadSettingsFromCSV(String path) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             String line = reader.readLine(); // Read only the first line for simplicity
@@ -129,17 +130,19 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
         //creating a button "Accept"
         button_accept = new JButton();
-        button_accept.setBounds(140,575,125,50);
+        button_accept_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/accept_button.png")));
+        button_accept.setBounds(settingsWidth - 265,575,125,50);
+        button_accept.setIcon(button_accept_icon);
         this.add(button_accept);
         button_accept.addActionListener(this);
-        button_accept.setText("Accept");
         button_accept.setFocusable(false);
         //creating a button "Preset"
         button_fast_insert_of_parameters = new JButton();
-        button_fast_insert_of_parameters.setBounds(settingsWidth - 265,575,125,50);
+        button_preset_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/preset_button.png")));
+        button_fast_insert_of_parameters.setBounds(140,575,125,50);
+        button_fast_insert_of_parameters.setIcon(button_preset_icon);
         this.add(button_fast_insert_of_parameters);
         button_fast_insert_of_parameters.addActionListener(this);
-        button_fast_insert_of_parameters.setText("Preset");
         button_fast_insert_of_parameters.setFocusable(false);
 
         this.add(label_numofherbivore);
@@ -254,21 +257,21 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
         if (e.getSource() == button_fast_insert_of_parameters){
 
-            parameter_numofherbivore.setText("8");
+            parameter_numofherbivore.setText("20");
 
-            parameter_numofpredator.setText("1");
+            parameter_numofpredator.setText("5");
 
-            parameter_numofplants.setText("15");;
+            parameter_numofplants.setText("25");;
 
-            parameter_chanceofwildfire.setText("0");
+            parameter_chanceofwildfire.setText("15");
 
-            parameter_chanceofdrowning.setText("0");
+            parameter_chanceofdrowning.setText("15");
 
-            parameter_chanceofhunters.setText("0");
+            parameter_chanceofhunters.setText("30");
 
             parameter_pointsforvictory.setText("1000");
 
-            parameter_speedofsimulation.setText("1");
+            parameter_speedofsimulation.setText("10");
 
 
 

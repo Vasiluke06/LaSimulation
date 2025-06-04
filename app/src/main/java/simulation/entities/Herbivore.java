@@ -1,26 +1,29 @@
 package simulation.entities;
 
 import simulation.core.*;
-import java.util.Random;
-import simulation.ui.Frame_Settings;
-import simulation.ui.Frame_Simulation;
 
 import java.awt.*;
 
-import java.awt.image.ImageObserver;
 
 public class Herbivore extends Animals implements Movable {
     private final int STEP_SIZE = 10;
     private final int POINTS_FOR_REPRODUCTION = 6;
     private final int POINTS_FOR_EATING = 8;
+
     private static int eatingCooldown = Simulation.random.nextInt(31);
     private static int cooldown = 30;
 
-    private boolean isFed = Math.random() < 0.5;  /* **********Only for testing, should be changed to FALSE or Randomized********/
+    private boolean isFed = Math.random() < 0.5;
     private Herbivore mate;
     /**
      * Getters, setters, and constructors
      */
+    public Herbivore() {}
+
+    public Herbivore(boolean fed, int x, int y) {
+        super(x, y);
+        this.isFed = fed;
+    }
     public boolean isFed() {
         return isFed;
     }
@@ -32,6 +35,11 @@ public class Herbivore extends Animals implements Movable {
     public Herbivore(int x, int y) {
         super(x, y);
     }
+
+    public Herbivore getMate() {
+        return mate;
+    }
+
     /**
      * Implementation of Movable interface and movement logic
      */
@@ -70,7 +78,7 @@ public class Herbivore extends Animals implements Movable {
                 double dist = distanceTo(other, this.getPosition()); //
                 if (dist < closestDistance) {
                     closestDistance = dist;
-                    mate = other;
+                    this.mate = other;
                 }
             }
         }
@@ -91,15 +99,9 @@ public class Herbivore extends Animals implements Movable {
            Animals.addHerbivorePoint(POINTS_FOR_REPRODUCTION);
         }
     }
-
- //   Kind of unsure if this is still needed
     public static void newHerbivore(int x, int y){
         Simulation.herbivore.add(new Herbivore(x, y));
     }
-/*
-    public void deleteHerbivore(){
-
-    } */
 
     /* ************************************** */
 
@@ -112,7 +114,7 @@ public class Herbivore extends Animals implements Movable {
         double closestDistance = Double.MAX_VALUE;
 
         for (Plants other : Simulation.plants) {
-            double dist = distanceToPlant( other.getPosition().getX(), other.getPosition().getY());
+            double dist = distanceTo(this, other.getPosition());
             if (dist < closestDistance) {
                 closestDistance = dist;
                 closest = other;
@@ -159,16 +161,6 @@ public class Herbivore extends Animals implements Movable {
     }
 
     /* ************************************** */
-
-    /*Methods used for determining the range to the target*/
-
-    private double distanceToPlant(int x, int y) {
-        int dx = x - getPosition().getX();
-        int dy = y - getPosition().getY();
-        return Math.sqrt(dx * dx + dy * dy);
-    }
-    /* ************************************** */
-
 
     /*Method for drawing a herbivore*/
     public void drawHerbivore(Graphics g){

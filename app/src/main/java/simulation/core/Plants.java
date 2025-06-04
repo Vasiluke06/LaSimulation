@@ -2,8 +2,6 @@ package simulation.core;
 
 import java.awt.*;
 import simulation.entities.River;
-import simulation.core.Simulation;
-import simulation.ui.Frame_Simulation;
 
 import java.util.Timer;
 
@@ -20,25 +18,10 @@ public class Plants {
         this.position = new Position(x, y);
     }
 
-    public Plants(Position pos){
-        this.position.setX(pos.getX());
-        this.position.setY(pos.getY());
-    }
-
     public static void new_plant(int x, int y){
         Simulation.plants.add(new Plants(x,y));
     }
 
-   /* public static void deletePlant(int x_pos_delete_plant, int y_pos_delete_plant){
-        for (int i = 0; i < Simulation.plants.size(); i++){
-            Plants plant = Simulation.plants.get(i);
-            if (plant.position.getX() == x_pos_delete_plant && plant.position.getY() == y_pos_delete_plant) {
-                Simulation.plants.remove(i);
-                break;
-            }
-        }
-    }
-*/
     public static void spawn_new_plant(){
         if (spawnTimer >= 10){
             Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));

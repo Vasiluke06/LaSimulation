@@ -8,7 +8,6 @@ public class Main {
     public static Simulation simulation;
 
     public static void main(String[] args) {
-       // args = new String[]{"C:\\Users\\kraev\\Documents\\Polit_Wroclawska\\Java\\settings.csv"};
         if (args.length > 0) {
             String csvPath = args[0];
             Frame_Settings frame_settings = new Frame_Settings(csvPath);
