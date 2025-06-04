@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,42 +87,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HerbivoreTest.HerbivoreReproductionAddsHerbivore.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HerbivoreTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HerbivoreTest.findMateAssignsMate.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation:app [:app:simulation.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LaSimulation:app [testClasses].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SimulationTests.loadImageThrowsExceptionIfResourceIsNull.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SimulationTests.resultWriterThrowsIOException.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UITests.settingsTestWithInvalidCSVDataThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UITests.settingsTestWithNoCSVFileThrowsException.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;build-with-gradle&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid.executor": "Run",
+    "Gradle.HerbivoreTest.HerbivoreReproductionAddsHerbivore.executor": "Run",
+    "Gradle.HerbivoreTest.executor": "Run",
+    "Gradle.HerbivoreTest.findMateAssignsMate.executor": "Run",
+    "Gradle.LaSimulation [build].executor": "Run",
+    "Gradle.LaSimulation [clean].executor": "Run",
+    "Gradle.LaSimulation [run].executor": "Run",
+    "Gradle.LaSimulation:app [:app:simulation.Main.main()].executor": "Run",
+    "Gradle.LaSimulation:app [run].executor": "Run",
+    "Gradle.LaSimulation:app [testClasses].executor": "Run",
+    "Gradle.SimulationTests.loadImageThrowsExceptionIfResourceIsNull.executor": "Debug",
+    "Gradle.SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull.executor": "Run",
+    "Gradle.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull.executor": "Run",
+    "Gradle.SimulationTests.resultWriterThrowsIOException.executor": "Run",
+    "Gradle.UITests.settingsTestWithInvalidCSVDataThrowsException.executor": "Run",
+    "Gradle.UITests.settingsTestWithNoCSVFileThrowsException.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "build-with-gradle",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\resources" />
@@ -304,7 +303,9 @@
       <workItem from="1749020600842" duration="12858000" />
       <workItem from="1749034148559" duration="367000" />
       <workItem from="1749034528901" duration="14981000" />
-      <workItem from="1749049945407" duration="911000" />
+      <workItem from="1749049945407" duration="1006000" />
+      <workItem from="1749052940898" duration="205000" />
+      <workItem from="1749056349684" duration="789000" />
     </task>
     <task id="LOCAL-00001" summary="Change drownCheckCooldown">
       <option name="closed" value="true" />

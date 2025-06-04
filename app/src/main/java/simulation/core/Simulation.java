@@ -221,7 +221,7 @@ public class Simulation extends JPanel implements ActionListener {
         repaint();
 
         if (victoryCheck()){
-            new Result_Writer("Results.txt");
+            new Result_Writer("Results.csv");
 
             simulationTime.stop();
 
