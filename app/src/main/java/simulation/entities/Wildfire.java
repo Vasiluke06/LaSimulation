@@ -88,7 +88,7 @@ public class Wildfire {
     }
 
     public static void draw_wildfire(Graphics g){
-        g.drawImage(Simulation.wildfire_img, x_pos, y_pos, SCREEN_WIDTH - riverXPos - riverXWidth, 100, null);
+        g.drawImage(Simulation.wildfireImg, x_pos, y_pos, SCREEN_WIDTH - riverXPos - riverXWidth, 100, null);
     }
 }
 

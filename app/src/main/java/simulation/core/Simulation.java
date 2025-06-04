@@ -2,6 +2,7 @@ package simulation.core;
 
 import simulation.entities.*;
 import simulation.ui.Frame_Settings;
+import simulation.ui.Frame_Simulation;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,7 +52,7 @@ public class Simulation extends JPanel implements ActionListener {
     public static Image predatorImg;
     public static Image plantImg;
     public static Image huntersImg;
-    public static Image wildfire_img;
+    public static Image wildfireImg;
 
     public static Random random;
 
@@ -115,7 +116,7 @@ public class Simulation extends JPanel implements ActionListener {
         predatorImg = loadImage("images/wolf (1).png");
         huntersImg = loadImage("images/hunters_icon.png");
         plantImg = loadImage("images/pixel-grid-blueberries_2236497 (1).png");
-        wildfire_img = loadImage("images/wildfire.png");
+        wildfireImg = loadImage("images/wildfire.png");
     }
 
 
@@ -178,9 +179,9 @@ public class Simulation extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        x_pos += 1;
+        //x_pos += 1;
 
-        y_pos += 1; //just for test
+        //y_pos += 1; //just for test
 
         if(herbivore != null){
             for(int i = 0; i < herbivore.size(); i++) {
@@ -220,6 +221,8 @@ public class Simulation extends JPanel implements ActionListener {
         } else if (Wildfire.wildfire != null){
             Wildfire.move_wildfire();
         }
+
+        //Frame_Simulation.instance.updatePointsDisplay();
 
         simulationTime.setDelay(1000/ Frame_Settings.speedofsimulation);
 

@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
-    </list>
+    <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="Wildfire" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -286,8 +277,17 @@
       <workItem from="1748945254452" duration="1045000" />
       <workItem from="1748960316603" duration="9510000" />
       <workItem from="1748980460963" duration="4396000" />
-      <workItem from="1749000206351" duration="4813000" />
+      <workItem from="1749000206351" duration="5622000" />
     </task>
+    <task id="LOCAL-00001" summary="Wildfire">
+      <option name="closed" value="true" />
+      <created>1749012599318</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749012599318</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +304,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/build-with-gradle-1" />
+                        <option value="origin/build-with-gradle" />
                       </list>
                     </value>
                   </entry>
@@ -315,6 +315,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Wildfire" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wildfire" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
