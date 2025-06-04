@@ -14,7 +14,7 @@ public abstract class Animals {
     private Position position;
     private boolean onRiver = false;
     public static final int SPRITE_SIZE = 48;
-    protected static final int drownCheckCooldown = 250;
+    protected static final int drownCheckCooldown = 500;
     protected static int drownCooldown;
 
     public static void addHerbivorePoint(int pointsToAdd) {
