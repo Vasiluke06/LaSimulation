@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivores.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Hunters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predators.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/River.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Wildfire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Tree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,36 +47,19 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="LaSimulation" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="LaSimulation" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="LaSimulation" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="LaSimulation" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,16 +81,31 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2xdLuMjyWgVlxxL2IdnfhXYdMUF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Gradle.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HerbivoreTest.HerbivoreReproductionAddsHerbivore.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HerbivoreTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HerbivoreTest.findMateAssignsMate.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation:app [:app:simulation.Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation:app [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SimulationTests.loadImageThrowsExceptionIfResourceIsNull.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SimulationTests.resultWriterThrowsIOException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UITests.settingsTestWithInvalidCSVDataThrowsException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UITests.settingsTestWithNoCSVFileThrowsException.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -128,52 +117,42 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\resources" />
+      <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\java\simulation" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.LaSimulation [run]">
-    <configuration name="LaSimulation [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;simulation.ui.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="LaSimulation [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="clean" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="LaSimulation [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -198,34 +177,85 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="LaSimulation:app [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="run" />
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;simulation.core.SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;simulation.core.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="SimulationTests.resultWriterThrowsIOException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;simulation.core.SimulationTests.resultWriterThrowsIOException&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.LaSimulation [run]" />
-        <item itemvalue="Gradle.LaSimulation [clean]" />
-        <item itemvalue="Gradle.LaSimulation [build]" />
-        <item itemvalue="Gradle.LaSimulation:app [run]" />
+        <item itemvalue="Gradle.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid" />
+        <item itemvalue="Gradle.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull" />
+        <item itemvalue="Gradle.SimulationTests.resultWriterThrowsIOException" />
+        <item itemvalue="Gradle.SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull" />
       </list>
     </recent_temporary>
   </component>
@@ -250,10 +280,68 @@
       <workItem from="1748276948557" duration="625000" />
       <workItem from="1748340645771" duration="224000" />
       <workItem from="1748344656563" duration="1859000" />
+      <workItem from="1748373570563" duration="11225000" />
+      <workItem from="1748413670131" duration="823000" />
+      <workItem from="1748424269917" duration="10978000" />
+      <workItem from="1748440560914" duration="7912000" />
+      <workItem from="1748451591649" duration="4280000" />
+      <workItem from="1748641244981" duration="2690000" />
+      <workItem from="1748728269701" duration="2779000" />
+      <workItem from="1748731575938" duration="3610000" />
+      <workItem from="1748777586382" duration="19575000" />
+      <workItem from="1748808197425" duration="347000" />
+      <workItem from="1748884380758" duration="1079000" />
+      <workItem from="1748893867365" duration="1200000" />
+      <workItem from="1748895134395" duration="345000" />
+      <workItem from="1748895500080" duration="2857000" />
+      <workItem from="1748902534644" duration="412000" />
+      <workItem from="1748903232928" duration="370000" />
+      <workItem from="1748945254452" duration="1045000" />
+      <workItem from="1748960316603" duration="9510000" />
+      <workItem from="1748980460963" duration="4396000" />
+      <workItem from="1748985082190" duration="3535000" />
+      <workItem from="1748988800971" duration="2470000" />
+      <workItem from="1749020600842" duration="12858000" />
+      <workItem from="1749034148559" duration="367000" />
+      <workItem from="1749034528901" duration="14981000" />
+      <workItem from="1749049945407" duration="911000" />
     </task>
+    <task id="LOCAL-00001" summary="Change drownCheckCooldown">
+      <option name="closed" value="true" />
+      <created>1749050072752</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749050072752</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Change drownCheckCooldown" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change drownCheckCooldown" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="9" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="mate" />
+        <watch expression="((Position)this.position).x" custom="simulation.entities.Herbivore,simulation.core.Animals.Position" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
