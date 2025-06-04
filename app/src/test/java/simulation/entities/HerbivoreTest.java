@@ -1,13 +1,15 @@
 package simulation.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import simulation.core.Position;
 import simulation.core.Simulation;
 import simulation.ui.Frame_Settings;
 
 public class HerbivoreTest {
+
     private Simulation simulation;
     private Herbivore h1;
     private Herbivore h2;
@@ -27,7 +29,7 @@ public class HerbivoreTest {
     }
 
     @Test
-    public void findMateAssignsMate(){
+    public void findMateAssignsMate() {
         //Assign
         h1 = new Herbivore(true, 100, 100);
         h2 = new Herbivore(true, 200, 200);
@@ -41,12 +43,14 @@ public class HerbivoreTest {
     }
 
     @Test
-    public void herbivoreReproductionAddsHerbivore(){
+    public void herbivoreReproductionAddsHerbivore() {
         //Assign
-        Position expected = new Position(107, 107);
+        Position expected = new Position(200, 200);
+        h1 = new Herbivore(true, 100, 100);
+        h2 = new Herbivore(true, 200, 200);
         simulation.herbivore.clear();
-        simulation.herbivore.add(new Herbivore(true, 100, 100));
-        simulation.herbivore.add(new Herbivore(true, 105, 105));
+        simulation.herbivore.add(h1);
+        simulation.herbivore.add(h2);
         //Act
         h1.nextMove();
         Position actual = simulation.herbivore.get(simulation.herbivore.size() - 1).getPosition();

@@ -23,7 +23,7 @@ public class Plants {
     }
 
     public static void spawn_new_plant(){
-        if (spawnTimer >= 10){
+        if (spawnTimer >= 5){
             Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));
 
             for (; River.isOnRiver(pos.getX(), pos.getY()); ) {

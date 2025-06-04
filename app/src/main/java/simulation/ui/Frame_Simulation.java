@@ -180,7 +180,7 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         if (e.getSource() == button_slowdown){
             System.out.println("Click"); //actions after clicking the button
 
-            if(Frame_Settings.speedofsimulation > 1) {
+            if(Frame_Settings.speedofsimulation - 5 > 1) {
                 Frame_Settings.speedofsimulation -= 5;
             }
 

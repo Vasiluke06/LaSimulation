@@ -257,15 +257,15 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
         if (e.getSource() == button_fast_insert_of_parameters){
 
-            parameter_numofherbivore.setText("20");
+            parameter_numofherbivore.setText("15");
 
             parameter_numofpredator.setText("5");
 
-            parameter_numofplants.setText("25");;
+            parameter_numofplants.setText("30");;
 
-            parameter_chanceofwildfire.setText("15");
+            parameter_chanceofwildfire.setText("30");
 
-            parameter_chanceofdrowning.setText("5");
+            parameter_chanceofdrowning.setText("10");
 
             parameter_chanceofhunters.setText("30");
 
