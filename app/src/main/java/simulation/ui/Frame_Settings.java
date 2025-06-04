@@ -104,16 +104,16 @@ public class Frame_Settings extends JFrame implements ActionListener {
         label_numofplants.setBounds(60, 260, 200, 20);
         //creating a label "Chance of wildfire"
         JLabel label_chanceofwildfire = new JLabel();
-        label_chanceofwildfire.setText("Chance of wildfire");
-        label_chanceofwildfire.setBounds(60, 310, 200, 20);
+        label_chanceofwildfire.setText("Chance of wildfire (% per 100 ticks)");
+        label_chanceofwildfire.setBounds(60, 310, 250, 20);
         //creating a label "Chance of drowning in river"
         JLabel label_chanceofdrowning = new JLabel();
         label_chanceofdrowning.setText("Chance of drowning in the river");
         label_chanceofdrowning.setBounds(60, 360, 200, 20);
         //creating a label "Chance of hunters to appear"
         JLabel label_chanceofhunters = new JLabel();
-        label_chanceofhunters.setText("Chance of hunters appearing");
-        label_chanceofhunters.setBounds(60, 410, 200, 20);
+        label_chanceofhunters.setText("Chance of hunters appearing (% per 100 ticks)");
+        label_chanceofhunters.setBounds(60, 410, 250, 20);
         //creating a label "Points for victory"
         JLabel label_pointsforvictory = new JLabel();
         label_pointsforvictory.setText("Points for victory");
@@ -260,15 +260,15 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_numofplants.setText("15");;
 
-            parameter_chanceofwildfire.setText("0");
+            parameter_chanceofwildfire.setText("5");
 
             parameter_chanceofdrowning.setText("0");
 
-            parameter_chanceofhunters.setText("0");
+            parameter_chanceofhunters.setText("10");
 
             parameter_pointsforvictory.setText("1000");
 
-            parameter_speedofsimulation.setText("1");
+            parameter_speedofsimulation.setText("10");
 
 
 

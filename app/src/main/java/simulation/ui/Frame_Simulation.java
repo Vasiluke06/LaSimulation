@@ -25,12 +25,14 @@ public class Frame_Simulation extends JFrame implements ActionListener {
     ImageIcon button_off_icon;
 
     public void updatePointsDisplay() {
-        herbivorePointsLabel.setText("Herbivore Points: " + Animals.getHerbivorePoints());
-        predatorPointsLabel.setText("Predator Points: " + Animals.getPredatorPoints());
+        herbivorePointsLabel.setText("Herbivore Points: " + Animals.getHerbivorePoints() + "/" + Frame_Settings.pointsforvictory);
+        predatorPointsLabel.setText("Predator Points: " + Animals.getPredatorPoints() + "/" + Frame_Settings.pointsforvictory);
+        speedLabel.setText("Speed: " + Frame_Settings.speedofsimulation + "tps");
     }
 
     private JLabel herbivorePointsLabel;
     private JLabel predatorPointsLabel;
+    private JLabel speedLabel;
 
     private int control_buttons_size = 45;
 
@@ -100,6 +102,11 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         predatorPointsLabel.setForeground(Color.WHITE);
         predatorPointsLabel.setBounds(20, 60, 250, 30);
 
+        speedLabel = new JLabel("Speed: 0");
+        speedLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        speedLabel.setForeground(Color.WHITE);
+        speedLabel.setBounds(20, 100, 250, 30);
+
         /**
          * Simulation control buttons
          */
@@ -146,6 +153,7 @@ public class Frame_Simulation extends JFrame implements ActionListener {
         layers.add(button_off, Integer.valueOf(3));
         layers.add(herbivorePointsLabel, Integer.valueOf(4));
         layers.add(predatorPointsLabel, Integer.valueOf(4));
+        layers.add(speedLabel, Integer.valueOf(4));
 
         add(layers);
         pack();
