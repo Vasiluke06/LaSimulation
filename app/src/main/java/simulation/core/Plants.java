@@ -10,12 +10,12 @@ public class Plants {
     private Position position;
     private static final int SPRITE_SIZE = 32;
 
-    public Position getPosition() {
-        return position;
-    }
-
     public Plants(int x, int y){
         this.position = new Position(x, y);
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
     public static void new_plant(int x, int y){
@@ -44,7 +44,7 @@ public class Plants {
     }
 
     /**
-     * Method used for initializing the herbivores
+     * Method used for initializing the plant
      */
 
     public static void initPlant(int numofplants) {

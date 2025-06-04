@@ -5,22 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/LaSimulation.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/images/deer female calciumtrice (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/images/hunters_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/images/pixel-grid-blueberries_2236497 (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/resources/images/wolf (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Tree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,11 +304,25 @@
       <workItem from="1749020600842" duration="12858000" />
       <workItem from="1749034148559" duration="367000" />
       <workItem from="1749034528901" duration="14981000" />
+      <workItem from="1749049945407" duration="911000" />
     </task>
+    <task id="LOCAL-00001" summary="Change drownCheckCooldown">
+      <option name="closed" value="true" />
+      <created>1749050072752</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749050072752</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Change drownCheckCooldown" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change drownCheckCooldown" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

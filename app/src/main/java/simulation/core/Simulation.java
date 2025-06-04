@@ -24,7 +24,7 @@ public class Simulation extends JPanel implements ActionListener {
 
     public static int SCREEN_WIDTH;
     public static int SCREEN_HEIGHT;
-    public static int numoftrees = 10;
+    public static int numoftrees = 25;
 
     public static ArrayList<Herbivore> herbivore;
     public static ArrayList<Predator> predator;
@@ -184,8 +184,6 @@ public class Simulation extends JPanel implements ActionListener {
                 predator.get(i).nextMove();
             }
         }
-
-        Tree.spawn_new_tree();
 
         Plants.spawn_new_plant();
 
