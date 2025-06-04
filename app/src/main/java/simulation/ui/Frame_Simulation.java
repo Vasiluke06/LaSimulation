@@ -25,8 +25,8 @@ public class Frame_Simulation extends JFrame implements ActionListener {
     ImageIcon button_off_icon;
 
     public void updatePointsDisplay() {
-        herbivorePointsLabel.setText("Herbivore Points: " + Animals.herbivorePoints);
-        predatorPointsLabel.setText("Predator Points: " + Animals.predatorPoints);
+        herbivorePointsLabel.setText("Herbivore Points: " + Animals.getHerbivorePoints());
+        predatorPointsLabel.setText("Predator Points: " + Animals.getPredatorPoints());
     }
 
     private JLabel herbivorePointsLabel;

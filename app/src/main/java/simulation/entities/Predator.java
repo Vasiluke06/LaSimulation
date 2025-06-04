@@ -11,7 +11,7 @@ import java.awt.*;
 public class Predator extends Animals implements Movable {
     private static final int STEP_SIZE = 12;
     private static final int POINTS_FOR_EATING = 15;
-    private static int attackCooldown = 15;
+    private static int attackCooldown = 30;
 
 
 
@@ -26,21 +26,19 @@ public class Predator extends Animals implements Movable {
     /*Implementation of Movable interface and movement logic*/
     @Override
     public void nextMove() {
-        if (attackCooldown < 15) {
+        if (attackCooldown < 30) {
             attackCooldown++;
-            Move(STEP_SIZE);
         }
-        //Pathfinding to the closest herbivore
-        Herbivore target = findClosestHerbivore();
-        if (target != null) {
-            this.setPosition(moveToward(target, STEP_SIZE, this.getPosition()));
-            checkForBorder(STEP_SIZE);
-            if(attackCooldown >= 15) {
-                deleteHerbivorePredator(target);
-                attackCooldown = 0;
-            }
+            //Pathfinding to the closest herbivore
+            Herbivore target = findClosestHerbivore();
+            if (target != null) {
+                this.setPosition(moveToward(target, STEP_SIZE, this.getPosition()));
+                checkForBorder(STEP_SIZE);
+                if(attackCooldown >= 30) {
+                    deleteHerbivorePredator(target);
+                    attackCooldown = 0;
+                }
         }
-
         super.checkForBorder(STEP_SIZE);
         //River influence (downstream movement)
         if (isOnRiver()) {

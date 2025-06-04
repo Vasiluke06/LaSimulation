@@ -10,6 +10,7 @@ import java.util.Timer;
 public class Plants {
     private static int spawnTimer;
     private Position position;
+    private static final int SPRITE_SIZE = 32;
 
     public Position getPosition() {
         return position;
@@ -40,12 +41,10 @@ public class Plants {
 */
     public static void spawn_new_plant(){
         if (spawnTimer >= 10){
-            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));
 
-            // Regenerate position while it's on or too close to the river
-            while (River.isOnRiver(pos.getX(), pos.getY())) {
-                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32));
-                pos.setY(Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32));
+            for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
+                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE));
             }
 
             new_plant(pos.getX(), pos.getY());
@@ -67,15 +66,13 @@ public class Plants {
 
     public static void initPlant(int numofplants) {
         for (int i = 0; i < numofplants; i++) {
-            int xPos = Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32);
-            int yPos = Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32);
+            Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));
 
-            while (River.isOnRiver(xPos, yPos)) {
-                xPos = Simulation.random.nextInt(Simulation.SCREEN_WIDTH - 32);
-                yPos = Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - 32);
+            for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
+                pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE));
             }
 
-            Plants.new_plant(xPos, yPos);
+            Plants.new_plant(pos.getX(), pos.getY());
         }
     }
 }

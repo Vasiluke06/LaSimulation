@@ -5,8 +5,8 @@ import simulation.entities.River;
 import simulation.ui.Frame_Settings;
 
 public abstract class Animals {
-    public static int herbivorePoints;
-    public static int predatorPoints;
+    protected static int herbivorePoints;
+    protected static int predatorPoints;
     protected static int herbivoresKilled;
     protected static int predatorsKilled;
     private Position position;
@@ -30,6 +30,13 @@ public abstract class Animals {
     public void setPosition(Position pos) {
         this.position.setX(pos.getX());
         this.position.setY(pos.getY());
+    }
+    public static int getHerbivorePoints() {
+        return herbivorePoints;
+    }
+
+    public static int getPredatorPoints() {
+        return predatorPoints;
     }
 
     public boolean isOnRiver() {

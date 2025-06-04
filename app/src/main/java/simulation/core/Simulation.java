@@ -1,9 +1,12 @@
 package simulation.core;
 
 import simulation.entities.Herbivore;
+import simulation.entities.Hunters;
 import simulation.entities.Predator;
-import simulation.ui.Frame_Settings;
 import simulation.entities.River;
+import simulation.entities.Wildfire;
+import simulation.ui.Frame_Settings;
+
 import simulation.ui.Frame_Simulation;
 
 import java.awt.*;
@@ -50,7 +53,10 @@ public class Simulation extends JPanel implements ActionListener {
     public static Image herbivoreImg;
     public static Image predatorImg;
     public static Image plantImg;
-    public Image huntersImg;
+    public static Image huntersImg;
+    public static Image wildfireImg;
+    public static int wildfire_timer;
+    public static int hunters_timer;
 
     public static Random random;
 
@@ -99,9 +105,9 @@ public class Simulation extends JPanel implements ActionListener {
         super.paintComponent(g);
 
         // Store correct screen size at runtime
-        Rectangle bounds = g.getClipBounds();
-        Simulation.SCREEN_WIDTH = bounds.width;
-        Simulation.SCREEN_HEIGHT = bounds.height;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Simulation.SCREEN_WIDTH = screenSize.width;
+        Simulation.SCREEN_HEIGHT = screenSize.height;
 
         drawing(g);
     }
@@ -111,8 +117,9 @@ public class Simulation extends JPanel implements ActionListener {
     public void images() {
         herbivoreImg = loadImage("images/deer female calciumtrice (1).png");
         predatorImg = loadImage("images/wolf (1).png");
-        //huntersImg = loadImage("images/hunters_icon.png");
+        huntersImg = loadImage("images/hunters_icon.png");
         plantImg = loadImage("images/pixel-grid-blueberries_2236497 (1).png");
+        wildfireImg = loadImage("images/wildfire.png");
     }
 
 
@@ -152,6 +159,14 @@ public class Simulation extends JPanel implements ActionListener {
             }
         }
 
+        if (Hunters.hunter != null){
+            Hunters.hunter.draw_hunter(g);
+        }
+
+        if (Wildfire.wildfire != null){
+            Wildfire.wildfire.draw_wildfire(g);
+        }
+
 
 
     }
@@ -170,7 +185,8 @@ public class Simulation extends JPanel implements ActionListener {
    /*     x_pos += 1;
 
         y_pos += 1; //just for test
-*/
+*/      System.out.println("Screen size: " + Simulation.SCREEN_WIDTH + "x" + Simulation.SCREEN_HEIGHT);
+
         if(herbivore != null){
             for(int i = 0; i < herbivore.size(); i++) {
                 herbivore.get(i).nextMove();
@@ -184,6 +200,33 @@ public class Simulation extends JPanel implements ActionListener {
         }
 
         Plants.spawn_new_plant();
+
+        if(Hunters.hunter == null){
+            if (hunters_timer >= 100) {
+                if (random.nextInt(100) < Frame_Settings.chanceofhunters) {
+                    Hunters.create_hunter();
+                }
+
+                hunters_timer = 0;
+            }
+            hunters_timer++;
+
+        } else if (Hunters.hunter != null){
+            Hunters.move_hunter();
+        }
+
+        if(Wildfire.wildfire == null){
+            if (wildfire_timer >= 100) {
+                if (random.nextInt(100) < Frame_Settings.chanceofwildfire) {
+                    Wildfire.create_wildfire();
+                }
+                wildfire_timer = 0;
+            }
+            wildfire_timer++;
+        } else if (Wildfire.wildfire != null){
+            Wildfire.move_wildfire();
+        }
+
         Frame_Simulation.instance.updatePointsDisplay();
 
         simulationTime.setDelay(1000/ Frame_Settings.speedofsimulation);
@@ -220,8 +263,8 @@ public class Simulation extends JPanel implements ActionListener {
                 fw.write("Predators remain: " + predator.size() + "\n");
                 fw.write("Herbivores killed during simulation: " + Animals.herbivoresKilled + "\n");
                 fw.write("Predators killed during simulation: " + Animals.predatorsKilled + "\n");
-                fw.write("Wildfires: " + wildfire_count + "\n");
-                fw.write("Hunters: " + hunters_count + "\n");
+                fw.write("Wildfires: " + Wildfire.wildfire_count + "\n");
+                fw.write("Hunters: " + Hunters.hunters_counter + "\n");
                 fw.close();
             } catch (IOException e){
                 System.out.println("Error occured during writing results to the file");

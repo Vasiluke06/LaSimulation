@@ -5,6 +5,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.net.URL;
 import java.util.Objects;
 import java.io.IOException;
@@ -35,6 +37,45 @@ public class Frame_Settings extends JFrame implements ActionListener {
     JTextField parameter_pointsforvictory;
     JTextField parameter_speedofsimulation;
 
+    /*
+        CSV file input
+     */
+    public Frame_Settings(String csvPath){
+        this();
+        loadSettingsFromCSV(csvPath);
+    }
+
+    private void loadSettingsFromCSV(String path) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            String line = reader.readLine(); // Read only the first line for simplicity
+            reader.close();
+
+            String[] values = line.split(",");
+            if (values.length < 8) {
+                throw new IllegalArgumentException("CSV must contain at least 8 values.");
+            }
+
+            parameter_numofherbivore.setText(values[0]);
+            parameter_numofpredator.setText(values[1]);
+            parameter_numofplants.setText(values[2]);
+            parameter_chanceofwildfire.setText(values[3]);
+            parameter_chanceofdrowning.setText(values[4]);
+            parameter_chanceofhunters.setText(values[5]);
+            parameter_pointsforvictory.setText(values[6]);
+            parameter_speedofsimulation.setText(values[7]);
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Failed to read CSV file: " + ex.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "CSV Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /*
+        Default constructor
+     */
+
     public Frame_Settings(){
 
         this.setLocation((screenSize.width - settingsWidth) / 2, (screenSize.height - settingsHeight) / 2);
@@ -43,14 +84,6 @@ public class Frame_Settings extends JFrame implements ActionListener {
         this.setTitle("Settings");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-
-        /*JLabel label = new JLabel(); //creating a label with text
-        label.setText(Main.n);
-        this.add(label);
-        label.setBounds(0, 0, 550, 100);
-        label.setVerticalAlignment(JLabel.TOP);
-        label.setHorizontalAlignment(JLabel.CENTER);*/
-
         this.setLayout(null);
 
         /*
@@ -118,9 +151,11 @@ public class Frame_Settings extends JFrame implements ActionListener {
         this.add(label_pointsforvictory);
         this.add(label_speedofsimulation);
         this.add(titleLabel);
+
         /*
             Creating input fields
          */
+
         //Number of herbivores field
         parameter_numofherbivore = new JTextField();
         this.add(parameter_numofherbivore);
