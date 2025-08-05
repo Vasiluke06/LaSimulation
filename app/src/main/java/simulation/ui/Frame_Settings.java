@@ -1,16 +1,24 @@
 package simulation.ui;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
-import java.io.IOException;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class Frame_Settings extends JFrame implements ActionListener {
+
     public static int numofherbivore;
     public static int numofpredator;
     public static int numofplants;
@@ -22,7 +30,6 @@ public class Frame_Settings extends JFrame implements ActionListener {
     private final int settingsHeight = 700;
     private final int settingsWidth = 600;
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
 
     JButton button_accept;
     ImageIcon button_accept_icon;
@@ -41,7 +48,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
     /*
         CSV file input
      */
-    public Frame_Settings(String csvPath){
+    public Frame_Settings(String csvPath) {
         this();
         loadSettingsFromCSV(csvPath);
     }
@@ -76,8 +83,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
     /*
         Default constructor
      */
-
-    public Frame_Settings(){
+    public Frame_Settings() {
 
         this.setLocation((screenSize.width - settingsWidth) / 2, (screenSize.height - settingsHeight) / 2);
 
@@ -90,7 +96,6 @@ public class Frame_Settings extends JFrame implements ActionListener {
         /*
             Labels for input fields
          */
-
         //creating a label "Number of herbivores"
         JLabel label_numofherbivore = new JLabel();
         label_numofherbivore.setText("Number of herbivores");
@@ -131,7 +136,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
         //creating a button "Accept"
         button_accept = new JButton();
         button_accept_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/accept_button.png")));
-        button_accept.setBounds(settingsWidth - 265,575,125,50);
+        button_accept.setBounds(settingsWidth - 265, 575, 125, 50);
         button_accept.setIcon(button_accept_icon);
         this.add(button_accept);
         button_accept.addActionListener(this);
@@ -139,7 +144,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
         //creating a button "Preset"
         button_fast_insert_of_parameters = new JButton();
         button_preset_icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/images/preset_button.png")));
-        button_fast_insert_of_parameters.setBounds(140,575,125,50);
+        button_fast_insert_of_parameters.setBounds(140, 575, 125, 50);
         button_fast_insert_of_parameters.setIcon(button_preset_icon);
         this.add(button_fast_insert_of_parameters);
         button_fast_insert_of_parameters.addActionListener(this);
@@ -158,7 +163,6 @@ public class Frame_Settings extends JFrame implements ActionListener {
         /*
             Creating input fields
          */
-
         //Number of herbivores field
         parameter_numofherbivore = new JTextField();
         this.add(parameter_numofherbivore);
@@ -212,6 +216,10 @@ public class Frame_Settings extends JFrame implements ActionListener {
                 }
 
                 numofpredator = Integer.parseInt(parameter_numofpredator.getText());
+                if (numofpredator < 1 || numofpredator > 300) {
+                    throw new IllegalArgumentException("Number of plants must be between 0 and 300.");
+                }
+
                 numofplants = Integer.parseInt(parameter_numofplants.getText());
                 if (numofplants < 1 || numofplants > 300) {
                     throw new IllegalArgumentException("Number of plants must be between 0 and 300.");
@@ -254,8 +262,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
             }
         }
 
-
-        if (e.getSource() == button_fast_insert_of_parameters){
+        if (e.getSource() == button_fast_insert_of_parameters) {
 
             parameter_numofherbivore.setText("15");
 
@@ -273,10 +280,7 @@ public class Frame_Settings extends JFrame implements ActionListener {
 
             parameter_speedofsimulation.setText("10");
 
-
-
             //button_fast_insert_of_parameters.setEnabled(false);
-
         }
     }
 }

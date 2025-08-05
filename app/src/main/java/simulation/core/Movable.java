@@ -1,5 +1,5 @@
 package simulation.core;
 
-public interface Movable {
-    void nextMove();
+public interface Movable<T> {
+    void nextMove(T targets);
 }

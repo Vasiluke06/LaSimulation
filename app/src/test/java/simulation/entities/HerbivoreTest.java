@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import simulation.core.Plants;
 import simulation.core.Position;
 import simulation.core.Simulation;
 import simulation.ui.Frame_Settings;
+
+import java.util.ArrayList;
 
 public class HerbivoreTest {
 
@@ -26,6 +29,7 @@ public class HerbivoreTest {
         simulation = new Simulation();
         Simulation.SCREEN_WIDTH = 800;
         Simulation.SCREEN_HEIGHT = 600;
+        Simulation.plants = new ArrayList<Plants>(2);
     }
 
     @Test
@@ -37,7 +41,7 @@ public class HerbivoreTest {
         simulation.herbivore.add(h1);
         simulation.herbivore.add(h2);
         //Act
-        h1.nextMove();
+        h1.nextMove(Simulation.plants);
         //Assert
         assertEquals(h2.getPosition(), h1.getMate().getPosition());
     }
@@ -52,7 +56,7 @@ public class HerbivoreTest {
         simulation.herbivore.add(h1);
         simulation.herbivore.add(h2);
         //Act
-        h1.nextMove();
+        h1.nextMove(Simulation.plants);
         Position actual = simulation.herbivore.get(simulation.herbivore.size() - 1).getPosition();
         //Assert
         assertEquals(expected.getX(), actual.getX());

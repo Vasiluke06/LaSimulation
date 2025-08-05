@@ -7,9 +7,14 @@
     <list default="true" id="ba3c3e96-3db9-4fda-b1b4-f6941af0b3fc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/app/Results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Animals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Movable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Plants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/core/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Herbivore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/entities/Predator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/simulation/ui/Frame_Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/simulation/entities/HerbivoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/simulation/entities/HerbivoreTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +52,12 @@
                 <item name="LaSimulation" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="LaSimulation" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -89,43 +100,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid.executor": "Run",
-    "Gradle.HerbivoreTest.HerbivoreReproductionAddsHerbivore.executor": "Run",
-    "Gradle.HerbivoreTest.executor": "Run",
-    "Gradle.HerbivoreTest.findMateAssignsMate.executor": "Run",
-    "Gradle.HerbivoreTest.herbivoreReproductionAddsHerbivore.executor": "Run",
-    "Gradle.LaSimulation [build].executor": "Run",
-    "Gradle.LaSimulation [clean].executor": "Run",
-    "Gradle.LaSimulation [run].executor": "Run",
-    "Gradle.LaSimulation:app [:app:simulation.Main.main()].executor": "Run",
-    "Gradle.LaSimulation:app [run].executor": "Run",
-    "Gradle.LaSimulation:app [testClasses].executor": "Run",
-    "Gradle.SimulationTests.loadImageThrowsExceptionIfResourceIsNull.executor": "Debug",
-    "Gradle.SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull.executor": "Run",
-    "Gradle.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull.executor": "Run",
-    "Gradle.SimulationTests.resultWriterThrowsIOException.executor": "Run",
-    "Gradle.UITests.settingsTestWithInvalidCSVDataThrowsException.executor": "Run",
-    "Gradle.UITests.settingsTestWithNoCSVFileThrowsException.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "build-with-gradle",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HerbivoreTest.HerbivoreReproductionAddsHerbivore.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HerbivoreTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HerbivoreTest.findMateAssignsMate.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HerbivoreTest.herbivoreReproductionAddsHerbivore.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation:app [:app:simulation.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation:app [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LaSimulation:app [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SimulationTests.loadImageThrowsExceptionIfResourceIsNull.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.SimulationTests.loadImageThrowsIllegalArgumentExceptionIfResourceIsNull.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SimulationTests.resultWriterThrowsIOException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UITests.settingsTestWithInvalidCSVDataThrowsException.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UITests.settingsTestWithNoCSVFileThrowsException.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;build-with-gradle&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kraev/Documents/Polit_Wroclawska/Java/gitgut/LaSimulation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kraev\Documents\Polit_Wroclawska\Java\gitgut\LaSimulation\app\src\main\resources" />
@@ -133,30 +144,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.LaSimulation [run]">
-    <configuration name="Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;simulation.ui.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="HerbivoreTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -171,6 +158,30 @@
             <option value=":app:test" />
             <option value="--tests" />
             <option value="&quot;simulation.entities.HerbivoreTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HerbivoreTest.findMateAssignsMate" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;simulation.entities.HerbivoreTest.findMateAssignsMate&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -205,6 +216,28 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="LaSimulation [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="LaSimulation [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -227,37 +260,13 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;simulation.core.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.LaSimulation [run]" />
         <item itemvalue="Gradle.HerbivoreTest.herbivoreReproductionAddsHerbivore" />
+        <item itemvalue="Gradle.HerbivoreTest.findMateAssignsMate" />
+        <item itemvalue="Gradle.LaSimulation [clean]" />
         <item itemvalue="Gradle.HerbivoreTest" />
-        <item itemvalue="Gradle.Frame_SettingsTests.testLoadSettingsFromCSV_ThrowsException_WhenCSVIsInvalid" />
-        <item itemvalue="Gradle.SimulationTests.loadImageThrowsNullPointerExceptionIfPathIsNull" />
       </list>
     </recent_temporary>
   </component>
@@ -310,6 +319,11 @@
       <workItem from="1749052940898" duration="205000" />
       <workItem from="1749056349684" duration="789000" />
       <workItem from="1749057317010" duration="3384000" />
+      <workItem from="1749079053749" duration="17000" />
+      <workItem from="1749135636831" duration="111000" />
+      <workItem from="1749244791450" duration="1599000" />
+      <workItem from="1749302879708" duration="48000" />
+      <workItem from="1749830626927" duration="592000" />
     </task>
     <task id="LOCAL-00001" summary="Change drownCheckCooldown">
       <option name="closed" value="true" />

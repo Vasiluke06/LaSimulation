@@ -1,9 +1,8 @@
 package simulation.core;
 
-import java.awt.*;
-import simulation.entities.River;
+import java.awt.Graphics;
 
-import java.util.Timer;
+import simulation.entities.River;
 
 public class Plants {
     private static int spawnTimer;

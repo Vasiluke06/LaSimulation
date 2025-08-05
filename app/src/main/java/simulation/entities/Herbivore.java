@@ -1,29 +1,37 @@
 package simulation.entities;
 
-import simulation.core.*;
+import java.awt.Graphics;
+import java.util.ArrayList;
 
-import java.awt.*;
+import simulation.core.Animals;
+import simulation.core.Movable;
+import simulation.core.Plants;
+import simulation.core.Position;
+import simulation.core.Simulation;
 
+public class Herbivore extends Animals implements Movable<ArrayList<Plants>> {
 
-public class Herbivore extends Animals implements Movable {
     private final int STEP_SIZE = 10;
     private final int POINTS_FOR_REPRODUCTION = 6;
     private final int POINTS_FOR_EATING = 8;
 
-    private static int eatingCooldown = Simulation.random.nextInt(31);
-    private static int cooldown = 30;
+    private static int eatingCooldown = Simulation.random.nextInt(61);
+    private static int cooldown = 60;
 
     private boolean isFed = Math.random() < 0.5;
     private Herbivore mate;
+
     /**
      * Getters, setters, and constructors
      */
-    public Herbivore() {}
+    public Herbivore() {
+    }
 
     public Herbivore(boolean fed, int x, int y) {
         super(x, y);
         this.isFed = fed;
     }
+
     public boolean isFed() {
         return isFed;
     }
@@ -44,36 +52,41 @@ public class Herbivore extends Animals implements Movable {
      * Implementation of Movable interface and movement logic
      */
     @Override
-    public void nextMove() {
+    public void nextMove(ArrayList<Plants> plant) {
 
         if (isFed) {
             if (mate == null) {
-                findMate();
+                findMate(Simulation.herbivore);
             }
 
-            if (mate != null) {
-                this.setPosition(moveToward(mate, STEP_SIZE, this.getPosition()));
+            Herbivore currentMate = this.mate;
+
+            if (currentMate != null && currentMate.getPosition() != null) {
+                Position matePosition = mate.getPosition();
+                this.setPosition(moveToward(matePosition, STEP_SIZE, this.getPosition()));
                 checkForBorder(STEP_SIZE);
                 herbivoreReproduction(mate);
             } else {
-                Move(STEP_SIZE);
+                this.setPosition(Move(STEP_SIZE));
             }
+
         } else if (eatingCooldown >= cooldown) {
-            getToThePlant();
+            getToThePlant(plant);
         }
-        if(eatingCooldown < cooldown && !isFed) {
+        if (eatingCooldown < cooldown && !isFed) {
             eatingCooldown++;
-            Move(STEP_SIZE);
+            this.setPosition(Move(STEP_SIZE));
         }
     }
+
     /*Herbivore-Herbivore interactions*/
     /**
      * Method used for finding the closest fed herbivore
      */
-    private void findMate() {
+    private Position findMate(ArrayList<Herbivore> herbivores) {
         double closestDistance = Double.MAX_VALUE;
 
-        for (Herbivore other : Simulation.herbivore) {
+        for (Herbivore other : herbivores) {
             if (other != this && other.isFed()) {
                 double dist = distanceTo(other, this.getPosition()); //
                 if (dist < closestDistance) {
@@ -82,34 +95,36 @@ public class Herbivore extends Animals implements Movable {
                 }
             }
         }
+        return (mate != null) ? mate.getPosition() : null;
     }
+
     /**
      * Method used for reproduction of herbivores
      */
-    public void herbivoreReproduction(Herbivore mate){
-       if (this.distanceTo(mate, this.getPosition()) < STEP_SIZE) {
-           int x = (this.getPosition().getX() + mate.getPosition().getX()) / 2;
-           int y = (this.getPosition().getY() + mate.getPosition().getY()) / 2;
+    public void herbivoreReproduction(Herbivore mate) {
+        if (this.distanceTo(mate, this.getPosition()) < STEP_SIZE) {
+            int x = (this.getPosition().getX() + mate.getPosition().getX()) / 2;
+            int y = (this.getPosition().getY() + mate.getPosition().getY()) / 2;
 
-
-           Simulation.herbivore.add(new Herbivore(x, y));
-           this.setFed(false);
-           mate.setFed(false);
-           mate = null;
-           Animals.addHerbivorePoint(POINTS_FOR_REPRODUCTION);
+            Simulation.herbivore.add(new Herbivore(x, y));
+            this.setFed(false);
+            mate.setFed(false);
+            mate = null;
+            Animals.addHerbivorePoint(POINTS_FOR_REPRODUCTION);
         }
     }
-    public static void newHerbivore(int x, int y){
+
+    public static void newHerbivore(int x, int y) {
         Simulation.herbivore.add(new Herbivore(x, y));
     }
 
     /* ************************************** */
 
-    /*Herbivore-Plant interactions*/
+ /*Herbivore-Plant interactions*/
     /**
      * Method used for finding the closest plant
      */
-    private Plants findFood(){
+    private Position findFood() {
         Plants closest = null;
         double closestDistance = Double.MAX_VALUE;
 
@@ -120,41 +135,44 @@ public class Herbivore extends Animals implements Movable {
                 closest = other;
             }
         }
-        return closest;
+        return (closest != null) ? closest.getPosition() : null;
     }
 
     /**
      * Method used for "eating" the target plant
      */
-    public void getToThePlant() {
-        Plants target = findFood();
-        if (target == null) return;
+    public void getToThePlant(ArrayList<Plants> plantList) {
+        Position target = findFood();
+        if (target == null) {
+            return;
+        }
 
+        int targetX = target.getX();
+        int targetY = target.getY();
         Position myPos = getPosition();
-        int targetX = target.getPosition().getX();
-        int targetY = target.getPosition().getY();
+        int myX = myPos.getX();
+        int myY = myPos.getY();
 
-        int dx = Integer.compare(targetX, myPos.getX())*STEP_SIZE;
-        int dy = Integer.compare(targetY, myPos.getY())*STEP_SIZE;
+        int dx = Integer.compare(targetX, myX) * STEP_SIZE;
+        int dy = Integer.compare(targetY, myY) * STEP_SIZE;
 
-        if (River.isOnRiver(myPos.getX(), myPos.getY())) {
+        if (River.isOnRiver(myX, myY)) {
             dy += STEP_SIZE;
             dx /= 2;
             dy /= 2;
         }
 
-        myPos.setX(myPos.getX() + dx);
-        myPos.setY(myPos.getY() + dy);
+        myPos.setX(myX + dx);
+        myPos.setY(myY + dy);
 
         checkForBorder(STEP_SIZE);
 
-        if (Math.abs(myPos.getX() - targetX) < STEP_SIZE &&
-                Math.abs(myPos.getY() - targetY) < STEP_SIZE) {
+        if (Math.abs(myX - targetX) < STEP_SIZE
+                && Math.abs(myY - targetY) < STEP_SIZE) {
 
             myPos.setX(targetX);
             myPos.setY(targetY);
-
-            Simulation.plants.remove(target);
+            plantList.removeIf(plant -> plant.getPosition().equals(target));
             setFed(true);
             Animals.addHerbivorePoint(POINTS_FOR_EATING);
         }
@@ -162,28 +180,29 @@ public class Herbivore extends Animals implements Movable {
 
     /* ************************************** */
 
-    /*Method for drawing a herbivore*/
-    public void drawHerbivore(Graphics g){
+ /*Method for drawing a herbivore*/
+    public void drawHerbivore(Graphics g) {
         Position p = getPosition();
         g.drawImage(Simulation.herbivoreImg, p.getX(), p.getY(), SPRITE_SIZE, SPRITE_SIZE, null);
     }
+
     /**
      * Method used for initializing the herbivores
      */
-
-    public static void initHerbivore(int numofherbivores){
-        for (int i = 0; i < numofherbivores; i++){
+    public static void initHerbivore(int numofherbivores) {
+        for (int i = 0; i < numofherbivores; i++) {
             Position pos = new Position(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE), Simulation.random.nextInt(Simulation.SCREEN_HEIGHT - SPRITE_SIZE));
 
-            for (; River.isOnRiver(pos.getX(), pos.getY()); ) {
+            for (; River.isOnRiver(pos.getX(), pos.getY());) {
                 pos.setX(Simulation.random.nextInt(Simulation.SCREEN_WIDTH - SPRITE_SIZE));
             }
 
             Herbivore.newHerbivore(pos.getX(), pos.getY());
         };
     }
+
     @Override
-    public void drown(){
+    public void drown() {
         Simulation.herbivore.remove(this);
         herbivoresKilled++;
     }

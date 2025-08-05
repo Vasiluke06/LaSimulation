@@ -5,6 +5,7 @@ import simulation.entities.River;
 import simulation.ui.Frame_Settings;
 
 public abstract class Animals {
+
     protected static int herbivorePoints;
     protected static int predatorPoints;
     protected static int herbivoresKilled;
@@ -17,6 +18,15 @@ public abstract class Animals {
     protected static final int drownCheckCooldown = 500;
     protected static int drownCooldown;
 
+    /* Constructors */
+    public Animals(int x, int y) {
+        this.position = new Position(x, y);
+    }
+
+    public Animals() {
+    }
+
+    /* */
     public static void addHerbivorePoint(int pointsToAdd) {
         herbivorePoints += pointsToAdd;
     }
@@ -33,6 +43,7 @@ public abstract class Animals {
         this.position.setX(pos.getX());
         this.position.setY(pos.getY());
     }
+
     public static int getHerbivorePoints() {
         return herbivorePoints;
     }
@@ -44,13 +55,6 @@ public abstract class Animals {
     public boolean isOnRiver() {
         return onRiver;
     }
-
-
-    public Animals(int x, int y) {
-        this.position = new Position(x, y);
-    }
-
-    public Animals(){}
 
     public void checkForBorder(int stepSize) {
         Position pos = getPosition();
@@ -77,21 +81,24 @@ public abstract class Animals {
     /**
      * Method used for moving towards the target herbivore
      */
-    protected Position moveToward(Herbivore target, int stepSize, Position myPos) {
+    protected Position moveToward(Position target, int stepSize, Position myPos) {
         //Moves towards the closest herbivore
-        Position targetPos = target.getPosition();
+        int myX = myPos.getX();
+        int myY = myPos.getY();
+        int targetX = target.getX();
+        int targetY = target.getY();
 
-        int dx = Integer.compare(targetPos.getX(), myPos.getX()) * stepSize;
-        int dy = Integer.compare(targetPos.getY(), myPos.getY()) * stepSize;
+        int dx = Integer.compare(targetX, myX) * stepSize;
+        int dy = Integer.compare(targetY, myY) * stepSize;
 
-        if (River.isOnRiver(myPos.getX(), myPos.getY())) {
+        if (River.isOnRiver(myX, myY)) {
             dy += stepSize;
             dx /= 2;
             dy /= 2;
 
             int roll = Simulation.random.nextInt(100);
             drownCooldown++;
-            if(roll < Frame_Settings.chanceofdrowning && drownCooldown > drownCheckCooldown  ) {
+            if (roll < Frame_Settings.chanceofdrowning && drownCooldown > drownCheckCooldown) {
                 drown();
             }
         }
@@ -99,10 +106,15 @@ public abstract class Animals {
 
     }
 
-    public void drown(){};
+    protected void drown() {
+    }
+
+    ;
 
 
     protected Position Move(int stepSize) {
-        return new Position(this.position.getX() + (int) (Math.random() * 10) * stepSize, this.position.getY() + (int) (Math.random() * 10) * stepSize);
+        int dx = (int) (Math.random() * 3 - 1) * stepSize; // -1, 0, or 1 times stepSize
+        int dy = (int) (Math.random() * 3 - 1) * stepSize;
+        return new Position(this.position.getX() + dx, this.position.getY() + dy);
     }
 }
